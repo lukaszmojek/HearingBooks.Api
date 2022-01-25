@@ -1,0 +1,110 @@
+{
+  "main": {
+    "id": "4dc0343d1c8bc299",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe7fdee57cf81296",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Development/Migrations.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "31b19f44763d73c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "4bbb023d23581cee",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a53f0ffd1a837168",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "323b921101bc45a4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#pricing",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "571d798cd2119b6d",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f26e172d29ff1277",
+    "type": "split",
+    "children": [
+      {
+        "id": "90049b0009a21a6a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7019f5652f7f2ff6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Development/Migrations.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "fe7fdee57cf81296",
+  "lastOpenFiles": [
+    "Development/Migrations.md",
+    "Security/ClamAV.md",
+    "Security/Security.md",
+    "Synthesis/EpubSyntesis.md",
+    "Synthesis/NarrativeSyntesis.md",
+    "Synthesis/PhotoSyntesis.md",
+    "Synthesis/PlainTextSynthesis.md",
+    "Synthesis/Synthesis.md",
+    "TextExtraction/CleanPdfTextExtraction.md",
+    "TextExtraction/OCREngine.md"
+  ]
+}
