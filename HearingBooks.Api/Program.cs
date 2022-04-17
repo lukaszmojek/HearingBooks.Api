@@ -51,14 +51,12 @@ builder.Services.AddSwaggerGen(
     }
 );
 
-#if DEBUG
 builder.Services.AddDbContext<HearingBooksDbContext>(
     options =>
     {
         options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseUrl"))
             .EnableSensitiveDataLogging();
     });
-#endif
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
@@ -75,7 +73,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
