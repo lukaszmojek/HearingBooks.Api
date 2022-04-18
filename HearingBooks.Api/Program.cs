@@ -118,7 +118,6 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
 //     }
 // });
 
-app.MapLanguagesEndpoints();
 app.MapSeedEndpoints();
 
 app.Run();
