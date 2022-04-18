@@ -1,6 +1,6 @@
-namespace HearingBooks.Api.Syntheses;
+namespace HearingBooks.Api.Auth.Login;
 
-public class AuthenticateUserDto
+public class LoginUserRequest
 {
 	public string Email { get; set; }
 	public string Password { get; set; }

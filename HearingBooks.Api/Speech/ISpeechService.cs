@@ -1,4 +1,4 @@
-using HearingBooks.Api.Syntheses;
+using HearingBooks.Api.Syntheses.RequestTextSynthesis;
 
 namespace HearingBooks.Api.Speech;
 
