@@ -118,7 +118,6 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
 //     }
 // });
 
-app.MapAuthEndpoints();
 app.MapLanguagesEndpoints();
 app.MapSeedEndpoints();
 
