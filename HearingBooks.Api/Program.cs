@@ -3,8 +3,6 @@ global using FastEndpoints;
 using FastEndpoints.Swagger;
 using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
-using HearingBooks.Api.Languages;
-using HearingBooks.Api.Seed;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses;
@@ -117,7 +115,5 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
 //         await ctx.Response.WriteAsync(ex.Message);
 //     }
 // });
-
-app.MapSeedEndpoints();
 
 app.Run();
