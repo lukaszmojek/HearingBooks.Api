@@ -13,6 +13,8 @@
         <PackageReference Include="AutoMapper" Version="11.0.1" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
         <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
+        <PackageReference Include="FastEndpoints" Version="4.0.0" />
+        <PackageReference Include="FastEndpoints.Swagger" Version="4.0.0" />
         <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.19.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
@@ -37,11 +39,6 @@
       <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
       <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
       <ProjectReference Include="..\HearingBooks.Persistance\HearingBooks.Persistance.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Syntheses\GetAllSyntheses" />
-      <Folder Include="Syntheses\RequestTextSynthesis" />
     </ItemGroup>
 
 </Project>

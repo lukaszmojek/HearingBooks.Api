@@ -13,17 +13,17 @@ public static class TextSynthesesEndpointExtensions
 
     public static void MapSynthesesEndpoints(this WebApplication app)
     {
-        app.MapGet(
-            $"/{_baseEndpointGroupRoute}",
-            async (HttpContext context, ITextSynthesisRepository textSynthesisRepository, IMapper mapper) =>
-            {
-                var requestingUser = (User) context.Items["User"];
-                
-                var syntheses = await textSynthesisRepository.GetAllForUser(requestingUser.Id);
-                var synthesesDto = mapper.Map<IEnumerable<TextSynthesisDto>>(syntheses);
-                
-                return Results.Ok(synthesesDto);
-            });
+        // app.MapGet(
+        //     $"/{_baseEndpointGroupRoute}",
+        //     async (HttpContext context, ITextSynthesisRepository textSynthesisRepository, IMapper mapper) =>
+        //     {
+        //         var requestingUser = (User) context.Items["User"];
+        //         
+        //         var syntheses = await textSynthesisRepository.GetAllForUser(requestingUser.Id);
+        //         var synthesesDto = mapper.Map<IEnumerable<TextSynthesisDto>>(syntheses);
+        //         
+        //         return Results.Ok(synthesesDto);
+        //     });
         
         //TODO: How to still have route here?
         //TODO: Consider switching to FastEndpoints
