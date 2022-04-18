@@ -1,4 +1,5 @@
 using HearingBooks.Api.Speech;
+using HearingBooks.Api.Syntheses.RequestTextSynthesis;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.ValueObjects.TextSynthesis;
 using HearingBooks.Infrastructure.Repositories;

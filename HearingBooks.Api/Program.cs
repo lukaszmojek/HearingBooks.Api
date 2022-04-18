@@ -11,7 +11,6 @@ using HearingBooks.Api.Syntheses;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -95,7 +94,7 @@ app.UseCors(x =>
 );
 
 app.UseFastEndpoints();
-app.UseOpenApi(); //add this
+app.UseOpenApi();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
@@ -120,7 +119,6 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
 // });
 
 app.MapAuthEndpoints();
-// app.MapSynthesesEndpoints();
 app.MapLanguagesEndpoints();
 app.MapSeedEndpoints();
 

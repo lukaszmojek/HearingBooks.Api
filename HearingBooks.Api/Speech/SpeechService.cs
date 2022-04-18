@@ -1,5 +1,5 @@
 using HearingBooks.Api.Storage;
-using HearingBooks.Api.Syntheses;
+using HearingBooks.Api.Syntheses.RequestTextSynthesis;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
