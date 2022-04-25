@@ -1,4 +1,5 @@
 global using FastEndpoints;
+global using FastEndpoints.Security;
 
 using FastEndpoints.Swagger;
 using HearingBooks.Api.Auth;
@@ -18,10 +19,15 @@ builder.Services.AddSingleton<IApiConfiguration, ApiConfiguration>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddFastEndpoints();
+builder.Services.AddAuthenticationJWTBearer(builder.Configuration.GetSection("Authorization")["Secret"]);
+
+// builder.Services.AddAuthorization(o =>
+//     o.AddPolicy("HearingBooks", b =>
+//         b.RequireRole("HearingBooks")));
 
 builder.Services.AddSwaggerDoc(settings =>
 {
-    settings.Title = "My API";
+    settings.Title = "HearingBooks.Api";
     settings.Version = "v1";
 });
 // builder.Services.AddSwaggerGen(
@@ -80,6 +86,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<JwtMiddleware>();
 
@@ -100,7 +107,6 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
     app.UseDeveloperExceptionPage();
     app.UseSwaggerUi3(c => c.ConfigureDefaults()); 
 }
-
 
 //TODO: Move that to middleware
 // app.Use(async (ctx, next) =>

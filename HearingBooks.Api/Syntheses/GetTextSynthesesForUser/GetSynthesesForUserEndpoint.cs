@@ -18,7 +18,7 @@ public class GetSynthesesForUserEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("text-syntheses");
-		AllowAnonymous();
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)

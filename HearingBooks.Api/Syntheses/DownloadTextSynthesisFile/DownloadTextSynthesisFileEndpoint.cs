@@ -18,7 +18,7 @@ public class DownloadTextSynthesisFileEndpoint : Endpoint<DowloadTextSynthesisFi
 	public override void Configure()
 	{
 		Get("text-syntheses/{TextSynthesisId}");
-		AllowAnonymous();
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(DowloadTextSynthesisFileRequest request, CancellationToken cancellationToken)

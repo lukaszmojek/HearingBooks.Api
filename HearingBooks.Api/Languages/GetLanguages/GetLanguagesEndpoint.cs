@@ -17,7 +17,7 @@ public class GetLanguagesEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("languages");
-		AllowAnonymous();
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken cancellationToken)

@@ -14,7 +14,7 @@ public class RequestTextSynthesisEndpoint : Endpoint<TextSyntehsisRequest>
 	public override void Configure()
 	{
 		Post("text-syntheses");
-		AllowAnonymous();
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(TextSyntehsisRequest request, CancellationToken cancellationToken)

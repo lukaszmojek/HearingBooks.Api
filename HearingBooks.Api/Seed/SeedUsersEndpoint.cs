@@ -17,6 +17,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("seed/users");
+		Roles("HearingBooks");
 	}
 	
 	public override async Task HandleAsync(CancellationToken ct)
