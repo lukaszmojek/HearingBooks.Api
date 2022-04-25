@@ -2,7 +2,7 @@ using AutoMapper;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Infrastructure.Repositories;
 
-namespace HearingBooks.Api.Syntheses.GetTextSynthesesForUser;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.GetTextSynthesesForUser;
 
 public class GetSynthesesForUserEndpoint : EndpointWithoutRequest
 {

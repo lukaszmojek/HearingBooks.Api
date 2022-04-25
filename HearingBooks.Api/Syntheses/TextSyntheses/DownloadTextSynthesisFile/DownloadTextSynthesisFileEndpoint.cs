@@ -2,7 +2,7 @@ using HearingBooks.Api.Storage;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Infrastructure.Repositories;
 
-namespace HearingBooks.Api.Syntheses.DownloadTextSynthesisFile;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.DownloadTextSynthesisFile;
 
 public class DownloadTextSynthesisFileEndpoint : Endpoint<DowloadTextSynthesisFileRequest>
 {

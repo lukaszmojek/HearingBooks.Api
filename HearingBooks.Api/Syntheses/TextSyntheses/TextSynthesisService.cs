@@ -1,11 +1,11 @@
 using HearingBooks.Api.Speech;
-using HearingBooks.Api.Syntheses.RequestTextSynthesis;
+using HearingBooks.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.ValueObjects.TextSynthesis;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 
-namespace HearingBooks.Api.Syntheses;
+namespace HearingBooks.Api.Syntheses.TextSyntheses;
 
 public class TextSynthesisService
 {
@@ -28,13 +28,20 @@ public class TextSynthesisService
 
         string synthesisFilePath = "";
         string synthesisFileName;
+
+        var synthesisRequest = new SyntehsisRequest()
+        {
+            Voice = request.Voice,
+            Language = request.Language,
+            TextToSynthesize = request.TextToSynthesize
+        };
         
         try
         {
             (synthesisFilePath, synthesisFileName) = await _speechService.SynthesizeAudioAsync(
                 containerName,
                 requestId.ToString(),
-                request
+                synthesisRequest
             );
 
             var textSynthesisData = new TextSynthesisData(request.Title, containerName, synthesisFilePath);

@@ -1,6 +1,6 @@
 using HearingBooks.Domain.ValueObjects.TextSynthesis;
 
-namespace HearingBooks.Api.Syntheses;
+namespace HearingBooks.Api.Syntheses.TextSyntheses;
 
 public class TextSynthesisDto
 {

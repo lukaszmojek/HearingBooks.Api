@@ -1,6 +1,6 @@
 using HearingBooks.Domain.Entities;
 
-namespace HearingBooks.Api.Syntheses.RequestTextSynthesis;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
 
 public class RequestTextSynthesisEndpoint : Endpoint<TextSyntehsisRequest>
 {

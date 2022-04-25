@@ -6,7 +6,7 @@ using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
-using HearingBooks.Api.Syntheses;
+using HearingBooks.Api.Syntheses.TextSyntheses;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;

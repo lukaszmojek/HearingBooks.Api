@@ -1,4 +1,4 @@
-namespace HearingBooks.Api.Syntheses.RequestTextSynthesis;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
 
 public class TextSyntehsisRequest
 {
