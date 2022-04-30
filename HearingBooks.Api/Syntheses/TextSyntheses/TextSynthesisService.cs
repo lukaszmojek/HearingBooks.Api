@@ -38,7 +38,7 @@ public class TextSynthesisService
         
         try
         {
-            (synthesisFilePath, synthesisFileName) = await _speechService.SynthesizeAudioAsync(
+            (synthesisFilePath, synthesisFileName) = await _speechService.SynthesizeTextAsync(
                 containerName,
                 requestId.ToString(),
                 synthesisRequest

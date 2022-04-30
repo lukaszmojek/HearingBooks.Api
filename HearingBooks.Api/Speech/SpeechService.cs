@@ -1,5 +1,4 @@
 using HearingBooks.Api.Storage;
-using HearingBooks.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
@@ -15,13 +14,13 @@ public class SpeechService : ISpeechService
         _configuration = configuration;
         _storage = storage;
     }
-
-    public async Task<(string, string)> SynthesizeAudioAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest)
+    
+    public async Task<(string, string)> SynthesizeTextAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest)
     {
         try
         {
             var fileName = $"{requestId}.wav";
-            var localPath = await CreateSynthesis(fileName, syntehsisRequest);
+            var localPath = await CreateTextSynthesisAsync(fileName, syntehsisRequest);
 
             await UploadSynthesis(containerName, fileName, localPath);
             
@@ -34,7 +33,25 @@ public class SpeechService : ISpeechService
         }
     }
     
-    private async Task<string> CreateSynthesis(string fileName, SyntehsisRequest syntehsisRequest)
+    public async Task<(string, string)> SynthesizeSsmlAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest)
+    {
+        try
+        {
+            var fileName = $"{requestId}.wav";
+            var localPath = await CreateSsmlSynthesisAsync(fileName, syntehsisRequest);
+
+            await UploadSynthesis(containerName, fileName, localPath);
+            
+            return (localPath, fileName);
+        }
+        catch (Exception e)
+        {
+            //TODO: Add logging
+            throw;
+        }
+    }
+
+    private async Task<string> CreateTextSynthesisAsync(string fileName, SyntehsisRequest syntehsisRequest)
     {
         var config = SpeechConfig.FromSubscription(
             _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
@@ -54,7 +71,26 @@ public class SpeechService : ISpeechService
         using var synthesizer = new SpeechSynthesizer(config, audioConfig);
 
         await synthesizer.SpeakTextAsync(syntehsisRequest.TextToSynthesize);
+        
+        return localPath;
+    }
+    
+    private async Task<string> CreateSsmlSynthesisAsync(string fileName, SyntehsisRequest syntehsisRequest)
+    {
+        var config = SpeechConfig.FromSubscription(
+            _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
+            _configuration[ConfigurationKeys.TextToSpeechRegion]
+        );
 
+        // Create AudioConfig for to let the application know how to handle the synthesis
+        var localPath = $"./{fileName}";
+        
+        using var audioConfig = AudioConfig.FromWavFileOutput(localPath);
+        // Actual synthetizer instance for TTS
+        using var synthesizer = new SpeechSynthesizer(config, audioConfig);
+
+        await synthesizer.SpeakSsmlAsync(syntehsisRequest.TextToSynthesize);
+        
         return localPath;
     }
 
