@@ -35,7 +35,7 @@ public class DialogueSynthesisService
                 $"<speak xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xmlns:emo=\"http://www.w3.org/2009/10/emotionml\" version=\"1.0\" xml:lang=\"{request.Language}\">";
             var closingTags = "</speak>";
 
-            var linesWithTags = SplitDialogueIntoLines(request.DialogueToSynthesize)
+            var linesWithTags = SplitDialogueIntoLines(request.DialogueText)
                 .Select(line => $"{LineOpeningTagsForSpeaker(request, line.Item2)}{line.Item1}{LineClosingTagsForSpeaker()}")
                 .Aggregate((current, next) => $"{current}{next}");
 
@@ -62,7 +62,7 @@ public class DialogueSynthesisService
                 RequestingUserId = request.RequestingUserId,
                 Status = DialogueSynthesisStatus.Submitted,
                 Title = request.Title,
-                DialogueText = request.DialogueToSynthesize,
+                DialogueText = request.DialogueText,
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
                 FirstSpeakerVoice = request.FirstSpeakerVoice,
@@ -89,8 +89,8 @@ public class DialogueSynthesisService
         return requestId;
     }
 
-    public IEnumerable<(string, int)> SplitDialogueIntoLines(string dialogueToSynthesize) =>
-        dialogueToSynthesize
+    public IEnumerable<(string, int)> SplitDialogueIntoLines(string dialogueText) =>
+        dialogueText
             .Split(LineSeparator)
             .Select((line, index) => (line.Trim(), index));
 
