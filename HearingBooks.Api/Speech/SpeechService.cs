@@ -19,12 +19,12 @@ public class SpeechService : ISpeechService
     {
         try
         {
-            var fileName = $"{requestId}.wav";
-            var localPath = await CreateTextSynthesisAsync(fileName, syntehsisRequest);
+            var blobName = $"{syntehsisRequest.Title.Replace(' ', '_')}-{requestId}.wav";
+            var localPath = await CreateTextSynthesisAsync(blobName, syntehsisRequest);
 
-            await UploadSynthesis(containerName, fileName, localPath);
+            await UploadSynthesis(containerName, blobName, localPath);
             
-            return (localPath, fileName);
+            return (localPath, blobName);
         }
         catch (Exception e)
         {
@@ -37,12 +37,12 @@ public class SpeechService : ISpeechService
     {
         try
         {
-            var fileName = $"{requestId}.wav";
-            var localPath = await CreateSsmlSynthesisAsync(fileName, syntehsisRequest);
+            var blobName = $"{syntehsisRequest.Title.Replace(' ', '_')}-{requestId}.wav";
+            var localPath = await CreateSsmlSynthesisAsync(blobName, syntehsisRequest);
 
-            await UploadSynthesis(containerName, fileName, localPath);
+            await UploadSynthesis(containerName, blobName, localPath);
             
-            return (localPath, fileName);
+            return (localPath, blobName);
         }
         catch (Exception e)
         {
@@ -51,7 +51,7 @@ public class SpeechService : ISpeechService
         }
     }
 
-    private async Task<string> CreateTextSynthesisAsync(string fileName, SyntehsisRequest syntehsisRequest)
+    private async Task<string> CreateTextSynthesisAsync(string blobName, SyntehsisRequest syntehsisRequest)
     {
         var config = SpeechConfig.FromSubscription(
             _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
@@ -65,7 +65,7 @@ public class SpeechService : ISpeechService
         config.SpeechSynthesisVoiceName = syntehsisRequest.Voice;
 
         // Create AudioConfig for to let the application know how to handle the synthesis
-        var localPath = $"./{fileName}";
+        var localPath = $"./{blobName}";
         using var audioConfig = AudioConfig.FromWavFileOutput(localPath);
         // Actual synthetizer instance for TTS
         using var synthesizer = new SpeechSynthesizer(config, audioConfig);
@@ -75,7 +75,7 @@ public class SpeechService : ISpeechService
         return localPath;
     }
     
-    private async Task<string> CreateSsmlSynthesisAsync(string fileName, SyntehsisRequest syntehsisRequest)
+    private async Task<string> CreateSsmlSynthesisAsync(string blobName, SyntehsisRequest syntehsisRequest)
     {
         var config = SpeechConfig.FromSubscription(
             _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
@@ -83,7 +83,7 @@ public class SpeechService : ISpeechService
         );
 
         // Create AudioConfig for to let the application know how to handle the synthesis
-        var localPath = $"./{fileName}";
+        var localPath = $"./{blobName}";
         
         using var audioConfig = AudioConfig.FromWavFileOutput(localPath);
         // Actual synthetizer instance for TTS
@@ -94,10 +94,10 @@ public class SpeechService : ISpeechService
         return localPath;
     }
 
-    private async Task UploadSynthesis(string containerName, string fileName, string localPath)
+    private async Task UploadSynthesis(string containerName, string blobName, string localPath)
     {
         var blobContainerClient = await _storage.GetBlobContainerClientAsync(containerName);
         
-        await _storage.UploadBlobAsync(blobContainerClient, fileName, localPath);
+        await _storage.UploadBlobAsync(blobContainerClient, blobName, localPath);
     }
 }

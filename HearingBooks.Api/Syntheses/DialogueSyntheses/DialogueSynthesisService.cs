@@ -41,8 +41,10 @@ public class DialogueSynthesisService
 
             var dialogueText = $"{openingTags}{linesWithTags}{closingTags}";
 
+            //TODO: Move to mapper?
             var synthesisRequest = new SyntehsisRequest
             {
+                Title = request.Title,
                 Voice = request.SecondSpeakerVoice,
                 Language = request.Language,
                 TextToSynthesize = dialogueText

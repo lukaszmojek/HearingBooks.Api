@@ -29,8 +29,10 @@ public class TextSynthesisService
         string synthesisFilePath = "";
         string synthesisFileName;
 
+        //TODO: Move to mapper
         var synthesisRequest = new SyntehsisRequest()
         {
+            Title = request.Title,
             Voice = request.Voice,
             Language = request.Language,
             TextToSynthesize = request.TextToSynthesize
