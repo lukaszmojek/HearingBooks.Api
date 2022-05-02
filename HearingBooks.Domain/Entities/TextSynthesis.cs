@@ -14,4 +14,6 @@ public class TextSynthesis : Entity<Guid>
 	public string BlobName { get; set; }
 	public string Language { get; set; }
 	public string Voice { get; set; }
+	public int CharacterCount { get; set; }
+	public int LengthInSeconds { get; set; }
 }
