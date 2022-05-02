@@ -20,9 +20,9 @@ public class TextSynthesisService
         _context = context;
     }
 
-    public async Task<Guid> CreateRequest(TextSyntehsisRequest request)
+    public async Task<Guid> CreateRequest(TextSyntehsisRequest request, User requestingUser)
     {
-        var containerName = request.RequestingUserId.ToString();
+        var containerName = requestingUser.Id.ToString();
 
         var requestId = Guid.NewGuid();
 
@@ -51,7 +51,7 @@ public class TextSynthesisService
             var textSynthesis = new TextSynthesis
             {
                 Id = requestId,
-                RequestingUserId = request.RequestingUserId,
+                RequestingUserId = requestingUser.Id,
                 Status = TextSynthesisStatus.Submitted,
                 // TextSynthesisData = textSynthesisData
                 Title = request.Title,

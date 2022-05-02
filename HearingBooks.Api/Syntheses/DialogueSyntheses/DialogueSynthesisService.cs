@@ -22,9 +22,9 @@ public class DialogueSynthesisService
         _context = context;
     }
 
-    public async Task<Guid> CreateRequest(DialogueSyntehsisRequest request)
+    public async Task<Guid> CreateRequest(DialogueSyntehsisRequest request, User requestingUser)
     {
-        var containerName = request.RequestingUserId.ToString();
+        var containerName = requestingUser.Id.ToString();
 
         var requestId = Guid.NewGuid();
         var synthesisFilePath = "";
@@ -59,7 +59,7 @@ public class DialogueSynthesisService
             var dialogueSynthesis = new DialogueSynthesis()
             {
                 Id = requestId,
-                RequestingUserId = request.RequestingUserId,
+                RequestingUserId = requestingUser.Id,
                 Status = DialogueSynthesisStatus.Submitted,
                 Title = request.Title,
                 DialogueText = request.DialogueText,

@@ -7,5 +7,4 @@ public class DialogueSyntehsisRequest
 	public string Language { get; set; }
 	public string FirstSpeakerVoice { get; set; }
 	public string SecondSpeakerVoice { get; set; }
-	public Guid RequestingUserId { get; set; }
 }

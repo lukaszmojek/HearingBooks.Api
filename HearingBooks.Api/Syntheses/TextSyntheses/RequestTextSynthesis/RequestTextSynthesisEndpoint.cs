@@ -20,9 +20,8 @@ public class RequestTextSynthesisEndpoint : Endpoint<TextSyntehsisRequest>
 	public override async Task HandleAsync(TextSyntehsisRequest request, CancellationToken cancellationToken)
 	{
 		var requestingUser = (User) HttpContext.Items["User"];
-		request.RequestingUserId = requestingUser.Id;
 		               
-		var requestId = await _textSynthesisService.CreateRequest(request);
+		var requestId = await _textSynthesisService.CreateRequest(request, requestingUser);
 		var resourceRoute = $"text-syntheses/{requestId}";
 		
 		await SendCreatedAtAsync(resourceRoute, null, null);
