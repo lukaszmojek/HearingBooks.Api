@@ -40,7 +40,7 @@ public class DownloadTextSynthesisFileEndpoint : Endpoint<DownloadTextSynthesisF
 		var blobBytes = blob.Value.Content.ToArray();
 		
 		var blobDataStream = new MemoryStream(blobBytes);
-		
-		await SendStreamAsync(blobDataStream, $"{synthesis.BlobName}.wav", blobDataStream.Length);
+
+		await SendStreamAsync(blobDataStream, $"{synthesis.BlobName.CleanFromNonAsciiCharacters()}.wav", blobDataStream.Length);
 	}
 }

@@ -41,6 +41,6 @@ public class DownloadDialogueSynthesisFileEndpoint : Endpoint<DowloadDialogueSyn
 		
 		var blobDataStream = new MemoryStream(blobBytes);
 
-		await SendStreamAsync(blobDataStream, $"{synthesis.BlobName}.wav", blobDataStream.Length);
+		await SendStreamAsync(blobDataStream, $"{synthesis.BlobName.CleanFromNonAsciiCharacters()}.wav", blobDataStream.Length);
 	}
 }
