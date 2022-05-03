@@ -4,12 +4,12 @@ using HearingBooks.Infrastructure.Repositories;
 
 namespace HearingBooks.Api.Syntheses.TextSyntheses.GetTextSynthesesForUser;
 
-public class GetSynthesesForUserEndpoint : EndpointWithoutRequest
+public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 {
 	private ITextSynthesisRepository _textSynthesisRepository;
 	private IMapper _mapper;
 
-	public GetSynthesesForUserEndpoint(ITextSynthesisRepository textSynthesisRepository, IMapper mapper)
+	public GetTextSynthesesForUserEndpoint(ITextSynthesisRepository textSynthesisRepository, IMapper mapper)
 	{
 		_textSynthesisRepository = textSynthesisRepository;
 		_mapper = mapper;

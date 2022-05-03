@@ -59,7 +59,9 @@ public class TextSynthesisService
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
                 Voice = request.Voice,
-                Language = request.Language
+                Language = request.Language,
+                CharacterCount = request.TextToSynthesize.Length,
+                LengthInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
             };
 
             await _textSynthesisRepository.Insert(textSynthesis);
