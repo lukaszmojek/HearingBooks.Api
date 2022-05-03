@@ -83,6 +83,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 builder.Services.AddScoped<ITextSynthesisRepository, TextSynthesisRepository>();
 builder.Services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
