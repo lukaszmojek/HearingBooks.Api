@@ -1,11 +1,13 @@
 global using FastEndpoints;
+global using FastEndpoints.Security;
 
 using FastEndpoints.Swagger;
 using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
-using HearingBooks.Api.Syntheses;
+using HearingBooks.Api.Syntheses.DialogueSyntheses;
+using HearingBooks.Api.Syntheses.TextSyntheses;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +20,15 @@ builder.Services.AddSingleton<IApiConfiguration, ApiConfiguration>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddFastEndpoints();
+builder.Services.AddAuthenticationJWTBearer(builder.Configuration.GetSection("Authorization")["Secret"]);
+
+// builder.Services.AddAuthorization(o =>
+//     o.AddPolicy("HearingBooks", b =>
+//         b.RequireRole("HearingBooks")));
 
 builder.Services.AddSwaggerDoc(settings =>
 {
-    settings.Title = "My API";
+    settings.Title = "HearingBooks.Api";
     settings.Version = "v1";
 });
 // builder.Services.AddSwaggerGen(
@@ -68,11 +75,15 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
 builder.Services.AddScoped<ISpeechService, SpeechService>();
 builder.Services.AddScoped<IFileService, FileService>();
+
 builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
+builder.Services.AddScoped<DialogueSynthesisService, DialogueSynthesisService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 builder.Services.AddScoped<ITextSynthesisRepository, TextSynthesisRepository>();
+builder.Services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -80,6 +91,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<JwtMiddleware>();
 
@@ -100,7 +112,6 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
     app.UseDeveloperExceptionPage();
     app.UseSwaggerUi3(c => c.ConfigureDefaults()); 
 }
-
 
 //TODO: Move that to middleware
 // app.Use(async (ctx, next) =>

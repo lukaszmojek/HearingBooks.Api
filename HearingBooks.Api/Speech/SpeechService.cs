@@ -1,5 +1,4 @@
 using HearingBooks.Api.Storage;
-using HearingBooks.Api.Syntheses.RequestTextSynthesis;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
@@ -15,17 +14,17 @@ public class SpeechService : ISpeechService
         _configuration = configuration;
         _storage = storage;
     }
-
-    public async Task<(string, string)> SynthesizeAudioAsync(string containerName, string requestId, TextSyntehsisRequest textSyntehsisRequest)
+    
+    public async Task<(string, string)> SynthesizeTextAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest)
     {
         try
         {
-            var fileName = $"{requestId}.wav";
-            var localPath = await CreateSynthesis(fileName, textSyntehsisRequest);
+            var blobName = $"{syntehsisRequest.Title.Replace(' ', '_')}-{requestId}.wav";
+            var localPath = await CreateTextSynthesisAsync(blobName, syntehsisRequest);
 
-            await UploadSynthesis(containerName, fileName, localPath);
+            await UploadSynthesis(containerName, blobName, localPath);
             
-            return (localPath, fileName);
+            return (localPath, blobName);
         }
         catch (Exception e)
         {
@@ -34,7 +33,25 @@ public class SpeechService : ISpeechService
         }
     }
     
-    private async Task<string> CreateSynthesis(string fileName, TextSyntehsisRequest textSyntehsisRequest)
+    public async Task<(string, string)> SynthesizeSsmlAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest)
+    {
+        try
+        {
+            var blobName = $"{syntehsisRequest.Title.Replace(' ', '_')}-{requestId}.wav";
+            var localPath = await CreateSsmlSynthesisAsync(blobName, syntehsisRequest);
+
+            await UploadSynthesis(containerName, blobName, localPath);
+            
+            return (localPath, blobName);
+        }
+        catch (Exception e)
+        {
+            //TODO: Add logging
+            throw;
+        }
+    }
+
+    private async Task<string> CreateTextSynthesisAsync(string blobName, SyntehsisRequest syntehsisRequest)
     {
         var config = SpeechConfig.FromSubscription(
             _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
@@ -42,26 +59,45 @@ public class SpeechService : ISpeechService
         );
         
         // Note: if only language is set, the default voice of that language is chosen.
-        config.SpeechSynthesisLanguage = textSyntehsisRequest.Language; // For example, "de-DE"
+        config.SpeechSynthesisLanguage = syntehsisRequest.Language; // For example, "de-DE"
         // The voice setting will overwrite the language setting.
         // The voice setting will not overwrite the voice element in input SSML.
-        config.SpeechSynthesisVoiceName = textSyntehsisRequest.Voice;
+        config.SpeechSynthesisVoiceName = syntehsisRequest.Voice;
 
         // Create AudioConfig for to let the application know how to handle the synthesis
-        var localPath = $"./{fileName}";
+        var localPath = $"./{blobName}";
         using var audioConfig = AudioConfig.FromWavFileOutput(localPath);
         // Actual synthetizer instance for TTS
         using var synthesizer = new SpeechSynthesizer(config, audioConfig);
 
-        await synthesizer.SpeakTextAsync(textSyntehsisRequest.TextToSynthesize);
+        await synthesizer.SpeakTextAsync(syntehsisRequest.TextToSynthesize);
+        
+        return localPath;
+    }
+    
+    private async Task<string> CreateSsmlSynthesisAsync(string blobName, SyntehsisRequest syntehsisRequest)
+    {
+        var config = SpeechConfig.FromSubscription(
+            _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
+            _configuration[ConfigurationKeys.TextToSpeechRegion]
+        );
 
+        // Create AudioConfig for to let the application know how to handle the synthesis
+        var localPath = $"./{blobName}";
+        
+        using var audioConfig = AudioConfig.FromWavFileOutput(localPath);
+        // Actual synthetizer instance for TTS
+        using var synthesizer = new SpeechSynthesizer(config, audioConfig);
+
+        await synthesizer.SpeakSsmlAsync(syntehsisRequest.TextToSynthesize);
+        
         return localPath;
     }
 
-    private async Task UploadSynthesis(string containerName, string fileName, string localPath)
+    private async Task UploadSynthesis(string containerName, string blobName, string localPath)
     {
         var blobContainerClient = await _storage.GetBlobContainerClientAsync(containerName);
         
-        await _storage.UploadBlobAsync(blobContainerClient, fileName, localPath);
+        await _storage.UploadBlobAsync(blobContainerClient, blobName, localPath);
     }
 }

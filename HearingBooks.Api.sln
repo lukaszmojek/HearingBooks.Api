@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HearingBooks.Api.Responses", "HearingBooks.Api.Responses\HearingBooks.Api.Responses.csproj", "{8BDBCC9A-D0E1-432B-A9C4-D0D998E6CDF5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistance", "Persistance", "{411FBFE8-31E7-4B3D-B46E-42E5BEC98705}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{411FBFE8-31E7-4B3D-B46E-42E5BEC98705}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HearingBooks.Persistance", "HearingBooks.Persistance\HearingBooks.Persistance.csproj", "{958EFE62-3907-4BA8-A2FA-D5538909DC63}"
 EndProject

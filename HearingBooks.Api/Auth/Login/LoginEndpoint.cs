@@ -1,5 +1,6 @@
 using Api.Factories;
 using Contracts.Responses;
+using HearingBooks.Api.Configuration;
 using HearingBooks.Api.Syntheses;
 using HearingBooks.Infrastructure.Repositories;
 
@@ -7,11 +8,13 @@ namespace HearingBooks.Api.Auth.Login;
 
 public class LoginEndpoint : Endpoint<LoginUserRequest>
 {
+	private readonly IApiConfiguration _apiConfiguration;
 	private readonly IUserRepository _userRepository;
 	private readonly IUserService _userService;
 
-	public LoginEndpoint(IUserService userService, IUserRepository userRepository)
+	public LoginEndpoint(IApiConfiguration apiConfiguration, IUserService userService, IUserRepository userRepository)
 	{
+		_apiConfiguration = apiConfiguration;
 		_userService = userService;
 		_userRepository = userRepository;
 	}
@@ -41,8 +44,22 @@ public class LoginEndpoint : Endpoint<LoginUserRequest>
 			}
 
 			var token = _userService.Authenticate(user);
+			
+			// var jwtToken = JWTBearer.CreateToken(
+			// 	signingKey: _apiConfiguration.JwtSecret(),
+			// 	expireAt: DateTime.UtcNow.AddDays(1),
+			// 	claims: new[]
+			// 	{
+			// 		(ClaimNames.Email, user.Email), 
+			// 		(ClaimNames.UserId, user.Id.ToString())
+			// 	},
+			// 	roles: new[] { user.Type.ToString() });
 
-			await SendAsync(ResponseFactory.CreateSuccessResponse(new LoginUserResponse {Token = token}));
+			await SendAsync(new
+			{
+				Username = request.Email,
+				Token = token
+			});
 		}
 		catch (ArgumentException e)
 		{

@@ -1,11 +1,11 @@
 using HearingBooks.Api.Speech;
-using HearingBooks.Api.Syntheses.RequestTextSynthesis;
+using HearingBooks.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.ValueObjects.TextSynthesis;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 
-namespace HearingBooks.Api.Syntheses;
+namespace HearingBooks.Api.Syntheses.TextSyntheses;
 
 public class TextSynthesisService
 {
@@ -20,21 +20,30 @@ public class TextSynthesisService
         _context = context;
     }
 
-    public async Task<Guid> CreateRequest(TextSyntehsisRequest request)
+    public async Task<Guid> CreateRequest(TextSyntehsisRequest request, User requestingUser)
     {
-        var containerName = request.RequestingUserId.ToString();
+        var containerName = requestingUser.Id.ToString();
 
         var requestId = Guid.NewGuid();
 
         string synthesisFilePath = "";
         string synthesisFileName;
+
+        //TODO: Move to mapper
+        var synthesisRequest = new SyntehsisRequest()
+        {
+            Title = request.Title,
+            Voice = request.Voice,
+            Language = request.Language,
+            TextToSynthesize = request.TextToSynthesize
+        };
         
         try
         {
-            (synthesisFilePath, synthesisFileName) = await _speechService.SynthesizeAudioAsync(
+            (synthesisFilePath, synthesisFileName) = await _speechService.SynthesizeTextAsync(
                 containerName,
                 requestId.ToString(),
-                request
+                synthesisRequest
             );
 
             var textSynthesisData = new TextSynthesisData(request.Title, containerName, synthesisFilePath);
@@ -42,7 +51,7 @@ public class TextSynthesisService
             var textSynthesis = new TextSynthesis
             {
                 Id = requestId,
-                RequestingUserId = request.RequestingUserId,
+                RequestingUserId = requestingUser.Id,
                 Status = TextSynthesisStatus.Submitted,
                 // TextSynthesisData = textSynthesisData
                 Title = request.Title,
@@ -50,7 +59,9 @@ public class TextSynthesisService
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
                 Voice = request.Voice,
-                Language = request.Language
+                Language = request.Language,
+                CharacterCount = request.TextToSynthesize.Length,
+                DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
             };
 
             await _textSynthesisRepository.Insert(textSynthesis);

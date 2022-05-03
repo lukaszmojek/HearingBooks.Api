@@ -2,14 +2,14 @@ using AutoMapper;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Infrastructure.Repositories;
 
-namespace HearingBooks.Api.Syntheses.GetTextSynthesesForUser;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.GetTextSynthesesForUser;
 
-public class GetSynthesesForUserEndpoint : EndpointWithoutRequest
+public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 {
 	private ITextSynthesisRepository _textSynthesisRepository;
 	private IMapper _mapper;
 
-	public GetSynthesesForUserEndpoint(ITextSynthesisRepository textSynthesisRepository, IMapper mapper)
+	public GetTextSynthesesForUserEndpoint(ITextSynthesisRepository textSynthesisRepository, IMapper mapper)
 	{
 		_textSynthesisRepository = textSynthesisRepository;
 		_mapper = mapper;
@@ -18,7 +18,7 @@ public class GetSynthesesForUserEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("text-syntheses");
-		AllowAnonymous();
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)

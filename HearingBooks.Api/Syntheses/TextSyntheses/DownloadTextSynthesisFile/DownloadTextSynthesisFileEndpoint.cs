@@ -2,9 +2,9 @@ using HearingBooks.Api.Storage;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Infrastructure.Repositories;
 
-namespace HearingBooks.Api.Syntheses.DownloadTextSynthesisFile;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.DownloadTextSynthesisFile;
 
-public class DownloadTextSynthesisFileEndpoint : Endpoint<DowloadTextSynthesisFileRequest>
+public class DownloadTextSynthesisFileEndpoint : Endpoint<DownloadTextSynthesisFileRequest>
 {
 	private ITextSynthesisRepository _textSynthesisRepository;
 	private IStorageService _storageService;
@@ -17,15 +17,15 @@ public class DownloadTextSynthesisFileEndpoint : Endpoint<DowloadTextSynthesisFi
 
 	public override void Configure()
 	{
-		Get("text-syntheses/{TextSynthesisId}");
-		AllowAnonymous();
+		Get("text-syntheses/{SynthesisId}");
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
-	public override async Task HandleAsync(DowloadTextSynthesisFileRequest request, CancellationToken cancellationToken)
+	public override async Task HandleAsync(DownloadTextSynthesisFileRequest request, CancellationToken cancellationToken)
 	{
 		var requestingUser = (User) HttpContext.Items["User"];
                 
-		var synthesis = await _textSynthesisRepository.GetById(request.TextSynthesisId);
+		var synthesis = await _textSynthesisRepository.GetById(request.SynthesisId);
 
 		if (synthesis.RequestingUserId != requestingUser.Id)
 		{
@@ -41,6 +41,6 @@ public class DownloadTextSynthesisFileEndpoint : Endpoint<DowloadTextSynthesisFi
 		
 		var blobDataStream = new MemoryStream(blobBytes);
 
-		await SendStreamAsync(blobDataStream, $"{request.TextSynthesisId}.wav", blobDataStream.Length);
+		await SendStreamAsync(blobDataStream, $"{synthesis.BlobName.CleanFromNonAsciiCharacters()}.wav", blobDataStream.Length);
 	}
 }

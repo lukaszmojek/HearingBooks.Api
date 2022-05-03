@@ -1,5 +1,5 @@
 using AutoMapper;
-using HearingBooks.Api.Syntheses;
+using HearingBooks.Api.Syntheses.TextSyntheses;
 using HearingBooks.Domain.Entities;
 
 namespace HearingBooks.Api.Mapper;

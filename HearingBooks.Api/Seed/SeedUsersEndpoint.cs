@@ -7,6 +7,7 @@ namespace HearingBooks.Api.Seed;
 public class SeedUsersEndpoint : EndpointWithoutRequest
 {
 	private readonly HearingBooksDbContext _context;
+	private readonly string _password = "Resubmit-Gas-Dreamland-Sizable-Relapsing-Sprinkled7-Debatable";
 
 	public SeedUsersEndpoint(HearingBooksDbContext context)
 	{
@@ -16,6 +17,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("seed/users");
+		Roles("HearingBooks");
 	}
 	
 	public override async Task HandleAsync(CancellationToken ct)
@@ -29,7 +31,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        LastName = "Mojek",
 		        UserName = "shaggy",
 		        Email = "lukasz@hb.com",
-		        Password = "zaq123", 
+		        Password = _password, 
 		        EmailNotificationsEnabled = true,
 		        EmailIsUsername = false,
 		        IsActive = true,
@@ -42,11 +44,24 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        LastName = "Mojek",
 		        UserName = "user",
 		        Email = "user@email.com",
-		        Password = "zaq123", 
+		        Password = _password, 
 		        EmailNotificationsEnabled = true,
 		        EmailIsUsername = true,
 		        IsActive = true,
 		        Type = UserType.PayAsYouGo,
+		    },
+		    new()
+		    {
+			    Id = Guid.NewGuid(),
+			    FirstName = "Darka",
+			    LastName = "Koparka",
+			    UserName = "darkaKoparka",
+			    Email = "darka@email.com",
+			    Password = _password, 
+			    EmailNotificationsEnabled = true,
+			    EmailIsUsername = true,
+			    IsActive = true,
+			    Type = UserType.PayAsYouGo,
 		    }
 		};
 		
@@ -60,6 +75,6 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		await _context.Users.AddRangeAsync(users);
 		await _context.SaveChangesAsync();
 
-		SendOkAsync();
+		await SendOkAsync();
 	}
 }

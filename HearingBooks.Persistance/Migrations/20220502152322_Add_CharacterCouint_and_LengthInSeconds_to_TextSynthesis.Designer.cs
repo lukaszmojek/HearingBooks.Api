@@ -3,6 +3,7 @@ using System;
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HearingBooks.Persistance.Migrations
 {
     [DbContext(typeof(HearingBooksDbContext))]
-    partial class HearingBooksDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220502152322_Add_CharacterCouint_and_LengthInSeconds_to_TextSynthesis")]
+    partial class Add_CharacterCouint_and_LengthInSeconds_to_TextSynthesis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,15 +38,9 @@ namespace HearingBooks.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("CharacterCount")
-                        .HasColumnType("integer");
-
                     b.Property<string>("DialogueText")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("DurationInSeconds")
-                        .HasColumnType("integer");
 
                     b.Property<string>("FirstSpeakerVoice")
                         .IsRequired()
@@ -109,12 +105,12 @@ namespace HearingBooks.Persistance.Migrations
                     b.Property<int>("CharacterCount")
                         .HasColumnType("integer");
 
-                    b.Property<int>("DurationInSeconds")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Language")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("LengthInSeconds")
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("RequestingUserId")
                         .HasColumnType("uuid");

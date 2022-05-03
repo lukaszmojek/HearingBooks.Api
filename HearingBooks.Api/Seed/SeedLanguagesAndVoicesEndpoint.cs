@@ -15,6 +15,7 @@ public class SeedLanguagesAndVoicesEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("seed/languages-and-voices");
+		Roles("HearingBooks");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)
