@@ -15,5 +15,5 @@ public class DialogueSynthesis : Entity<Guid>
 	public string FirstSpeakerVoice { get; set; }
 	public string SecondSpeakerVoice { get; set; }
 	public int CharacterCount { get; set; }
-	public int LengthInSeconds { get; set; }
+	public int DurationInSeconds { get; set; }
 }

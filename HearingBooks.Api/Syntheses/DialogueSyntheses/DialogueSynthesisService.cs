@@ -69,7 +69,7 @@ public class DialogueSynthesisService
                 SecondSpeakerVoice = request.SecondSpeakerVoice,
                 Language = request.Language,
                 CharacterCount = request.DialogueText.Length,
-                LengthInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
+                DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
             };
             
             await _dialogueSynthesisRepository.Insert(dialogueSynthesis);

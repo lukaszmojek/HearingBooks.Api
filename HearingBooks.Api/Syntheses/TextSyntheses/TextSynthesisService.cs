@@ -61,7 +61,7 @@ public class TextSynthesisService
                 Voice = request.Voice,
                 Language = request.Language,
                 CharacterCount = request.TextToSynthesize.Length,
-                LengthInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
+                DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
             };
 
             await _textSynthesisRepository.Insert(textSynthesis);
