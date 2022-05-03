@@ -19,10 +19,10 @@ public class DashboardRepository : IDashboardRepository
 		{
 			DialogueSynthesesCount = dialogueSyntheses.Count(),
 			TextSynthesesCount = textSyntheses.Count(),
-			SynthesizedCharactersCount = dialogueSyntheses
+			SynthesesCharactersCount = dialogueSyntheses
 				.Select(x => x.CharacterCount)
 				.Aggregate((current, next) => current + next),
-			TimeOfSynthesesInSeconds = dialogueSyntheses
+			SynthesesDurationInSeconds = dialogueSyntheses
 				.Select(x => x.DurationInSeconds)
 				.Aggregate((current, next) => current + next)
 		};

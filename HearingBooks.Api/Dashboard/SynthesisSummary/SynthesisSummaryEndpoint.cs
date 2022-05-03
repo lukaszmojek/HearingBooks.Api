@@ -33,8 +33,3 @@ public class SynthesisSummaryEndpoint : Endpoint<SynthesesSummaryRequest>
 		await SendAsync(synthesisSummary, cancellation: cancellationToken);
 	}
 }
-
-public class SynthesesSummaryRequest
-{
-	public Guid UserId { get; set; }
-}
