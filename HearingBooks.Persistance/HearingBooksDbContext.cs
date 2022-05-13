@@ -11,6 +11,7 @@ public class HearingBooksDbContext : DbContext
 	public DbSet<DialogueSynthesis> DialogueSyntheses { get; set; }
 	public DbSet<Language> Languages { get; set; }
 	public DbSet<Voice> Voices { get; set; }
+	public DbSet<Preference> Preferences { get; set; }
 
 	public HearingBooksDbContext(DbContextOptions<HearingBooksDbContext> options)
 		: base(options)
