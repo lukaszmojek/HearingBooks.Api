@@ -1,6 +1,3 @@
-global using FastEndpoints;
-global using FastEndpoints.Security;
-
 using FastEndpoints.Swagger;
 using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
