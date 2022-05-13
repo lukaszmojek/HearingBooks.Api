@@ -17,28 +17,30 @@ public class SpeechService : ISpeechService
     
     public async Task<(string, string)> SynthesizeTextAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest)
     {
-        try
-        {
-            var blobName = $"{syntehsisRequest.Title.Replace(' ', '_')}-{requestId}.wav";
-            var localPath = await CreateTextSynthesisAsync(blobName, syntehsisRequest);
-
-            await UploadSynthesis(containerName, blobName, localPath);
-            
-            return (localPath, blobName);
-        }
-        catch (Exception e)
-        {
-            //TODO: Add logging
-            throw;
-        }
+        return await SynthesizeBaseAsync(
+            containerName, 
+            requestId, 
+            syntehsisRequest,
+            (s, request) => CreateTextSynthesisAsync(s, request)
+        );
     }
     
     public async Task<(string, string)> SynthesizeSsmlAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest)
     {
+        return await SynthesizeBaseAsync(
+            containerName, 
+            requestId, 
+            syntehsisRequest,
+(s, request) => CreateSsmlSynthesisAsync(s, request)
+        );
+    }
+    
+    private async Task<(string, string)> SynthesizeBaseAsync(string containerName, string requestId, SyntehsisRequest syntehsisRequest, Func<string, SyntehsisRequest, Task<string>> createSynthesisMethodAsync)
+    {
         try
         {
             var blobName = $"{syntehsisRequest.Title.Replace(' ', '_')}-{requestId}.wav";
-            var localPath = await CreateSsmlSynthesisAsync(blobName, syntehsisRequest);
+            var localPath = await createSynthesisMethodAsync(blobName, syntehsisRequest);
 
             await UploadSynthesis(containerName, blobName, localPath);
             
