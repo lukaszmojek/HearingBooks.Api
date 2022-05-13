@@ -39,6 +39,7 @@
       <ProjectReference Include="..\HearingBooks.Api.Responses\HearingBooks.Api.Responses.csproj" />
       <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
       <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
+      <ProjectReference Include="..\HearingBooks.MassTransit\HearingBooks.MassTransit.csproj" />
       <ProjectReference Include="..\HearingBooks.Persistance\HearingBooks.Persistance.csproj" />
     </ItemGroup>
 

@@ -8,11 +8,14 @@ using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses.DialogueSyntheses;
 using HearingBooks.Api.Syntheses.TextSyntheses;
+using HearingBooks.Communication;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddApplicationInsightsTelemetry();
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IApiConfiguration, ApiConfiguration>();
@@ -31,6 +34,8 @@ builder.Services.AddSwaggerDoc(settings =>
     settings.Title = "HearingBooks.Api";
     settings.Version = "v1";
 });
+
+builder.Services.AddHearingBooksMassTransit();
 // builder.Services.AddSwaggerGen(
 //     c =>
 //     {
