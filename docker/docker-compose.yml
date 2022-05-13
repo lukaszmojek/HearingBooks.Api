@@ -26,6 +26,13 @@ services:
       POSTGRES_PASSWORD: Password12!
       POSTGRES_USER: postgres
 
+  rabbitmq:
+    image: masstransit/rabbitmq
+    container_name: rabbit-mq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
 volumes:
   azurite:
 
