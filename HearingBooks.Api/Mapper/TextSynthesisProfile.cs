@@ -1,6 +1,7 @@
 using AutoMapper;
 using HearingBooks.Api.Syntheses.TextSyntheses;
 using HearingBooks.Domain.Entities;
+#pragma warning disable CS1591
 
 namespace HearingBooks.Api.Mapper;
 
