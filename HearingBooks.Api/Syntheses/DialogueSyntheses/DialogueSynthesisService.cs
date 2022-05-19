@@ -3,6 +3,7 @@ using HearingBooks.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.ValueObjects.TextSynthesis;
 using HearingBooks.Domain.ValueObjects.User;
+using HearingBooks.Infrastructure;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 
@@ -13,23 +14,37 @@ public class DialogueSynthesisService
     private readonly ISpeechService _speechService;
     private readonly IDialogueSynthesisRepository _dialogueSynthesisRepository;
     private readonly HearingBooksDbContext _context;
+    private readonly ISynthesisPricingService _synthesisPricingService;
 
     public static string LineSeparator = "---";
     
-    public DialogueSynthesisService(ISpeechService speechService, IDialogueSynthesisRepository dialogueSynthesisRepository, HearingBooksDbContext context)
+    public DialogueSynthesisService(ISpeechService speechService, IDialogueSynthesisRepository dialogueSynthesisRepository, HearingBooksDbContext context, ISynthesisPricingService synthesisPricingService)
     {
         _speechService = speechService;
         _dialogueSynthesisRepository = dialogueSynthesisRepository;
         _context = context;
+        _synthesisPricingService = synthesisPricingService;
     }
 
     public async Task<Guid> CreateRequest(DialogueSyntehsisRequest request, User requestingUser)
     {
         if (requestingUser.CanRequestDialogueSynthesis() is false)
         {
-            throw new Exception($"Users of type {requestingUser.Type} cannot create dialogue syntheses!");
+            throw new Exception($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
         }
-        
+
+        var synthesisCharacterCount = request.DialogueText.Length;
+        var synthesisPrice = await _synthesisPricingService.GetPriceForSynthesis(
+            SynthesisType.DialogueSynthesis,
+            synthesisCharacterCount
+        );
+
+        if (requestingUser.HasBalanceToCreateRequest(synthesisPrice) is false)
+        {
+            throw new Exception($@"User with id {requestingUser.Id} and Balance of {requestingUser.Balance} 
+                tried to request DialogueSynthesis worth {synthesisPrice}");
+        }
+
         var containerName = requestingUser.Id.ToString();
 
         var requestId = Guid.NewGuid();
@@ -74,8 +89,9 @@ public class DialogueSynthesisService
                 FirstSpeakerVoice = request.FirstSpeakerVoice,
                 SecondSpeakerVoice = request.SecondSpeakerVoice,
                 Language = request.Language,
-                CharacterCount = request.DialogueText.Length,
-                DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
+                CharacterCount = synthesisCharacterCount,
+                DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName),
+                PriceInUsd = synthesisPrice
             };
             
             await _dialogueSynthesisRepository.Insert(dialogueSynthesis);

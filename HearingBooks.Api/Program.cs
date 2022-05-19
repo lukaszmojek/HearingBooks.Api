@@ -6,6 +6,7 @@ using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses.DialogueSyntheses;
 using HearingBooks.Api.Syntheses.TextSyntheses;
 using HearingBooks.Communication;
+using HearingBooks.Infrastructure;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
@@ -77,6 +78,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
 builder.Services.AddScoped<ISpeechService, SpeechService>();
 builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<ISynthesisPricingService, SynthesisPricingService>();
 
 builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 builder.Services.AddScoped<DialogueSynthesisService, DialogueSynthesisService>();
@@ -86,6 +88,7 @@ builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 builder.Services.AddScoped<ITextSynthesisRepository, TextSynthesisRepository>();
 builder.Services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+builder.Services.AddScoped<ISynthesisPricingRepository, SynthesisPricingRepository>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 

@@ -1,5 +1,6 @@
 using HearingBooks.Api.Storage;
 using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure;
 using HearingBooks.Infrastructure.Repositories;
 
 namespace HearingBooks.Api.Syntheses.TextSyntheses.DownloadTextSynthesisFile;
