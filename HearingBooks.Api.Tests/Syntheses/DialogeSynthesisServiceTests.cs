@@ -4,10 +4,8 @@ using HearingBooks.Api.Seed;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Syntheses.DialogueSyntheses;
 using HearingBooks.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
-using HearingBooks.Domain.Entities;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
-using Moq;
 using Xunit;
 
 namespace HearingBooks.Api.Tests.Syntheses;
