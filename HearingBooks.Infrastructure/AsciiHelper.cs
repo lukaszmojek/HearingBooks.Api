@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace HearingBooks.Api.Syntheses;
+namespace HearingBooks.Infrastructure;
 
 public static class AsciiHelper
 {

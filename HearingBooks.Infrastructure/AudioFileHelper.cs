@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace HearingBooks.Api.Syntheses;
+namespace HearingBooks.Infrastructure;
 
 public static class AudioFileHelper
 {
@@ -21,6 +21,7 @@ public static class AudioFileHelper
 			}
 		};
 		process.Start();
+		
 		var command = $"ffmpeg -i {fileName} 2>&1 | grep Duration";
 		await process.StandardInput.WriteLineAsync(command);
 		
