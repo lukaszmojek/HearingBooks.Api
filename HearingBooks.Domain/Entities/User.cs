@@ -44,7 +44,7 @@ public class User : Entity<Guid>
             _ => false
         };
 
-    public bool HaveBalanceToCreateRequest(double synthesisCost) => Balance > synthesisCost;
+    public bool HasBalanceToCreateRequest(double synthesisCost) => Balance >= synthesisCost;
 
     public bool ShouldGetEmailNotification() =>
         (Email, EmailNotificationsEnabled) switch
