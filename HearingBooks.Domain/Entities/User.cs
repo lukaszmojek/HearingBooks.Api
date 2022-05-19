@@ -16,6 +16,7 @@ public class User : Entity<Guid>
     public string Password { get; set; }
     public bool EmailNotificationsEnabled { get; set; }
     public bool EmailIsUsername { get; set; }
+    public double Balance { get; set; }
 
     public User()
     {
@@ -26,32 +27,30 @@ public class User : Entity<Guid>
         Type switch
         {
             UserType.PayAsYouGo => true,
-            UserType.Subscriber => true,
-            UserType.Writer => true,
             _ => false
         };
     
-    public bool CanRequestBookValidation() =>
+    public bool CanRequestDialogueSynthesis() =>
         Type switch
         {
-            UserType.Writer => true,
+            UserType.PayAsYouGo => true,
             _ => false
         };
-    
+
+    public bool CanTopUpAccount() =>
+        Type switch
+        {
+            UserType.PayAsYouGo => true,
+            _ => false
+        };
+
+    public bool HaveBalanceToCreateRequest(double synthesisCost) => Balance > synthesisCost;
+
     public bool ShouldGetEmailNotification() =>
         (Email, EmailNotificationsEnabled) switch
         {
             ("", true) => false,
             (_, true) => true,
-            _ => false
-        };
-    
-    public bool CanTopUpAccount() =>
-        Type switch
-        {
-            UserType.PayAsYouGo => true,
-            UserType.Subscriber => true,
-            UserType.Writer => true,
             _ => false
         };
 }
