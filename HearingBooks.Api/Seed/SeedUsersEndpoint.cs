@@ -42,6 +42,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        EmailIsUsername = false,
 		        IsActive = true,
 		        Type = UserType.HearingBooks,
+		        Balance = 0
 		    },
 		    new()
 		    {
@@ -55,6 +56,21 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        EmailIsUsername = true,
 		        IsActive = true,
 		        Type = UserType.PayAsYouGo,
+		        Balance = 100
+		    },
+		    new()
+		    {
+			    Id = SeedConfig.TestUserId,
+			    FirstName = "Łukasz",
+			    LastName = "Mojek",
+			    UserName = "test user",
+			    Email = "test@email.com",
+			    Password = _password, 
+			    EmailNotificationsEnabled = true,
+			    EmailIsUsername = true,
+			    IsActive = true,
+			    Type = UserType.PayAsYouGo,
+			    Balance = 50
 		    }
 		};
 		

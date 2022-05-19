@@ -3,10 +3,10 @@ using HearingBooks.Api.Configuration;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses.TextSyntheses;
+using HearingBooks.Infrastructure;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,11 +43,13 @@ public static class TestsFixture
 		builder.Services.AddScoped<IStorageService, StorageService>();
 		builder.Services.AddScoped<ISpeechService, SpeechService>();
 		builder.Services.AddScoped<IFileService, FileService>();
+		builder.Services.AddScoped<ISynthesisPricingService, SynthesisPricingService>();
 		
 		builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 		
 		builder.Services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();
 		builder.Services.AddScoped<IUserRepository, UserRepository>();
+		builder.Services.AddScoped<ISynthesisPricingRepository, SynthesisPricingRepository>();
 
 		_app = builder.Build();
 	}

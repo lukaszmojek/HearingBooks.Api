@@ -4,6 +4,7 @@ using HearingBooks.Api.Seed;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Syntheses.DialogueSyntheses;
 using HearingBooks.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
+using HearingBooks.Infrastructure;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 using Xunit;
@@ -33,7 +34,8 @@ public class DialogeSynthesisServiceTests
 		_dialogueSynthesisService = new DialogueSynthesisService(
 			TestsFixture.GetService<ISpeechService>(),
 			TestsFixture.GetService<IDialogueSynthesisRepository>(),
-			TestsFixture.GetService<HearingBooksDbContext>()
+			TestsFixture.GetService<HearingBooksDbContext>(),
+			TestsFixture.GetService<ISynthesisPricingService>()
 		);
 	}
 	
@@ -63,7 +65,7 @@ public class DialogeSynthesisServiceTests
 			Title = "Test Dialogue Synthesis"
 		};
 
-		var requestingUser = await _userRepository.GetUserByIdAsync(SeedConfig.PayAsYouGoId);
+		var requestingUser = await _userRepository.GetUserByIdAsync(SeedConfig.TestUserId);
 			
 		var requestId = await _dialogueSynthesisService.CreateRequest(dialogueSynthesisRequest, requestingUser);
 		
