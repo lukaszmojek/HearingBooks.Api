@@ -15,16 +15,38 @@ public class DashboardRepository : IDashboardRepository
 		var dialogueSyntheses = await _dialogueSynthesisRepository.GetAllForUser(userId);
 		var textSyntheses = await _textSynthesisRepository.GetAllForUser(userId);
 
+		var dialogueSynthesesCharacterCount = dialogueSyntheses
+			.Select(x => x.CharacterCount)
+			.Aggregate((current, next) => current + next);
+		
+		var textSynthesesCharacterCount = textSyntheses
+			.Select(x => x.CharacterCount)
+			.Aggregate((current, next) => current + next);
+		
+		var dialogueSynthesesDurationInSeconds = dialogueSyntheses
+			.Select(x => x.DurationInSeconds)
+			.Aggregate((current, next) => current + next);
+		
+		var textSynthesesDurationInSeconds = textSyntheses
+			.Select(x => x.DurationInSeconds)
+			.Aggregate((current, next) => current + next);
+		
+		var dialgueSynthesesPriceInUsd = dialogueSyntheses
+			.Select(x => x.PriceInUsd)
+			.Aggregate((current, next) => current + next);
+		
+		var textSynthesesPriceInUsd = textSyntheses
+			.Select(x => x.PriceInUsd)
+			.Aggregate((current, next) => current + next);
+		
 		var synthesesSummary = new SynthesesSummary()
 		{
 			DialogueSynthesesCount = dialogueSyntheses.Count(),
 			TextSynthesesCount = textSyntheses.Count(),
-			SynthesesCharactersCount = dialogueSyntheses
-				.Select(x => x.CharacterCount)
-				.Aggregate((current, next) => current + next),
-			SynthesesDurationInSeconds = dialogueSyntheses
-				.Select(x => x.DurationInSeconds)
-				.Aggregate((current, next) => current + next)
+			DialogueSynthesesSynthesesPriceInUsd = dialgueSynthesesPriceInUsd,
+			TextSynthesesPriceInUsd = textSynthesesPriceInUsd,
+			SynthesesCharactersCount = dialogueSynthesesCharacterCount + textSynthesesCharacterCount,
+			SynthesesDurationInSeconds = dialogueSynthesesDurationInSeconds + textSynthesesDurationInSeconds
 		};
 
 		return synthesesSummary;
