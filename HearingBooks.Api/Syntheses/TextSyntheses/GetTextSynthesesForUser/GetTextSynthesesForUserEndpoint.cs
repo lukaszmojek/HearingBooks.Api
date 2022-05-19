@@ -31,25 +31,25 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 		await SendAsync(synthesesDto, 200, ct);
 	}
 	
-	public async Task HandleAsync2(CancellationToken ct)
-	{
-		var requestingUser = (User) HttpContext.Items["User"];
-		               
-		var syntheses = await _textSynthesisRepository.GetAllForUser(requestingUser.Id);
-		var synthesesDto = syntheses
-			.Select(synthesis => new TextSynthesisDto
-			{
-				Id = synthesis.Id,
-				RequestingUserId = synthesis.RequestingUserId,
-				Status = synthesis.Status,
-				Title = synthesis.Title,
-				SynthesisText = synthesis.SynthesisText,
-				BlobContainerName = synthesis.BlobContainerName,
-				BlobName = synthesis.BlobName,
-				Language = synthesis.Language,
-				Voice = synthesis.Voice
-			});
-
-		await SendAsync(synthesesDto, 200, ct);
-	}
+	// public async Task HandleAsync2(CancellationToken ct)
+	// {
+	// 	var requestingUser = (User) HttpContext.Items["User"];
+	// 	               
+	// 	var syntheses = await _textSynthesisRepository.GetAllForUser(requestingUser.Id);
+	// 	var synthesesDto = syntheses
+	// 		.Select(synthesis => new TextSynthesisDto
+	// 		{
+	// 			Id = synthesis.Id,
+	// 			RequestingUserId = synthesis.RequestingUserId,
+	// 			Status = synthesis.Status,
+	// 			Title = synthesis.Title,
+	// 			SynthesisText = synthesis.SynthesisText,
+	// 			BlobContainerName = synthesis.BlobContainerName,
+	// 			BlobName = synthesis.BlobName,
+	// 			Language = synthesis.Language,
+	// 			Voice = synthesis.Voice
+	// 		});
+	//
+	// 	await SendAsync(synthesesDto, 200, ct);
+	// }
 }

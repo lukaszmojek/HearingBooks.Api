@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Configuration;
+
 namespace HearingBooks.Api.Configuration;
 
 public class ApiConfiguration : IApiConfiguration

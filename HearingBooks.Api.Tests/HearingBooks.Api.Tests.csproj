@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\HearingBooks.Api.Features.Seed\HearingBooks.Api.Features.Seed.csproj" />
       <ProjectReference Include="..\HearingBooks.Api\HearingBooks.Api.csproj" />
       <ProjectReference Include="..\HearingBooks.Tests.Core\HearingBooks.Tests.Core.csproj" />
     </ItemGroup>

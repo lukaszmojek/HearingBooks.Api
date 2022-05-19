@@ -1,4 +1,6 @@
-﻿namespace HearingBooks.Api.Auth;
+﻿using System;
+
+namespace HearingBooks.Api.Auth;
 
 public class AuthorizationException : Exception
 {

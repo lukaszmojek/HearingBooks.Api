@@ -1,4 +1,6 @@
-﻿#pragma warning disable CS1591
+﻿using System;
+
+#pragma warning disable CS1591
 namespace HearingBooks.Api.Auth;
 
 public partial class JwtMiddleware

@@ -2,6 +2,7 @@ using HearingBooks.Api.Speech;
 using HearingBooks.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.ValueObjects.TextSynthesis;
+using HearingBooks.Domain.ValueObjects.User;
 using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
 
@@ -24,6 +25,11 @@ public class DialogueSynthesisService
 
     public async Task<Guid> CreateRequest(DialogueSyntehsisRequest request, User requestingUser)
     {
+        if (requestingUser.CanRequestDialogueSynthesis() is false)
+        {
+            throw new Exception($"Users of type {requestingUser.Type} cannot create dialogue syntheses!");
+        }
+        
         var containerName = requestingUser.Id.ToString();
 
         var requestId = Guid.NewGuid();

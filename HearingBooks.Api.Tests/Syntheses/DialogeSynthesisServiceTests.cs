@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using HearingBooks.Api.Seed;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Syntheses.DialogueSyntheses;
 using HearingBooks.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
@@ -25,20 +26,15 @@ public class DialogeSynthesisServiceTests
 		{_person1Line2}
 	";
 
-	private readonly Mock<ISpeechService> _speechServiceMock;
-	private readonly Mock<IDialogueSynthesisRepository> _dialogueSynthesisRepositoryMock;
-	private readonly Mock<HearingBooksDbContext> _context;
 	private readonly DialogueSynthesisService _dialogueSynthesisService;
+	private readonly IUserRepository _userRepository;
 	
 	public DialogeSynthesisServiceTests()
 	{
-		_speechServiceMock = new Mock<ISpeechService>();
-		_dialogueSynthesisRepositoryMock = new Mock<IDialogueSynthesisRepository>();
-		_context = new Mock<HearingBooksDbContext>();
+		_userRepository = TestsFixture.GetService<IUserRepository>();
 		_dialogueSynthesisService = new DialogueSynthesisService(
 			TestsFixture.GetService<ISpeechService>(),
 			TestsFixture.GetService<IDialogueSynthesisRepository>(),
-			// TestsFixture.GetDbContext()
 			TestsFixture.GetService<HearingBooksDbContext>()
 		);
 	}
@@ -68,9 +64,11 @@ public class DialogeSynthesisServiceTests
 			Language = "pl-PL",
 			Title = "Test Dialogue Synthesis"
 		};
+
+		var requestingUser = await _userRepository.GetUserByIdAsync(SeedConfig.PayAsYouGoId);
 			
-		var requestId = await _dialogueSynthesisService.CreateRequest(dialogueSynthesisRequest, new User{Id = Guid.Parse("b8a1afdc-fd52-4d87-9886-6e4fd9a5fdaa")});
+		var requestId = await _dialogueSynthesisService.CreateRequest(dialogueSynthesisRequest, requestingUser);
 		
-		Assert.Equal(requestId.ToString(), "1");
+		Assert.NotEqual(requestId, Guid.Empty);
 	}
 }

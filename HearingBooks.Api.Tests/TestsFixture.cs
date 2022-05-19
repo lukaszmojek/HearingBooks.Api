@@ -47,6 +47,7 @@ public static class TestsFixture
 		builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 		
 		builder.Services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();
+		builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 		_app = builder.Build();
 	}

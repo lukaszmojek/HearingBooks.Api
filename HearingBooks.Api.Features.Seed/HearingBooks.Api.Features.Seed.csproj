@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>HearingBooks.Features.Seed</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HearingBooks.Api.Core\HearingBooks.Api.Core.csproj" />
+    </ItemGroup>
+
+</Project>
