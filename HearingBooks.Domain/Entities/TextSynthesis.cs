@@ -16,4 +16,5 @@ public class TextSynthesis : Entity<Guid>
 	public string Voice { get; set; }
 	public int CharacterCount { get; set; }
 	public int DurationInSeconds { get; set; }
+	public double PriceInUsd { get; set; }
 }
