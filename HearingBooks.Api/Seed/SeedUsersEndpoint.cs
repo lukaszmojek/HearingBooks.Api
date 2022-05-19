@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using FastEndpoints;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.ValueObjects.User;
 using HearingBooks.Persistance;
@@ -9,7 +15,6 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 	private readonly HearingBooksDbContext _context;
 	private readonly string _password = "Resubmit-Gas-Dreamland-Sizable-Relapsing-Sprinkled7-Debatable";
 	
-	private readonly Guid adminId = Guid.Parse("b8a1afdc-fd52-4d87-9886-6e4fd9a5fdaa"); 
 	public SeedUsersEndpoint(HearingBooksDbContext context)
 	{
 		_context = context;
@@ -27,7 +32,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		{
 		    new()
 		    {
-		        Id = Guid.NewGuid(),
+		        Id = SeedConfig.AdminId,
 		        FirstName = "Łukasz",
 		        LastName = "Mojek",
 		        UserName = "shaggy",
@@ -40,7 +45,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		    },
 		    new()
 		    {
-		        Id = Guid.NewGuid(),
+		        Id = SeedConfig.PayAsYouGoId,
 		        FirstName = "Łukasz",
 		        LastName = "Mojek",
 		        UserName = "user",
@@ -50,19 +55,6 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        EmailIsUsername = true,
 		        IsActive = true,
 		        Type = UserType.PayAsYouGo,
-		    },
-		    new()
-		    {
-			    Id = Guid.NewGuid(),
-			    FirstName = "Darka",
-			    LastName = "Koparka",
-			    UserName = "darkaKoparka",
-			    Email = "darka@email.com",
-			    Password = _password, 
-			    EmailNotificationsEnabled = true,
-			    EmailIsUsername = true,
-			    IsActive = true,
-			    Type = UserType.PayAsYouGo,
 		    }
 		};
 		
