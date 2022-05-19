@@ -43,7 +43,7 @@ public class DashboardRepository : IDashboardRepository
 		{
 			DialogueSynthesesCount = dialogueSyntheses.Count(),
 			TextSynthesesCount = textSyntheses.Count(),
-			DialogueSynthesesSynthesesPriceInUsd = dialgueSynthesesPriceInUsd,
+			DialogueSynthesesPriceInUsd = dialgueSynthesesPriceInUsd,
 			TextSynthesesPriceInUsd = textSynthesesPriceInUsd,
 			SynthesesCharactersCount = dialogueSynthesesCharacterCount + textSynthesesCharacterCount,
 			SynthesesDurationInSeconds = dialogueSynthesesDurationInSeconds + textSynthesesDurationInSeconds

@@ -7,5 +7,5 @@ public class SynthesesSummary
 	public int SynthesesCharactersCount { get; set; }
 	public long SynthesesDurationInSeconds { get; set; }
 	public double TextSynthesesPriceInUsd { get; set; }
-	public double DialogueSynthesesSynthesesPriceInUsd { get; set; }
+	public double DialogueSynthesesPriceInUsd { get; set; }
 }
