@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>EasySynthesis.Api.Core</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EasySynthesis.Domain\EasySynthesis.Domain.csproj" />
+      <ProjectReference Include="..\EasySynthesis.Infrastructure\EasySynthesis.Infrastructure.csproj" />
+      <ProjectReference Include="..\EasySynthesis.Logic\EasySynthesis.Logic.csproj" />
+      <ProjectReference Include="..\EasySynthesis.MassTransit\EasySynthesis.MassTransit.csproj" />
+      <ProjectReference Include="..\EasySynthesis.Persistance\EasySynthesis.Persistance.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FastEndpoints" Version="4.2.0" />
+      <PackageReference Include="FastEndpoints.Security" Version="4.2.0" />
+    </ItemGroup>
+
+</Project>
