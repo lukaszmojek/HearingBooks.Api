@@ -24,10 +24,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddFastEndpoints();
 builder.Services.AddAuthenticationJWTBearer(builder.Configuration.GetSection("Authorization")["Secret"]);
 
-// builder.Services.AddAuthorization(o =>
-//     o.AddPolicy("HearingBooks", b =>
-//         b.RequireRole("HearingBooks")));
-
 builder.Services.AddSwaggerDoc(settings =>
 {
     settings.Title = "EasySynthesis.Api";
@@ -35,38 +31,6 @@ builder.Services.AddSwaggerDoc(settings =>
 });
 
 builder.Services.AddEasySynthesisMassTransit();
-// builder.Services.AddSwaggerGen(
-//     c =>
-//     {
-//         c.SwaggerDoc("v1", new OpenApiInfo {Title = "EasySynthesis.Api", Version = "v1"});
-//                 
-//         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme {
-//             In = ParameterLocation.Header, 
-//             Description = "Please insert JWT token with Bearer into field",
-//             Name = "Authorization",
-//             Type = SecuritySchemeType.ApiKey 
-//         });
-//                 
-//         c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-//             { 
-//                 new OpenApiSecurityScheme 
-//                 { 
-//                     Reference = new OpenApiReference 
-//                     { 
-//                         Type = ReferenceType.SecurityScheme,
-//                         Id = "Bearer" 
-//                     } 
-//                 },
-//                 new string[] { } 
-//             } 
-//         });
-//
-//         // Set the comments path for the Swagger JSON and UI.
-//         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-//         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-//         c.IncludeXmlComments(xmlPath);
-//     }
-// );
 
 builder.Services.AddDbContext<HearingBooksDbContext>(
     options =>
@@ -113,19 +77,5 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Test"))
     app.UseDeveloperExceptionPage();
     app.UseSwaggerUi3(c => c.ConfigureDefaults()); 
 }
-
-//TODO: Move that to middleware
-// app.Use(async (ctx, next) =>
-// {
-//     try
-//     {
-//         await next();
-//     }
-//     catch(BadHttpRequestException ex)
-//     {
-//         ctx.Response.StatusCode = ex.StatusCode;
-//         await ctx.Response.WriteAsync(ex.Message);
-//     }
-// });
 
 app.Run();
