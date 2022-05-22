@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "HearingBooks": {
+    "EasySynthesis": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
@@ -18,7 +18,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "HearingBooks-Test": {
+    "EasySynthesis-Test": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
