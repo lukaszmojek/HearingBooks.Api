@@ -4,9 +4,9 @@ using EasySynthesis.Api.Speech;
 using EasySynthesis.Api.Storage;
 using EasySynthesis.Api.Syntheses.DialogueSyntheses;
 using EasySynthesis.Api.Syntheses.TextSyntheses;
-using EasySynthesis.Communication;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
+using EasySynthesis.MassTransit;
 using EasySynthesis.Persistance;
 using FastEndpoints.Swagger;
 using HearingBooks.Persistance;
@@ -34,7 +34,7 @@ builder.Services.AddSwaggerDoc(settings =>
     settings.Version = "v1";
 });
 
-builder.Services.AddHearingBooksMassTransit();
+builder.Services.AddEasySynthesisMassTransit();
 // builder.Services.AddSwaggerGen(
 //     c =>
 //     {
@@ -84,12 +84,7 @@ builder.Services.AddScoped<ISynthesisPricingService, SynthesisPricingService>();
 builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 builder.Services.AddScoped<DialogueSynthesisService, DialogueSynthesisService>();
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
-builder.Services.AddScoped<ITextSynthesisRepository, TextSynthesisRepository>();
-builder.Services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();
-builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
-builder.Services.AddScoped<ISynthesisPricingRepository, SynthesisPricingRepository>();
+builder.Services.RegisterRepositories();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
