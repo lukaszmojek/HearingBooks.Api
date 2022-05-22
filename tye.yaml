@@ -4,7 +4,9 @@
 # when you've given us a try, we'd love to know what you think:
 #    https://aka.ms/AA7q20u
 #
-name: hearingbooks.api
+name: easysynthesis
 services:
-- name: hearingbooks-api
-  project: HearingBooks.Api/HearingBooks.Api.csproj
+- name: easysynthesis-api
+  project: EasySynthesis.Api/EasySynthesis.Api.csproj
+- name: easysynthesis-synthesisprocessor
+  project: EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj
