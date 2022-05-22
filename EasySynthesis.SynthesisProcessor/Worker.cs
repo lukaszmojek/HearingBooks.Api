@@ -4,24 +4,19 @@ namespace EasySynthesis.SynthesisProcessor;
 
 public class Worker : BackgroundService
 {
-	private IBus _bus;
+	private ILogger<Worker> _logger;
 
-	public Worker(IBus bus)
+	public Worker(ILogger<Worker> logger)
 	{
-		_bus = bus;
+		_logger = logger;
 	}
 
 	protected override async Task ExecuteAsync(CancellationToken stoppingToken)
 	{
 		while (!stoppingToken.IsCancellationRequested)
 		{
-			// _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-			await _bus.Publish<UserRequestedTextSynthesis>(new
-			{
-				UserId = Guid.NewGuid(),
-				Email = "Dupa123"
-			}, stoppingToken);
-			
+			_logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+
 			await Task.Delay(1000, stoppingToken);
 		}
 	}
