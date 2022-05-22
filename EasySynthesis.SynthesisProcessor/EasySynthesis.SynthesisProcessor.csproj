@@ -15,5 +15,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\EasySynthesis.Contracts\EasySynthesis.Contracts.csproj" />
+      <ProjectReference Include="..\EasySynthesis.SynthesisProcessor.Services\EasySynthesis.SynthesisProcessor.Services.csproj" />
     </ItemGroup>
 </Project>

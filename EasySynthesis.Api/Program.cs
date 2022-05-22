@@ -1,15 +1,10 @@
 using EasySynthesis.Api.Core.Auth;
 using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Api.Speech;
 using EasySynthesis.Api.Storage;
-using EasySynthesis.Api.Syntheses.DialogueSyntheses;
-using EasySynthesis.Api.Syntheses.TextSyntheses;
 using EasySynthesis.Infrastructure;
-using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.MassTransit;
 using EasySynthesis.Persistance;
 using FastEndpoints.Swagger;
-using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,12 +36,8 @@ builder.Services.AddDbContext<HearingBooksDbContext>(
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
-builder.Services.AddScoped<ISpeechService, SpeechService>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<ISynthesisPricingService, SynthesisPricingService>();
-
-builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
-builder.Services.AddScoped<DialogueSynthesisService, DialogueSynthesisService>();
 
 builder.Services.RegisterRepositories();
 

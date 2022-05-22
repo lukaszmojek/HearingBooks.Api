@@ -1,14 +1,19 @@
+using AutoMapper;
+using EasySynthesis.Contracts.TextSynthesis;
 using EasySynthesis.Domain.Entities;
+using MassTransit;
 
 namespace EasySynthesis.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
 
-public class RequestTextSynthesisEndpoint : Endpoint<TextSyntehsisRequest>
+public class RequestTextSynthesisEndpoint : Endpoint<TextSynthesisRequest>
 {
-	private TextSynthesisService _textSynthesisService;
+	private readonly IBus _bus;
+	private readonly IMapper _mapper;
 
-	public RequestTextSynthesisEndpoint(TextSynthesisService textSynthesisRepository)
+	public RequestTextSynthesisEndpoint(IBus bus, IMapper mapper)
 	{
-		_textSynthesisService = textSynthesisRepository;
+		_bus = bus;
+		_mapper = mapper;
 	}
 
 	public override void Configure()
@@ -17,11 +22,22 @@ public class RequestTextSynthesisEndpoint : Endpoint<TextSyntehsisRequest>
 		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
-	public override async Task HandleAsync(TextSyntehsisRequest request, CancellationToken cancellationToken)
+	public override async Task HandleAsync(TextSynthesisRequest request, CancellationToken cancellationToken)
 	{
 		var requestingUser = (User) HttpContext.Items["User"];
 		               
-		var requestId = await _textSynthesisService.CreateRequest(request, requestingUser);
+		var textSynthesisData = _mapper.Map<TextSynthesisData>(request);
+		var requestId = Guid.NewGuid();
+
+		await _bus.Publish(
+			new TextSynthesisRequested
+			{
+				UserId = requestingUser.Id,
+				RequestId = requestId,
+				TextSynthesisData = textSynthesisData
+			}
+		);
+		
 		var resourceRoute = $"text-syntheses/{requestId}";
 		
 		await SendCreatedAtAsync(resourceRoute, null, null);

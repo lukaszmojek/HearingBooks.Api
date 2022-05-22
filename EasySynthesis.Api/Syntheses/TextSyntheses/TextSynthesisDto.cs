@@ -13,8 +13,4 @@ public class TextSynthesisDto
     public string BlobName { get; set; }
     public string Language { get; set; }
     public string Voice { get; set; }
-    
-    // public string Name { get; set; }
-    // public int CharactersCount { get; set; }
-    // public int SynthesisLengthInSeconds { get; set; }
 }

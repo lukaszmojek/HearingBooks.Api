@@ -1,6 +1,6 @@
-namespace EasySynthesis.Api.Speech;
+namespace EasySynthesis.Contracts.TextSynthesis;
 
-public class SyntehsisRequest
+public class TextSynthesisData
 {
 	public string Title { get; set; }
 	public string TextToSynthesize { get; set; }

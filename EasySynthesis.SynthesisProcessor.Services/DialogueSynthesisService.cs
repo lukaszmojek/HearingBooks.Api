@@ -1,12 +1,12 @@
-using EasySynthesis.Api.Speech;
-using EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
+using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Domain.ValueObjects.Syntheses;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;
+using EasySynthesis.Services.Speech;
 
-namespace EasySynthesis.Api.Syntheses.DialogueSyntheses;
+namespace EasySynthesis.Services;
 
 public class DialogueSynthesisService
 {
@@ -25,14 +25,14 @@ public class DialogueSynthesisService
         _synthesisPricingService = synthesisPricingService;
     }
 
-    public async Task<Guid> CreateRequest(DialogueSyntehsisRequest request, User requestingUser)
+    public async Task<Guid> CreateRequest(DialogueSynthesisData data, User requestingUser, Guid requestId)
     {
         if (requestingUser.CanRequestDialogueSynthesis() is false)
         {
             throw new Exception($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
         }
 
-        var synthesisCharacterCount = request.DialogueText.Length;
+        var synthesisCharacterCount = data.DialogueText.Length;
         var synthesisPrice = await _synthesisPricingService.GetPriceForSynthesis(
             SynthesisType.DialogueSynthesis,
             synthesisCharacterCount
@@ -46,17 +46,16 @@ public class DialogueSynthesisService
 
         var containerName = requestingUser.Id.ToString();
 
-        var requestId = Guid.NewGuid();
         var synthesisFilePath = "";
         
         try
         {
             var openingTags =
-                $"<speak xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xmlns:emo=\"http://www.w3.org/2009/10/emotionml\" version=\"1.0\" xml:lang=\"{request.Language}\">";
+                $"<speak xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xmlns:emo=\"http://www.w3.org/2009/10/emotionml\" version=\"1.0\" xml:lang=\"{data.Language}\">";
             var closingTags = "</speak>";
 
-            var linesWithTags = SplitDialogueIntoLines(request.DialogueText)
-                .Select(line => $"{LineOpeningTagsForSpeaker(request, line.Item2)}{line.Item1}{LineClosingTagsForSpeaker()}")
+            var linesWithTags = SplitDialogueIntoLines(data.DialogueText)
+                .Select(line => $"{LineOpeningTagsForSpeaker(data, line.Item2)}{line.Item1}{LineClosingTagsForSpeaker()}")
                 .Aggregate((current, next) => $"{current}{next}");
 
             var dialogueText = $"{openingTags}{linesWithTags}{closingTags}";
@@ -64,9 +63,9 @@ public class DialogueSynthesisService
             //TODO: Move to mapper?
             var synthesisRequest = new SyntehsisRequest
             {
-                Title = request.Title,
-                Voice = request.SecondSpeakerVoice,
-                Language = request.Language,
+                Title = data.Title,
+                Voice = data.SecondSpeakerVoice,
+                Language = data.Language,
                 TextToSynthesize = dialogueText
             };
             
@@ -81,13 +80,13 @@ public class DialogueSynthesisService
                 Id = requestId,
                 RequestingUserId = requestingUser.Id,
                 Status = DialogueSynthesisStatus.Submitted,
-                Title = request.Title,
-                DialogueText = request.DialogueText,
+                Title = data.Title,
+                DialogueText = data.DialogueText,
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
-                FirstSpeakerVoice = request.FirstSpeakerVoice,
-                SecondSpeakerVoice = request.SecondSpeakerVoice,
-                Language = request.Language,
+                FirstSpeakerVoice = data.FirstSpeakerVoice,
+                SecondSpeakerVoice = data.SecondSpeakerVoice,
+                Language = data.Language,
                 CharacterCount = synthesisCharacterCount,
                 DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName),
                 PriceInUsd = synthesisPrice
@@ -118,9 +117,9 @@ public class DialogueSynthesisService
             .Select((line, index) => (line.Trim(), index));
 
 
-    private string LineOpeningTagsForSpeaker(DialogueSyntehsisRequest request, int index)
+    private string LineOpeningTagsForSpeaker(DialogueSynthesisData data, int index)
     {
-        var speaker = FirstSpeaker(index) ? request.FirstSpeakerVoice : request.SecondSpeakerVoice;
+        var speaker = FirstSpeaker(index) ? data.FirstSpeakerVoice : data.SecondSpeakerVoice;
 
         return $"<voice name=\"{speaker}\"><prosody rate=\"0%\" pitch=\"0%\">";
     }

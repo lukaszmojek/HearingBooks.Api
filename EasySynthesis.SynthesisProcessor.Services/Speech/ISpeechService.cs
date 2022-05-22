@@ -1,5 +1,5 @@
 
-namespace EasySynthesis.Api.Speech;
+namespace EasySynthesis.Services.Speech;
 
 public interface ISpeechService
 {

@@ -1,14 +1,19 @@
+using AutoMapper;
+using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Domain.Entities;
+using MassTransit;
 
 namespace EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
 
 public class RequestDialogueSynthesisEndpoint : Endpoint<DialogueSyntehsisRequest>
 {
-	private readonly DialogueSynthesisService _dialogueSynthesisService;
+	private readonly IBus _bus;
+	private readonly IMapper _mapper;
 
-	public RequestDialogueSynthesisEndpoint(DialogueSynthesisService dialogueSynthesisService)
+	public RequestDialogueSynthesisEndpoint(IBus bus, IMapper mapper)
 	{
-		_dialogueSynthesisService = dialogueSynthesisService;
+		_bus = bus;
+		_mapper = mapper;
 	}
 
 	public override void Configure()
@@ -21,8 +26,18 @@ public class RequestDialogueSynthesisEndpoint : Endpoint<DialogueSyntehsisReques
 	{
 		var requestingUser = (User) HttpContext.Items["User"];
 		               
-		var requestId = await _dialogueSynthesisService.CreateRequest(request, requestingUser);
-		var resourceRoute = $"text-syntheses/{requestId}";
+		var dialogueSynthesisData = _mapper.Map<DialogueSynthesisData>(request);
+		var requestId = Guid.NewGuid();
+
+		await _bus.Publish(
+			new DialogueSynthesisRequested()
+			{
+				UserId = requestingUser.Id,
+				RequestId = requestId,
+				DialogueSynthesisData = dialogueSynthesisData
+			}
+		);
+		var resourceRoute = $"dialogue-syntheses/{requestId}";
 		
 		await SendCreatedAtAsync(resourceRoute, null, null);
 	}

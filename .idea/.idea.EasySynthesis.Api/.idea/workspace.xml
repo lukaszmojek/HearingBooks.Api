@@ -7,11 +7,56 @@
     <projectFile profileName="HearingBooks">HearingBooks.Api/HearingBooks.Api.csproj</projectFile>
     <projectFile profileName="Swagger">HearingBooks.Api/HearingBooks.Api.csproj</projectFile>
     <projectFile profileName="HearingBooks-Test">HearingBooks.Api/HearingBooks.Api.csproj</projectFile>
+    <projectFile profileName="HearingBooks">EasySynthesis.Api/EasySynthesis.Api.csproj</projectFile>
     <projectFile profileName="HearingBooks-Test">EasySynthesis.Api/EasySynthesis.Api.csproj</projectFile>
+    <projectFile profileName="Swagger">EasySynthesis.Api/EasySynthesis.Api.csproj</projectFile>
+    <projectFile profileName="EasySynthesis">EasySynthesis.Api/EasySynthesis.Api.csproj</projectFile>
+    <projectFile profileName="EasySynthesis-Test">EasySynthesis.Api/EasySynthesis.Api.csproj</projectFile>
+    <projectFile profileName="EasySynthesis.SynthesisProcessor">EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b740aaf6-7def-4906-a792-e2b43f15548d" name="Changes" comment="Rebrand HearingBooks to EasySynthesis">
+    <list default="true" id="b740aaf6-7def-4906-a792-e2b43f15548d" name="Changes" comment="Log health every second">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/DialogueSynthesis/DialogueSynthesisData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/DialogueSynthesis/DialogueSynthesisRequested.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/TextSynthesis/TextSynthesisData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/TextSynthesis/TextSynthesisRequested.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/EasySynthesis.SynthesisProcessor.Services.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Configuration/ISynthesisProcessorConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Configuration/SynthesisProcessorConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HearingBooks.Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HearingBooks.Api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/ConfigurationKeys.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Common/ConfigurationKeys.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/EasySynthesis.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/EasySynthesis.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Mapper/TextSynthesisProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Mapper/TextSynthesisProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Speech/ISpeechService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/ISpeechService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Speech/SpeechService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/SpeechService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Speech/SyntehsisRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/SyntehsisRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/FileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/FileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/IFileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/IFileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/IStorageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/IStorageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/StorageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/StorageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/DialogueSynthesisService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/DialogueSynthesisService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/RequestDialogueSynthesis/RequestDialogueSynthesisEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/RequestDialogueSynthesis/RequestDialogueSynthesisEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/RequestTextSynthesisEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/RequestTextSynthesisEndpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/TextSyntehsisRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/TextSynthesisRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/TextSynthesisDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/TextSynthesisDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/TextSynthesisService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/TextSynthesisService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Contracts/UserRequestedTextSynthesis.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.Domain/ValueObjects/Syntheses/TextSynthesisData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Domain/ValueObjects/Syntheses/TextSynthesisData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Consumers/UserRequestedTextSynthesisConsumer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Consumers/TextSynthesisRequestedConsumer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasySynthesis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +71,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
   </component>
@@ -38,7 +83,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7dcb5524c9dd428d88f30444709a1d142de00/96/66c47c12/WaveFileWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/264cdbfbdb7c6a9ddc794d948824e97d8f7c0ce1a275b6ed78cde41f286ff8/HostEnvironmentEnvExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7cc477141a9a15fde3b7c58ecd2739d1a38ca92f945ec7c8b78e90193b11c5/TaskContinuation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/829cf37666a7afa8e4a7f83e676eb22a94a1bc7e8e049a70812f56ab90af18/BlobServiceClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/86d9944d7dc6247b332d77355bfabdb7cd68928cf33921b80ea70c795ef7c26/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8e947b0d74af64365819aef27d927db658a753b764e56215f31fe9f8c3e18/Guid.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9156f7f7d7fe31ecb86103c74e89e22a5242a153d4ccf14e354685cb3fb7b5/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d4f4ac7db6d2c5d183ab2d92602280ed4349fd6e6a1b6313546b3d01fdab5/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a89c43b9e4639a86ef72bfbdd915cf3a88d4582ea46a7bc809f17b1baa77abf/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
@@ -49,18 +96,20 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c8ddd6c3ab2c36f22eefd062b23041fd15db13e018643c4e7819372e6988671e/Endpoint.Send.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c9134c2f169c16ef29955aa19492c6f31e8f60d4958e518551bd99a10d52033/Guid.Unix.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ebc17df89818b9a502df96d133cea95868a471353a4a19397a3615daf4977/Interfaces.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api.Core/Auth/JwtMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Dashboard/SynthesisSummary/SynthesisSummaryEndpoint.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Seed/SeedConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Seed/SeedLanguagesAndVoicesEndpoint.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Seed/SeedUsersEndpoint.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Speech/SpeechService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/DialogueSynthesisService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/TextSynthesisService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Infrastructure/SynthesesSummary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Infrastructure/SynthesisPricingService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EasySynthesis.Tests.Core/TestBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Mapper/TextSynthesisProfile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Syntheses/DialogueSyntheses/RequestDialogueSynthesis/RequestDialogueSynthesisEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/DialogueSynthesisService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/SpeechService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/TextSynthesisService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.SynthesisProcessor/Worker.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,18 +123,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.5153584&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/shaggy/repos/HearingBooks.Api/HearingBooks.Api/Seed/SeedConfig.cs&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;HotReloadSettingsPage&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.5153584",
+    "last_opened_file_path": "/home/shaggy/repos/GettingStarted/GettingStarted.csproj",
+    "settings.editor.selected.configurable": "HotReloadSettingsPage",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.HearingBooks.Api">
+}]]></component>
+  <component name="RunManager" selected="Compound.All">
     <configuration name="Publish HearingBooks.Api to Azure" type="AzureDotNetWebAppPublish" factoryName="Azure Web App">
-      <option name="AZURE_WEB_APP_PROJECT" value="$PROJECT_DIR$/HearingBooks.Api/HearingBooks.Api.csproj" />
+      <option name="AZURE_WEB_APP_PROJECT" value="" />
       <option name="AZURE_WEB_APP_SUBSCRIPTION_ID" value="" />
       <option name="AZURE_WEB_APP_IS_CREATE_APP" value="0" />
       <option name="AZURE_WEB_APP_ID" value="/subscriptions/f6484568-13be-4c34-9325-905a324db9a3/resourceGroups/hearing-books-test/providers/Microsoft.Web/sites/hearing-books-api-test" />
@@ -118,10 +167,15 @@
       <option name="AZURE_SQL_DATABASE_COLLATION" value="SQL_Latin1_General_CP1_CI_AS" />
       <method v="2" />
     </configuration>
-    <configuration name="EasySynthesis.Api: HearingBooks-Test" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+    <configuration name="All" type="CompoundRunConfigurationType">
+      <toRun name="EasySynthesis.Api: EasySynthesis" type="LaunchSettings" />
+      <toRun name="EasySynthesis.SynthesisProcessor" type="LaunchSettings" />
+      <method v="2" />
+    </configuration>
+    <configuration name="EasySynthesis.Api: EasySynthesis-Test" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EasySynthesis.Api/EasySynthesis.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="HearingBooks-Test" />
+      <option name="LAUNCH_PROFILE_NAME" value="EasySynthesis-Test" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
@@ -133,10 +187,10 @@
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="HearingBooks.Api" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+    <configuration name="EasySynthesis.Api: EasySynthesis" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EasySynthesis.Api/EasySynthesis.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="HearingBooks" />
+      <option name="LAUNCH_PROFILE_NAME" value="EasySynthesis" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
@@ -148,7 +202,7 @@
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="HearingBooks.Api: Swagger" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+    <configuration name="EasySynthesis.Api: Swagger" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EasySynthesis.Api/EasySynthesis.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="Swagger" />
@@ -163,11 +217,28 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="EasySynthesis.SynthesisProcessor" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="EasySynthesis.SynthesisProcessor" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue=".NET Launch Settings Profile.EasySynthesis.Api: HearingBooks-Test" />
-      <item itemvalue=".NET Launch Settings Profile.HearingBooks.Api" />
-      <item itemvalue=".NET Launch Settings Profile.HearingBooks.Api: Swagger" />
+      <item itemvalue=".NET Launch Settings Profile.EasySynthesis.Api: EasySynthesis" />
+      <item itemvalue=".NET Launch Settings Profile.EasySynthesis.Api: EasySynthesis-Test" />
+      <item itemvalue=".NET Launch Settings Profile.EasySynthesis.SynthesisProcessor" />
+      <item itemvalue=".NET Launch Settings Profile.EasySynthesis.Api: Swagger" />
       <item itemvalue="Azure - Publish Web App.Publish HearingBooks.Api to Azure" />
+      <item itemvalue="Compound.All" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -198,42 +269,9 @@
       <workItem from="1652435158815" duration="5045000" />
       <workItem from="1652902323950" duration="5831000" />
       <workItem from="1652977190885" duration="13807000" />
-      <workItem from="1653115612027" duration="2418000" />
-    </task>
-    <task id="LOCAL-00004" summary="Migrate all TextSynthesis endpoints to FastEndpoints">
-      <created>1650285460329</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1650285460329</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Migrate Login endpoint to FastEndpoints">
-      <created>1650302061105</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1650302061105</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Migrate Login endpoint to FastEndpoints">
-      <created>1650302070345</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1650302070345</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Migrate Login endpoint to FastEndpoints">
-      <created>1650302093947</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1650302093947</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Migrate LanguagesEndpoint to FastEndpoints">
-      <created>1650302395062</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1650302395062</updated>
+      <workItem from="1653115612027" duration="1072000" />
+      <workItem from="1653144580549" duration="2134000" />
+      <workItem from="1653205435817" duration="12165000" />
     </task>
     <task id="LOCAL-00009" summary="Migrate Seeding endpoints to FastEndpoints">
       <created>1650302863237</created>
@@ -536,14 +574,49 @@
       <option name="project" value="LOCAL" />
       <updated>1652998208677</updated>
     </task>
-    <task id="LOCAL-00052" summary="Rebrand HearingBooks to EasySynthesis">
-      <created>1653118100413</created>
+    <task id="LOCAL-00052" summary="Create SynthesisProcessor and Contracts project">
+      <created>1653210506322</created>
       <option name="number" value="00052" />
       <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1653118100414</updated>
+      <updated>1653210506322</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Move repositories registration to extension method">
+      <created>1653210533611</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1653210533611</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Change RunConfiguration names">
+      <created>1653210564816</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1653210564816</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Remove commented out code">
+      <created>1653228435190</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1653228435190</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Cleanup">
+      <created>1653228456328</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1653228456328</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Log health every second">
+      <created>1653228495362</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1653228495362</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,34 +625,12 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-      </list>
-    </option>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="easy-synthesis" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -587,10 +638,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add Preference entity" />
-    <MESSAGE value="Add RabbitMQ to docker-compose.yml" />
-    <MESSAGE value="Initial tye manifest" />
-    <MESSAGE value="Add MassTransit" />
     <MESSAGE value="Move global usings to separate file" />
     <MESSAGE value="Refactor SpeechService to avoid logic duplication" />
     <MESSAGE value="Add code for the sake of thesis" />
@@ -602,7 +649,6 @@
     <MESSAGE value="Add tests for User" />
     <MESSAGE value="Add SynthesisPricing" />
     <MESSAGE value="Create endpoint for seeding SynthsisPricings" />
-    <MESSAGE value="Cleanup" />
     <MESSAGE value="Create ISynthesisPricingService" />
     <MESSAGE value="Crete SynthesisPricingRepository" />
     <MESSAGE value="Add UserType and Balance checks when requesting Syntheses" />
@@ -611,24 +657,48 @@
     <MESSAGE value="Cleanups" />
     <MESSAGE value="Rider settings" />
     <MESSAGE value="Fix typo" />
-    <MESSAGE value="Rebrand HearingBooks to EasySynthesis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rebrand HearingBooks to EasySynthesis" />
+    <MESSAGE value="Create SynthesisProcessor and Contracts project" />
+    <MESSAGE value="Move repositories registration to extension method" />
+    <MESSAGE value="Change RunConfiguration names" />
+    <MESSAGE value="Remove commented out code" />
+    <MESSAGE value="Cleanup" />
+    <MESSAGE value="Log health every second" />
+    <option name="LAST_COMMIT_MESSAGE" value="Log health every second" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/DialogueSynthesisService.cs</url>
+          <url>file://$PROJECT_DIR$/HearingBooks.Api/Syntheses/DialogueSyntheses/DialogueSynthesisService.cs</url>
           <line>96</line>
-          <properties documentPath="$PROJECT_DIR$/HearingBooks.Api/Syntheses/DialogueSyntheses/DialogueSynthesisService.cs" initialLine="74" containingFunctionPresentation="method 'CreateRequest'">
+          <properties documentPath="$PROJECT_DIR$/HearingBooks.Api/Syntheses/DialogueSyntheses/DialogueSynthesisService.cs" initialLine="74" containingFunctionPresentation="method 'CreateRequest'" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Consumers/TextSynthesisRequestedConsumer.cs</url>
+          <line>21</line>
+          <properties documentPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Consumers/UserRequestedTextSynthesisConsumer.cs" initialLine="17" containingFunctionPresentation="method 'Consume'">
             <startOffsets>
-              <option value="4131" />
+              <option value="859" />
             </startOffsets>
             <endOffsets>
-              <option value="4192" />
+              <option value="971" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/SpeechService.cs</url>
+          <line>102</line>
+          <properties documentPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/SpeechService.cs" initialLine="102" containingFunctionPresentation="method 'UploadSynthesis'">
+            <startOffsets>
+              <option value="3953" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4037" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,12 +1,12 @@
-using EasySynthesis.Api.Speech;
-using EasySynthesis.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
+using EasySynthesis.Contracts.TextSynthesis;
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Domain.ValueObjects.Syntheses;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;
+using EasySynthesis.Services.Speech;
 
-namespace EasySynthesis.Api.Syntheses.TextSyntheses;
+namespace EasySynthesis.Services;
 
 public class TextSynthesisService
 {
@@ -23,14 +23,14 @@ public class TextSynthesisService
         _synthesisPricingService = synthesisPricingService;
     }
 
-    public async Task<Guid> CreateRequest(TextSyntehsisRequest request, User requestingUser)
+    public async Task<Guid> CreateRequest(TextSynthesisData data, User requestingUser, Guid requestId)
     {
         if (requestingUser.CanRequestDialogueSynthesis() is false)
         {
             throw new Exception($"Users of type {requestingUser.Type} cannot create TextSyntheses!");
         }
 
-        var synthesisCharacterCount = request.TextToSynthesize.Length;
+        var synthesisCharacterCount = data.TextToSynthesize.Length;
         var synthesisPrice = await _synthesisPricingService.GetPriceForSynthesis(
             SynthesisType.DialogueSynthesis,
             synthesisCharacterCount
@@ -44,7 +44,6 @@ public class TextSynthesisService
         
         var containerName = requestingUser.Id.ToString();
 
-        var requestId = Guid.NewGuid();
 
         string synthesisFilePath = "";
         string synthesisFileName;
@@ -52,10 +51,10 @@ public class TextSynthesisService
         //TODO: Move to mapper
         var synthesisRequest = new SyntehsisRequest()
         {
-            Title = request.Title,
-            Voice = request.Voice,
-            Language = request.Language,
-            TextToSynthesize = request.TextToSynthesize
+            Title = data.Title,
+            Voice = data.Voice,
+            Language = data.Language,
+            TextToSynthesize = data.TextToSynthesize
         };
         
         try
@@ -66,7 +65,7 @@ public class TextSynthesisService
                 synthesisRequest
             );
 
-            var textSynthesisData = new TextSynthesisData(request.Title, containerName, synthesisFilePath);
+            // var textSynthesisData = new TextSynthesisData(request.Title, containerName, synthesisFilePath);
 
             var textSynthesis = new TextSynthesis
             {
@@ -74,13 +73,13 @@ public class TextSynthesisService
                 RequestingUserId = requestingUser.Id,
                 Status = TextSynthesisStatus.Submitted,
                 // TextSynthesisData = textSynthesisData
-                Title = request.Title,
-                SynthesisText = request.TextToSynthesize,
+                Title = data.Title,
+                SynthesisText = data.TextToSynthesize,
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
-                Voice = request.Voice,
-                Language = request.Language,
-                CharacterCount = request.TextToSynthesize.Length,
+                Voice = data.Voice,
+                Language = data.Language,
+                CharacterCount = data.TextToSynthesize.Length,
                 DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
             };
 

@@ -1,8 +1,10 @@
+using EasySynthesis.Api;
 using EasySynthesis.Api.Storage;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
+using Microsoft.Extensions.Configuration;
 
-namespace EasySynthesis.Api.Speech;
+namespace EasySynthesis.Services.Speech;
 
 public class SpeechService : ISpeechService
 {

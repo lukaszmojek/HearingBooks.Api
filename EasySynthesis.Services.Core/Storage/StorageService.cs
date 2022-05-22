@@ -1,7 +1,7 @@
 using Azure;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using EasySynthesis.Api.Core.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace EasySynthesis.Api.Storage;
 
@@ -9,7 +9,7 @@ public class StorageService : IStorageService
 {
     private readonly BlobServiceClient _blobServiceClient;
 
-    public StorageService(IApiConfiguration configuration)
+    public StorageService(IConfiguration configuration)
     {
         var azureStorageConnectionString = configuration[ConfigurationKeys.AzureStorageConnectionString];
         _blobServiceClient = new BlobServiceClient(azureStorageConnectionString);

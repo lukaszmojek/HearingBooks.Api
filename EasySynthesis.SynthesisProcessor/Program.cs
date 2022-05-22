@@ -1,12 +1,41 @@
+using EasySynthesis.Api.Storage;
+using EasySynthesis.Infrastructure;
+using EasySynthesis.Persistance;
+using EasySynthesis.Services;
+using EasySynthesis.Services.Speech;
 using EasySynthesis.SynthesisProcessor;
 using MassTransit;
+using MassTransit.Futures.Contracts;
+using Microsoft.EntityFrameworkCore;
 
-IHost host = Host.CreateDefaultBuilder(args)
+var builder = Host.CreateDefaultBuilder(args);
+
+var configuration = new ConfigurationBuilder()
+	.AddJsonFile("appsettings.json")
+	.AddJsonFile("appsettings.Development.json")
+	.Build();
+
+IHost host = builder
 	.ConfigureServices(
 		services =>
 		{
-			services.AddHostedService<Worker>();
+			services.AddDbContext<HearingBooksDbContext>(
+				options =>
+			{
+					options.UseNpgsql(configuration.GetConnectionString("DatabaseUrl"))
+						.EnableSensitiveDataLogging();
+				});
 			
+			services.RegisterRepositories();
+			
+			services.AddScoped<ISpeechService, SpeechService>();
+			services.AddScoped<IStorageService, StorageService>();
+			services.AddScoped<IFileService, FileService>();
+			services.AddScoped<ISynthesisPricingService, SynthesisPricingService>();
+
+			services.AddScoped<TextSynthesisService>();
+			services.AddScoped<DialogueSynthesisService>();
+
 			services.AddMassTransit(x =>
 			{
 				// elided...
@@ -41,6 +70,7 @@ IHost host = Host.CreateDefaultBuilder(args)
 					});
 			});
 			
+			services.AddHostedService<Worker>();
 		})
 	.Build();
 
