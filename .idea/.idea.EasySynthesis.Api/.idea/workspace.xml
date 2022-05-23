@@ -15,49 +15,7 @@
     <projectFile profileName="EasySynthesis.SynthesisProcessor">EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b740aaf6-7def-4906-a792-e2b43f15548d" name="Changes" comment="Log health every second">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/DialogueSynthesis/DialogueSynthesisData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/DialogueSynthesis/DialogueSynthesisRequested.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/TextSynthesis/TextSynthesisData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EasySynthesis.Contracts/TextSynthesis/TextSynthesisRequested.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/EasySynthesis.SynthesisProcessor.Services.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Configuration/ISynthesisProcessorConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Configuration/SynthesisProcessorConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EasySynthesis.Api/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HearingBooks.Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HearingBooks.Api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/ConfigurationKeys.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Common/ConfigurationKeys.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/EasySynthesis.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/EasySynthesis.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Mapper/TextSynthesisProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Mapper/TextSynthesisProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Speech/ISpeechService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/ISpeechService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Speech/SpeechService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/SpeechService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Speech/SyntehsisRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/Speech/SyntehsisRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/FileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/FileService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/IFileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/IFileService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/IStorageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/IStorageService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Storage/StorageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Services.Core/Storage/StorageService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/DialogueSynthesisService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/DialogueSynthesisService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/RequestDialogueSynthesis/RequestDialogueSynthesisEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/DialogueSyntheses/RequestDialogueSynthesis/RequestDialogueSynthesisEndpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/RequestTextSynthesisEndpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/RequestTextSynthesisEndpoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/TextSyntehsisRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/RequestTextSynthesis/TextSynthesisRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/TextSynthesisDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/TextSynthesisDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Api/Syntheses/TextSyntheses/TextSynthesisService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor.Services/TextSynthesisService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Contracts/UserRequestedTextSynthesis.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.Domain/ValueObjects/Syntheses/TextSynthesisData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.Domain/ValueObjects/Syntheses/TextSynthesisData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Consumers/UserRequestedTextSynthesisConsumer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Consumers/TextSynthesisRequestedConsumer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.SynthesisProcessor/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasySynthesis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/EasySynthesis.sln" afterDir="false" />
-    </list>
+    <list default="true" id="b740aaf6-7def-4906-a792-e2b43f15548d" name="Changes" comment="Update tye manifest" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,13 +54,18 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c8ddd6c3ab2c36f22eefd062b23041fd15db13e018643c4e7819372e6988671e/Endpoint.Send.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c9134c2f169c16ef29955aa19492c6f31e8f60d4958e518551bd99a10d52033/Guid.Unix.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ebc17df89818b9a502df96d133cea95868a471353a4a19397a3615daf4977/Interfaces.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Mapper/DialogueSynthesisProfile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Mapper/TextSynthesisProfile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Syntheses/DialogueSyntheses/RequestDialogueSynthesis/RequestDialogueSynthesisEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Syntheses/DialogueSyntheses/RequestDialogueSynthesis/RequestDialogueSynthesisEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Api/Syntheses/TextSyntheses/GetTextSynthesesForUser/GetTextSynthesesForUserEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.Domain/ValueObjects/Syntheses/TextSynthesisData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/shaggy/repos/HearingBooks.Api/EasySynthesis.MassTransit/IServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -271,21 +234,7 @@
       <workItem from="1652977190885" duration="13807000" />
       <workItem from="1653115612027" duration="1072000" />
       <workItem from="1653144580549" duration="2134000" />
-      <workItem from="1653205435817" duration="12165000" />
-    </task>
-    <task id="LOCAL-00009" summary="Migrate Seeding endpoints to FastEndpoints">
-      <created>1650302863237</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1650302863237</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Update database url due to maintenance on Heroku">
-      <created>1650390795801</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1650390795801</updated>
+      <workItem from="1653205435817" duration="12565000" />
     </task>
     <task id="LOCAL-00011" summary="Same password for all users in a field on endpoint">
       <created>1650437314210</created>
@@ -616,7 +565,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653228495362</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Move syntheses creation to SynthesisProcessor">
+      <created>1653235009706</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1653235009706</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Update tye manifest">
+      <created>1653235219103</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1653235219104</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,8 +601,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Move global usings to separate file" />
-    <MESSAGE value="Refactor SpeechService to avoid logic duplication" />
     <MESSAGE value="Add code for the sake of thesis" />
     <MESSAGE value="Create TestsFixture for setting up all dependencies" />
     <MESSAGE value="Create tests for DialogueSynthesisService" />
@@ -663,7 +624,9 @@
     <MESSAGE value="Remove commented out code" />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Log health every second" />
-    <option name="LAST_COMMIT_MESSAGE" value="Log health every second" />
+    <MESSAGE value="Move syntheses creation to SynthesisProcessor" />
+    <MESSAGE value="Update tye manifest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update tye manifest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
