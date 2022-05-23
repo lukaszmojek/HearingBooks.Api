@@ -17,13 +17,19 @@ public class TextSynthesisRepository
 	public async Task<TextSynthesis> GetById(Guid synthesisId)
 	{
 		return await _set
+			.Include(x => x.User)
+			.Include(x => x.Language)
+			.Include(x => x.Voice)
 			.FirstAsync(x => x.Id == synthesisId);
 	}
 
 	public async Task<IEnumerable<TextSynthesis>> GetAllForUser(Guid userId)
 	{
 		return await _set
-			.Where(x => x.RequestingUserId == userId)
+			.Include(x => x.User)
+			.Include(x => x.Language)
+			.Include(x => x.Voice)
+			.Where(x => x.User.Id == userId)
 			.ToListAsync();
 	}
 

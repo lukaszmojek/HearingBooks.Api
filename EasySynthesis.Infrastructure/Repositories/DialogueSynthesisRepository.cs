@@ -16,13 +16,21 @@ public class DialogueSynthesisRepository : IDialogueSynthesisRepository
 	public async Task<DialogueSynthesis> GetById(Guid synthesisId)
 	{
 		return await _set
+			.Include(x => x.User)
+			.Include(x => x.Language)
+			.Include(x => x.FirstSpeakerVoice)
+			.Include(x => x.SecondSpeakerVoice)
 			.FirstAsync(x => x.Id == synthesisId);
 	}
 
 	public async Task<IEnumerable<DialogueSynthesis>> GetAllForUser(Guid userId)
 	{
 		return await _set
-			.Where(x => x.RequestingUserId == userId)
+			.Include(x => x.User)
+			.Include(x => x.Language)
+			.Include(x => x.FirstSpeakerVoice)
+			.Include(x => x.SecondSpeakerVoice)
+			.Where(x => x.User.Id == userId)
 			.ToListAsync();
 	}
 

@@ -14,13 +14,17 @@ public class TextSynthesisService
     private readonly ITextSynthesisRepository _textSynthesisRepository;
     private readonly HearingBooksDbContext _context;
     private readonly ISynthesisPricingService _synthesisPricingService;
+    private readonly IVoiceRepository _voiceRepository;
+    private readonly ILanguageRepository _languageRepository;
 
-    public TextSynthesisService(ISpeechService speechService, ITextSynthesisRepository textSynthesisRepository, HearingBooksDbContext context, ISynthesisPricingService synthesisPricingService)
+    public TextSynthesisService(ISpeechService speechService, ITextSynthesisRepository textSynthesisRepository, HearingBooksDbContext context, ISynthesisPricingService synthesisPricingService, IVoiceRepository voiceRepository, ILanguageRepository languageRepository)
     {
         _speechService = speechService;
         _textSynthesisRepository = textSynthesisRepository;
         _context = context;
         _synthesisPricingService = synthesisPricingService;
+        _voiceRepository = voiceRepository;
+        _languageRepository = languageRepository;
     }
 
     public async Task<Guid> CreateRequest(TextSynthesisData data, User requestingUser, Guid requestId)
@@ -65,19 +69,20 @@ public class TextSynthesisService
                 synthesisRequest
             );
 
-            // var textSynthesisData = new TextSynthesisData(request.Title, containerName, synthesisFilePath);
-
+            var language = await _languageRepository.GetBySymbol(data.Language);
+            var voice = await _voiceRepository.GetVoiceByName(data.Voice);
+            
             var textSynthesis = new TextSynthesis
             {
                 Id = requestId,
-                RequestingUserId = requestingUser.Id,
+                User = requestingUser,
                 Status = TextSynthesisStatus.Submitted,
                 // TextSynthesisData = textSynthesisData
                 Title = data.Title,
                 SynthesisText = data.TextToSynthesize,
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
-                Voice = data.Voice,
+                Voice = voice,
                 Language = new Language(),
                 CharacterCount = data.TextToSynthesize.Length,
                 DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)

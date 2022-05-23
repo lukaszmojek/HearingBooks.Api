@@ -28,12 +28,12 @@ public class DownloadDialogueSynthesisFileEndpoint : Endpoint<DowloadDialogueSyn
                 
 		var synthesis = await _dialogueSynthesisRepository.GetById(request.SynthesisId);
 
-		if (synthesis.RequestingUserId != requestingUser.Id)
+		if (synthesis.User.Id != requestingUser.Id)
 		{
 		    await SendForbiddenAsync(cancellationToken);
 		}
 
-		var containerClient = await _storageService.GetBlobContainerClientAsync(synthesis.RequestingUserId.ToString());
+		var containerClient = await _storageService.GetBlobContainerClientAsync(synthesis.User.Id.ToString());
 		var blobClient = containerClient.GetBlobClient(synthesis.BlobName);
 
 		var blob = blobClient.DownloadContent();

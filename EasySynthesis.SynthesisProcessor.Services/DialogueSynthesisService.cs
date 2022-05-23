@@ -12,17 +12,21 @@ public class DialogueSynthesisService
 {
     private readonly ISpeechService _speechService;
     private readonly IDialogueSynthesisRepository _dialogueSynthesisRepository;
+    private readonly ILanguageRepository _languageRepository;
+    private readonly IVoiceRepository _voiceRepository;
     private readonly HearingBooksDbContext _context;
     private readonly ISynthesisPricingService _synthesisPricingService;
 
     public static string LineSeparator = "---";
     
-    public DialogueSynthesisService(ISpeechService speechService, IDialogueSynthesisRepository dialogueSynthesisRepository, HearingBooksDbContext context, ISynthesisPricingService synthesisPricingService)
+    public DialogueSynthesisService(ISpeechService speechService, IDialogueSynthesisRepository dialogueSynthesisRepository, HearingBooksDbContext context, ISynthesisPricingService synthesisPricingService, IUserRepository userRepository, ILanguageRepository languageRepository, IVoiceRepository voiceRepository)
     {
         _speechService = speechService;
         _dialogueSynthesisRepository = dialogueSynthesisRepository;
         _context = context;
         _synthesisPricingService = synthesisPricingService;
+        _languageRepository = languageRepository;
+        _voiceRepository = voiceRepository;
     }
 
     public async Task<Guid> CreateRequest(DialogueSynthesisData data, User requestingUser, Guid requestId)
@@ -75,18 +79,22 @@ public class DialogueSynthesisService
                 synthesisRequest
             );
 
+            var language = await _languageRepository.GetBySymbol(data.Language);
+            var firstSpeakerVoice = await _voiceRepository.GetVoiceByName(data.FirstSpeakerVoice);
+            var secondSpeakerVoice = await _voiceRepository.GetVoiceByName(data.SecondSpeakerVoice);
+            
             var dialogueSynthesis = new DialogueSynthesis()
             {
                 Id = requestId,
-                RequestingUserId = requestingUser.Id,
+                User = requestingUser,
                 Status = DialogueSynthesisStatus.Submitted,
                 Title = data.Title,
                 DialogueText = data.DialogueText,
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
-                FirstSpeakerVoice = data.FirstSpeakerVoice,
-                SecondSpeakerVoice = data.SecondSpeakerVoice,
-                Language = data.Language,
+                FirstSpeakerVoice = firstSpeakerVoice,
+                SecondSpeakerVoice = secondSpeakerVoice,
+                Language = language,
                 CharacterCount = synthesisCharacterCount,
                 DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName),
                 PriceInUsd = synthesisPrice

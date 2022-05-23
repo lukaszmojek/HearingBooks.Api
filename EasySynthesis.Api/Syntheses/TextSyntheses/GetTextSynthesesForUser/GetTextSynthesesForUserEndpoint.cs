@@ -44,14 +44,14 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 			.Select(synthesis => new TextSynthesisDto
 			{
 				Id = synthesis.Id,
-				RequestingUserId = synthesis.RequestingUserId,
+				RequestingUserId = synthesis.User.Id,
 				Status = synthesis.Status,
 				Title = synthesis.Title,
 				SynthesisText = synthesis.SynthesisText,
 				BlobContainerName = synthesis.BlobContainerName,
 				BlobName = synthesis.BlobName,
 				Language = "",
-				Voice = synthesis.Voice
+				Voice = synthesis.Voice.Name
 			});
 	
 		await SendAsync(synthesesDto, 200, ct);
