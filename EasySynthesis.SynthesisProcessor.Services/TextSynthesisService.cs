@@ -78,7 +78,7 @@ public class TextSynthesisService
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
                 Voice = data.Voice,
-                Language = data.Language,
+                Language = new Language(),
                 CharacterCount = data.TextToSynthesize.Length,
                 DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
             };
