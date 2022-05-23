@@ -32,8 +32,12 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        UserName = "shaggy",
 		        Email = "lukasz@hb.com",
 		        Password = _password, 
-		        EmailNotificationsEnabled = true,
-		        EmailIsUsername = false,
+		        Preference = new Preference()
+		        {
+			        EmailNotificationsEnabled = false,
+			        AcrylicEnabled = true,
+			        Language = "pl"
+		        },
 		        IsActive = true,
 		        Type = UserType.HearingBooks,
 		        Balance = 0
@@ -45,9 +49,13 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        LastName = "Mojek",
 		        UserName = "user",
 		        Email = "user@email.com",
-		        Password = _password, 
-		        EmailNotificationsEnabled = true,
-		        EmailIsUsername = true,
+		        Password = _password,
+		        Preference = new Preference()
+		        {
+			        EmailNotificationsEnabled = true,
+					AcrylicEnabled = true,
+					Language = "en"
+		        },
 		        IsActive = true,
 		        Type = UserType.PayAsYouGo,
 		        Balance = 100
@@ -60,8 +68,12 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 			    UserName = "test user",
 			    Email = "test@email.com",
 			    Password = _password, 
-			    EmailNotificationsEnabled = true,
-			    EmailIsUsername = true,
+			    Preference = new Preference()
+			    {
+				    EmailNotificationsEnabled = true,
+				    AcrylicEnabled = true,
+				    Language = "pl"
+			    },
 			    IsActive = true,
 			    Type = UserType.PayAsYouGo,
 			    Balance = 50

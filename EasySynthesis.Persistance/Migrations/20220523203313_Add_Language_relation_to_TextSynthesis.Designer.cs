@@ -3,6 +3,7 @@ using System;
 using EasySynthesis.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HearingBooks.Persistance.Migrations
 {
     [DbContext(typeof(HearingBooksDbContext))]
-    partial class HearingBooksDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220523203313_Add_Language_relation_to_TextSynthesis")]
+    partial class Add_Language_relation_to_TextSynthesis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

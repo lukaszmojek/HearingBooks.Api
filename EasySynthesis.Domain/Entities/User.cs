@@ -13,9 +13,8 @@ public class User : Entity<Guid>
     public string Email { get; set; }
     //TODO: Change Password to password hash
     public string Password { get; set; }
-    public bool EmailNotificationsEnabled { get; set; }
-    public bool EmailIsUsername { get; set; }
     public double Balance { get; set; }
+    public virtual Preference Preference { get; set; }
 
     public User()
     {
@@ -46,7 +45,7 @@ public class User : Entity<Guid>
     public bool HasBalanceToCreateRequest(double synthesisCost) => Balance >= synthesisCost;
 
     public bool ShouldGetEmailNotification() =>
-        (Email, EmailNotificationsEnabled) switch
+        (Email, Preference.EmailNotificationsEnabled) switch
         {
             ("", true) => false,
             (_, true) => true,

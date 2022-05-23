@@ -50,7 +50,7 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 				SynthesisText = synthesis.SynthesisText,
 				BlobContainerName = synthesis.BlobContainerName,
 				BlobName = synthesis.BlobName,
-				Language = synthesis.Language,
+				Language = "",
 				Voice = synthesis.Voice
 			});
 	
