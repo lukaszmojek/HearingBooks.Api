@@ -8,6 +8,7 @@ public static class IServiceCollectionExtensions
 	public static void RegisterRepositories(this IServiceCollection services)
 	{
 		services.AddScoped<IUserRepository, UserRepository>();
+		services.AddScoped<IVoiceRepository, VoiceRepository>();
 		services.AddScoped<ILanguageRepository, LanguageRepository>();
 		services.AddScoped<ITextSynthesisRepository, TextSynthesisRepository>();
 		services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();

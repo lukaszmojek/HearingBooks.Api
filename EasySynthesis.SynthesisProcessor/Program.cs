@@ -5,7 +5,6 @@ using EasySynthesis.Services;
 using EasySynthesis.Services.Speech;
 using EasySynthesis.SynthesisProcessor;
 using MassTransit;
-using MassTransit.Futures.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 var builder = Host.CreateDefaultBuilder(args);

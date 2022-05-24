@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using EasySynthesis.Api.Core.Auth;
 using EasySynthesis.Api.Core.Configuration;
 using EasySynthesis.Api.Core.Responses;
+using EasySynthesis.Domain.Entities;
+using EasySynthesis.Domain.ValueObjects.User;
 using EasySynthesis.Infrastructure.Repositories;
 using FastEndpoints;
 
@@ -46,6 +48,12 @@ public class LoginEndpoint : Endpoint<LoginUserRequest>
 				throw new ArgumentException(errorMessage);
 			}
 
+			// user = new User
+			// {
+			// 	Id = Guid.NewGuid(),
+			// 	FirstName = "luki",
+			// 	Type = UserType.HearingBooks
+			// };
 			var token = _userService.Authenticate(user);
 			
 			// var jwtToken = JWTBearer.CreateToken(

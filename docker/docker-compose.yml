@@ -32,6 +32,18 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+        
+  mail:
+    image: bytemark/smtp
+    container_name: mail
+    restart: always
+    ports:
+      - "25:25"
+    environment:
+      RELAY_HOST: smtp-relay.sendinblue.com
+      RELAY_PORT: 587
+      RELAY_USERNAME: lukasz.mojek@gmail.com
+      RELAY_PASSWORD: 0ypCIQATcnENd8Vs
 
 volumes:
   azurite:

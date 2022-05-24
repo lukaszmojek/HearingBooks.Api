@@ -12,11 +12,13 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 {
 	readonly ITextSynthesisRepository _textSynthesisRepository;
 	readonly IMapper _mapper;
+	private readonly IBus _bus;
 	
-	public GetTextSynthesesForUserEndpoint(ITextSynthesisRepository textSynthesisRepository, IMapper mapper)
+	public GetTextSynthesesForUserEndpoint(ITextSynthesisRepository textSynthesisRepository, IMapper mapper, IBus bus)
 	{
 		_textSynthesisRepository = textSynthesisRepository;
 		_mapper = mapper;
+		_bus = bus;
 	}
 
 	public override void Configure()
@@ -32,6 +34,11 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 		var syntheses = await _textSynthesisRepository.GetAllForUser(requestingUser.Id);
 		var synthesesDto = _mapper.Map<IEnumerable<TextSynthesisDto>>(syntheses);
 
+		await _bus.Publish(new SendMailNotification()
+		{
+			RequestId = Guid.NewGuid(), TextSynthesisData = new TextSynthesisData(),
+			UserEmail = "lukasz.mojek@gmail.com", UserId = Guid.NewGuid()
+		});
 		await SendAsync(synthesesDto, 200, ct);
 	}
 	
