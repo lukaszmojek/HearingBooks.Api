@@ -26,7 +26,6 @@ public class TextSynthesisRequestedConsumer :
 		var message = context.Message;
 		
 		_logger.LogInformation($"Consumed {nameof(TextSynthesisRequested)} message for user with id: {message.UserId}");
-
 		var user = await _userRepository.GetUserByIdAsync(message.UserId);
 		_ = await _textSynthesisService.CreateRequest(message.TextSynthesisData, user, message.RequestId);
 
