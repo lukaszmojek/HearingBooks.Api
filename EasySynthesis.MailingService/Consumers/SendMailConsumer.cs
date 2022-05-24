@@ -5,7 +5,7 @@ using MassTransit;
 namespace EasySynthesis.MailingService.Consumers;
 
 public class SendMailConsumer :
-	IConsumer<SendMailNotification>
+	IConsumer<SendMailNotificationAboutTextSynthesis>
 {
 	readonly ILogger<SendMailConsumer> _logger;
 	readonly IFluentEmail _fluentEmail;
@@ -16,11 +16,11 @@ public class SendMailConsumer :
 		_fluentEmail = fluentEmail;
 	}
 
-	public async Task Consume(ConsumeContext<SendMailNotification> context)
+	public async Task Consume(ConsumeContext<SendMailNotificationAboutTextSynthesis> context)
 	{
 		var message = context.Message;
 		
-		_logger.LogInformation($"Consumed {nameof(SendMailNotification)} message for user with id: {message.UserId}");
+		_logger.LogInformation($"Consumed {nameof(SendMailNotificationAboutTextSynthesis)} message for user with id: {message.UserId}");
 
 		var email = await _fluentEmail
 			// .To(message.UserEmail)

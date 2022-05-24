@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EasySynthesis.Domain\EasySynthesis.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

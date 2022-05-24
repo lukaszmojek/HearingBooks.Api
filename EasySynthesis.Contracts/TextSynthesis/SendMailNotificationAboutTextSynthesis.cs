@@ -1,6 +1,6 @@
 namespace EasySynthesis.Contracts.TextSynthesis;
 
-public class SendMailNotification
+public class SendMailNotificationAboutTextSynthesis
 {
     public Guid UserId { get; set; }
     public string UserEmail { get; set; }

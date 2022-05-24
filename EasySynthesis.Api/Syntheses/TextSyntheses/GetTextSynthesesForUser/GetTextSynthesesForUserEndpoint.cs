@@ -33,34 +33,29 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 
 		var syntheses = await _textSynthesisRepository.GetAllForUser(requestingUser.Id);
 		var synthesesDto = _mapper.Map<IEnumerable<TextSynthesisDto>>(syntheses);
-
-		await _bus.Publish(new SendMailNotification()
-		{
-			RequestId = Guid.NewGuid(), TextSynthesisData = new TextSynthesisData(),
-			UserEmail = "lukasz.mojek@gmail.com", UserId = Guid.NewGuid()
-		});
+		
 		await SendAsync(synthesesDto, 200, ct);
 	}
 	
-	public async Task HandleAsync2(CancellationToken ct)
-	{
-		var requestingUser = (User) HttpContext.Items["User"];
-
-		var syntheses = await _textSynthesisRepository.GetAllForUser(requestingUser.Id);
-		var synthesesDto = syntheses
-			.Select(synthesis => new TextSynthesisDto
-			{
-				Id = synthesis.Id,
-				RequestingUserId = synthesis.User.Id,
-				Status = synthesis.Status,
-				Title = synthesis.Title,
-				SynthesisText = synthesis.SynthesisText,
-				BlobContainerName = synthesis.BlobContainerName,
-				BlobName = synthesis.BlobName,
-				Language = "",
-				Voice = synthesis.Voice.Name
-			});
-	
-		await SendAsync(synthesesDto, 200, ct);
-	}
+	// public async Task HandleAsync2(CancellationToken ct)
+	// {
+	// 	var requestingUser = (User) HttpContext.Items["User"];
+	//
+	// 	var syntheses = await _textSynthesisRepository.GetAllForUser(requestingUser.Id);
+	// 	var synthesesDto = syntheses
+	// 		.Select(synthesis => new TextSynthesisDto
+	// 		{
+	// 			Id = synthesis.Id,
+	// 			RequestingUserId = synthesis.User.Id,
+	// 			Status = synthesis.Status,
+	// 			Title = synthesis.Title,
+	// 			SynthesisText = synthesis.SynthesisText,
+	// 			BlobContainerName = synthesis.BlobContainerName,
+	// 			BlobName = synthesis.BlobName,
+	// 			Language = "",
+	// 			Voice = synthesis.Voice.Name
+	// 		});
+	//
+	// 	await SendAsync(synthesesDto, 200, ct);
+	// }
 }
