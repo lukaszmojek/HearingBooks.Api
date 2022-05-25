@@ -8,5 +8,13 @@ name: easysynthesis
 services:
 - name: easysynthesis-api
   project: EasySynthesis.Api/EasySynthesis.Api.csproj
+  bindings:
+    - port: 7134
 - name: easysynthesis-synthesisprocessor
   project: EasySynthesis.SynthesisProcessor/EasySynthesis.SynthesisProcessor.csproj
+- name: easysynthesis-mailingservice
+  project: EasySynthesis.MailingService/EasySynthesis.MailingService.csproj
+- name: easysynthesis-livenotifications
+  project: EasySynthesis.LiveNotifications/EasySynthesis.LiveNotifications.csproj
+  bindings:
+    - port: 7275
