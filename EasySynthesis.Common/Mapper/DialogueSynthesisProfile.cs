@@ -19,7 +19,10 @@ public class DialogueSynthesisProfile : Profile
 				options => options.MapFrom(x => x.FirstSpeakerVoice.Name))
 			.ForMember(
 				destination => destination.SecondSpeakerVoice, 
-				options => options.MapFrom(x => x.SecondSpeakerVoice.Name));
+				options => options.MapFrom(x => x.SecondSpeakerVoice.Name))
+			.ForMember(
+				destination => destination.RequestingUserId, 
+				options => options.MapFrom(x => x.User.Id));
 		CreateMap<DialogueSyntehsisRequest, DialogueSynthesisData>();
 	}
 }

@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using EasySynthesis.Api.Core.Auth;
 using EasySynthesis.Api.Core.Configuration;
 using EasySynthesis.Api.Core.Responses;
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.User;
 using EasySynthesis.Infrastructure.Repositories;
 using FastEndpoints;
 

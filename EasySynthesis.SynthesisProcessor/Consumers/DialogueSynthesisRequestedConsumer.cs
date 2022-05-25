@@ -1,6 +1,7 @@
-﻿using EasySynthesis.Contracts.DialogueSynthesis;
+﻿using AutoMapper;
+using EasySynthesis.Api.Syntheses.DialogueSyntheses;
+using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Contracts.TextSynthesis;
-using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Services;
 using MassTransit;
 
@@ -11,13 +12,15 @@ public class DialogueSynthesisRequestedConsumer :
 {
     readonly ILogger<DialogueSynthesisRequestedConsumer> _logger;
     readonly DialogueSynthesisService _dialogueSynthesisService;
-    readonly IUserRepository _userRepository;
+    readonly IMapper _mapper;
+    readonly IBus _bus;
 
-    public DialogueSynthesisRequestedConsumer(ILogger<DialogueSynthesisRequestedConsumer> logger, DialogueSynthesisService dialogueSynthesisService, IUserRepository userRepository)
+    public DialogueSynthesisRequestedConsumer(ILogger<DialogueSynthesisRequestedConsumer> logger, DialogueSynthesisService dialogueSynthesisService, IMapper mapper, IBus bus)
     {
         _logger = logger;
         _dialogueSynthesisService = dialogueSynthesisService;
-        _userRepository = userRepository;
+        _mapper = mapper;
+        _bus = bus;
     }
 
     public async Task Consume(ConsumeContext<DialogueSynthesisRequested> context)
@@ -26,9 +29,12 @@ public class DialogueSynthesisRequestedConsumer :
 		
         _logger.LogInformation($"Consumed {nameof(TextSynthesisRequested)} message for user with id: {message.UserId}");
 
-        var user = await _userRepository.GetUserByIdAsync(message.UserId);
-        _ = await _dialogueSynthesisService.CreateRequest(message.DialogueSynthesisData, user, message.RequestId);
+        var dialogueSynthesis = await _dialogueSynthesisService.CreateRequest(message.DialogueSynthesisData, message.UserId, message.RequestId);
+        var dialogueSynthesisDto = _mapper.Map<DialogueSynthesisDto>(dialogueSynthesis);
 
+        var liveNotificationMessage = new SendLiveNotificationAboutDialogueSynthesis { UserId = message.UserId, DialogueSynthesis = dialogueSynthesisDto };
+        await _bus.Publish(liveNotificationMessage);
+        
         _logger.LogInformation($"TextSynthesis with id: {message.RequestId} and title: {message.DialogueSynthesisData.Title} was successfully created!");
     }
 }

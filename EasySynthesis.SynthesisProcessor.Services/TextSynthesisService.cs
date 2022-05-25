@@ -17,8 +17,9 @@ public class TextSynthesisService
     private readonly ISynthesisPricingService _synthesisPricingService;
     private readonly IVoiceRepository _voiceRepository;
     private readonly ILanguageRepository _languageRepository;
+    private readonly IUserRepository _userRepository;
 
-    public TextSynthesisService(ISpeechService speechService, ITextSynthesisRepository textSynthesisRepository, HearingBooksDbContext context, ISynthesisPricingService synthesisPricingService, IVoiceRepository voiceRepository, ILanguageRepository languageRepository)
+    public TextSynthesisService(ISpeechService speechService, ITextSynthesisRepository textSynthesisRepository, HearingBooksDbContext context, ISynthesisPricingService synthesisPricingService, IVoiceRepository voiceRepository, ILanguageRepository languageRepository, IUserRepository userRepository)
     {
         _speechService = speechService;
         _textSynthesisRepository = textSynthesisRepository;
@@ -26,10 +27,13 @@ public class TextSynthesisService
         _synthesisPricingService = synthesisPricingService;
         _voiceRepository = voiceRepository;
         _languageRepository = languageRepository;
+        _userRepository = userRepository;
     }
 
-    public async Task<Guid> CreateRequest(TextSynthesisData data, User requestingUser, Guid requestId)
+    public async Task<TextSynthesis> CreateRequest(TextSynthesisData data, Guid requestingUserId, Guid requestId)
     {
+        var requestingUser = await _userRepository.GetUserByIdAsync(requestingUserId);
+
         if (requestingUser.CanRequestDialogueSynthesis() is false)
         {
             throw new Exception($"Users of type {requestingUser.Type} cannot create TextSyntheses!");
@@ -96,6 +100,8 @@ public class TextSynthesisService
 
             await _textSynthesisRepository.Insert(textSynthesis);
             await _context.SaveChangesAsync();
+            
+            return textSynthesis;
         }
         catch (Exception e)
         {
@@ -109,7 +115,5 @@ public class TextSynthesisService
                 File.Delete(synthesisFilePath);
             }
         }
-
-        return requestId;
     }
 }

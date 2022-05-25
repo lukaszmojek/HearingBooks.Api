@@ -1,6 +1,6 @@
-using EasySynthesis.Contracts;
+using AutoMapper;
+using EasySynthesis.Api.Syntheses.TextSyntheses;
 using EasySynthesis.Contracts.TextSynthesis;
-using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Services;
 using MassTransit;
 
@@ -11,13 +11,15 @@ public class TextSynthesisRequestedConsumer :
 {
 	readonly ILogger<TextSynthesisRequestedConsumer> _logger;
 	readonly TextSynthesisService _textSynthesisService;
-	readonly IUserRepository _userRepository;
+	readonly IMapper _mapper;
+	readonly IBus _bus;
 
-	public TextSynthesisRequestedConsumer(ILogger<TextSynthesisRequestedConsumer> logger, TextSynthesisService textSynthesisService, IUserRepository userRepository)
+	public TextSynthesisRequestedConsumer(ILogger<TextSynthesisRequestedConsumer> logger, TextSynthesisService textSynthesisService, IMapper mapper, IBus bus)
 	{
 		_logger = logger;
 		_textSynthesisService = textSynthesisService;
-		_userRepository = userRepository;
+		_mapper = mapper;
+		_bus = bus;
 	}
 
 	public async Task Consume(ConsumeContext<TextSynthesisRequested> context)
@@ -26,33 +28,12 @@ public class TextSynthesisRequestedConsumer :
 		
 		_logger.LogInformation($"Consumed {nameof(TextSynthesisRequested)} message for user with id: {message.UserId}");
 		
-		var user = await _userRepository.GetUserByIdAsync(message.UserId);
-		_ = await _textSynthesisService.CreateRequest(message.TextSynthesisData, user, message.RequestId);
+		var textSynthesis = await _textSynthesisService.CreateRequest(message.TextSynthesisData, message.UserId, message.RequestId);
+		var textSynthesisDto = _mapper.Map<TextSynthesisDto>(textSynthesis);
 
+		var liveNotificationMessage = new SendLiveNotificationAboutTextSynthesis { UserId = message.UserId, TextSynthesis = textSynthesisDto };
+		await _bus.Publish(liveNotificationMessage);
+		
 		_logger.LogInformation($"TextSynthesis with id: {message.RequestId} and title: {message.TextSynthesisData.Title} was successfully created!");
 	}
 }
-
-// public class UserRequestedTextSynthesisConsumerDefinition :
-// 	ConsumerDefinition<UserRequestedTextSynthesisConsumer>
-// {
-// 	public UserRequestedTextSynthesisConsumerDefinition()
-// 	{
-// 		// override the default endpoint name
-// 		EndpointName = "order-service";
-//
-// 		// limit the number of messages consumed concurrently
-// 		// this applies to the consumer only, not the endpoint
-// 		ConcurrentMessageLimit = 8;
-// 	}
-//
-// 	protected override void ConfigureConsumer(IReceiveEndpointConfigurator endpointConfigurator,
-// 		IConsumerConfigurator<UserRequestedTextSynthesisConsumer> consumerConfigurator)
-// 	{
-// 		// configure message retry with millisecond intervals
-// 		endpointConfigurator.UseMessageRetry(r => r.Intervals(100,200,500,800,1000));
-//
-// 		// use the outbox to prevent duplicate events from being published
-// 		endpointConfigurator.UseInMemoryOutbox();
-// 	}
-// }

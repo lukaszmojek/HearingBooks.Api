@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EasySynthesis.Common\EasySynthesis.Common.csproj" />
       <ProjectReference Include="..\EasySynthesis.Contracts\EasySynthesis.Contracts.csproj" />
       <ProjectReference Include="..\EasySynthesis.MassTransit\EasySynthesis.MassTransit.csproj" />
     </ItemGroup>

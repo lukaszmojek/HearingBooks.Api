@@ -17,6 +17,7 @@ public class DialogueSynthesisService
     private readonly IVoiceRepository _voiceRepository;
     private readonly HearingBooksDbContext _context;
     private readonly ISynthesisPricingService _synthesisPricingService;
+    private readonly IUserRepository _userRepository;
 
     public static string LineSeparator = "---";
     
@@ -26,12 +27,15 @@ public class DialogueSynthesisService
         _dialogueSynthesisRepository = dialogueSynthesisRepository;
         _context = context;
         _synthesisPricingService = synthesisPricingService;
+        _userRepository = userRepository;
         _languageRepository = languageRepository;
         _voiceRepository = voiceRepository;
     }
 
-    public async Task<Guid> CreateRequest(DialogueSynthesisData data, User requestingUser, Guid requestId)
+    public async Task<DialogueSynthesis> CreateRequest(DialogueSynthesisData data, Guid requestingUserId, Guid requestId)
     {
+        var requestingUser = await _userRepository.GetUserByIdAsync(requestingUserId);
+
         if (requestingUser.CanRequestDialogueSynthesis() is false)
         {
             throw new Exception($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
@@ -108,6 +112,8 @@ public class DialogueSynthesisService
             
             await _dialogueSynthesisRepository.Insert(dialogueSynthesis);
             await _context.SaveChangesAsync();
+
+            return dialogueSynthesis;
         }
         catch (Exception e)
         {
@@ -121,8 +127,6 @@ public class DialogueSynthesisService
                 File.Delete(synthesisFilePath);
             }
         }
-
-        return requestId;
     }
 
     public IEnumerable<(string, int)> SplitDialogueIntoLines(string dialogueText) =>

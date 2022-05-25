@@ -1,5 +1,6 @@
 using EasySynthesis.Api.Core.Auth;
 using EasySynthesis.Api.Core.Configuration;
+using EasySynthesis.Api.Mapper;
 using EasySynthesis.Api.Storage;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.MassTransit;
@@ -41,7 +42,7 @@ builder.Services.AddScoped<ISynthesisPricingService, SynthesisPricingService>();
 
 builder.Services.RegisterRepositories();
 
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(TextSynthesisProfile));
 
 var app = builder.Build();
 

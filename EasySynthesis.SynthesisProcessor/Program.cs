@@ -1,3 +1,4 @@
+using EasySynthesis.Api.Mapper;
 using EasySynthesis.Api.Storage;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Persistance;
@@ -27,6 +28,8 @@ IHost host = builder
 			
 			services.RegisterRepositories();
 			
+			services.AddAutoMapper(typeof(TextSynthesisProfile));
+
 			services.AddScoped<ISpeechService, SpeechService>();
 			services.AddScoped<IStorageService, StorageService>();
 			services.AddScoped<IFileService, FileService>();

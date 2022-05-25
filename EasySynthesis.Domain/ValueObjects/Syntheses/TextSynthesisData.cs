@@ -1,6 +1,3 @@
-using EasySynthesis.Domain.DDD;
-using Microsoft.EntityFrameworkCore;
-
 namespace EasySynthesis.Domain.ValueObjects.Syntheses;
 
 // [Owned]

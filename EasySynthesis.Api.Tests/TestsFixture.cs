@@ -1,8 +1,6 @@
 using EasySynthesis.Api.Core.Auth;
 using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Api.Speech;
 using EasySynthesis.Api.Storage;
-using EasySynthesis.Api.Syntheses.TextSyntheses;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;

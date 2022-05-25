@@ -59,7 +59,7 @@ app.UseCors("CorsPolicy");
 app.UseFileServer();
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapHub<TextSynthesesHub>("/syntheses");
+    endpoints.MapHub<SynthesesHub>("/syntheses");
 });
 
 app.Run();

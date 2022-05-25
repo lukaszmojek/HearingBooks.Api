@@ -1,8 +1,5 @@
 using System;
-using System.Linq;
 using EasySynthesis.Api.Seed;
-using EasySynthesis.Api.Speech;
-using EasySynthesis.Api.Syntheses.DialogueSyntheses;
 using EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;

@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Configuration;
-
 namespace EasySynthesis.Api.Core.Configuration;
 
 public class SynthesisProcessorConfiguration : ISynthesisProcessorConfiguration

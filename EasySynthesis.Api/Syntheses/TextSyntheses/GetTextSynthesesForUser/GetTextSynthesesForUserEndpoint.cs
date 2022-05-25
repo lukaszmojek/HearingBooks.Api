@@ -1,9 +1,6 @@
 using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Contracts.TextSynthesis;
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.MassTransit;
 using MassTransit;
 
 namespace EasySynthesis.Api.Syntheses.TextSyntheses.GetTextSynthesesForUser;

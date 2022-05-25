@@ -9,18 +9,19 @@ public class SendLiveNotificationAboutTextSynthesisConsumer :
     IConsumer<SendLiveNotificationAboutTextSynthesis>
 {
     readonly ILogger<SendLiveNotificationAboutTextSynthesisConsumer> _logger;
-    public IHubContext<TextSynthesesHub> SynthesesHubContext { get; }
+    public IHubContext<SynthesesHub> TextSynthesesHubContext { get; }
 	
-    public SendLiveNotificationAboutTextSynthesisConsumer(ILogger<SendLiveNotificationAboutTextSynthesisConsumer> logger, IHubContext<TextSynthesesHub> synthesesHubContext)
+    public SendLiveNotificationAboutTextSynthesisConsumer(ILogger<SendLiveNotificationAboutTextSynthesisConsumer> logger, IHubContext<SynthesesHub> textSynthesesHubContext)
     {
         _logger = logger;
-        SynthesesHubContext = synthesesHubContext;
+        TextSynthesesHubContext = textSynthesesHubContext;
     }
 
     public async Task Consume(ConsumeContext<SendLiveNotificationAboutTextSynthesis> context)
     {
         var message = context.Message;
-        _logger.LogInformation($"Consumed {nameof(SendLiveNotificationAboutTextSynthesisConsumer)}");
-        await SynthesesHubContext.Clients.All.SendAsync("messageReceived", "dupa", "fior");
+        
+        _logger.LogInformation($"Consumed {nameof(SendLiveNotificationAboutTextSynthesis)}");
+        await TextSynthesesHubContext.Clients.All.SendAsync("text-synthesis-updated", message.UserId, message.TextSynthesis);
     }
 }
