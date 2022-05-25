@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Domain.ValueObjects.Syntheses;
@@ -83,7 +84,12 @@ public class DialogueSynthesisService
             var firstSpeakerVoice = await _voiceRepository.GetVoiceByName(data.FirstSpeakerVoice);
             var secondSpeakerVoice = await _voiceRepository.GetVoiceByName(data.SecondSpeakerVoice);
             
-            var dialogueSynthesis = new DialogueSynthesis()
+            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            var durationInSeconds = isWindows
+                ? data.DialogueText.Length / (16000 * 1 * 16 / 8)
+                : await AudioFileHelper.TryGettingDuration(synthesisFileName);
+            
+            var dialogueSynthesis = new DialogueSynthesis
             {
                 Id = requestId,
                 User = requestingUser,
@@ -96,7 +102,7 @@ public class DialogueSynthesisService
                 SecondSpeakerVoice = secondSpeakerVoice,
                 Language = language,
                 CharacterCount = synthesisCharacterCount,
-                DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName),
+                DurationInSeconds = durationInSeconds,
                 PriceInUsd = synthesisPrice
             };
             

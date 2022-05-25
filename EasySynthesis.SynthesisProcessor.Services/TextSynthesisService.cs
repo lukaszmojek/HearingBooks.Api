@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using EasySynthesis.Contracts.TextSynthesis;
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Domain.ValueObjects.Syntheses;
@@ -72,6 +73,11 @@ public class TextSynthesisService
             var language = await _languageRepository.GetBySymbol(data.Language);
             var voice = await _voiceRepository.GetVoiceByName(data.Voice);
             
+            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            var durationInSeconds = isWindows
+                ? data.TextToSynthesize.Length / (16000 * 1 * 16 / 8)
+                : await AudioFileHelper.TryGettingDuration(synthesisFileName);
+            
             var textSynthesis = new TextSynthesis
             {
                 Id = requestId,
@@ -83,9 +89,9 @@ public class TextSynthesisService
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
                 Voice = voice,
-                Language = new Language(),
+                Language = language,
                 CharacterCount = data.TextToSynthesize.Length,
-                DurationInSeconds = await AudioFileHelper.TryGettingDuration(synthesisFileName)
+                DurationInSeconds = durationInSeconds
             };
 
             await _textSynthesisRepository.Insert(textSynthesis);

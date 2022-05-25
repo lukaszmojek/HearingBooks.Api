@@ -1,14 +1,10 @@
 using System.Diagnostics;
-
 namespace EasySynthesis.Infrastructure;
 
 public static class AudioFileHelper
 {
 	public static async Task<int> TryGettingDuration(string fileName)
 	{
-		// var fileInfo = new FileInfo(blobName);
-		// var lenghtInSeconds = fileInfo.Length / (16000 * 1 * 16 / 8);
-        
 		Process process = new Process
 		{
 			StartInfo = new ProcessStartInfo
