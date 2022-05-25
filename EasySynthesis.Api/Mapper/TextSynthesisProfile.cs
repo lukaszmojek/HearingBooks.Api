@@ -1,4 +1,5 @@
 using AutoMapper;
+using Baseline.ImTools;
 using EasySynthesis.Api.Syntheses.TextSyntheses;
 using EasySynthesis.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
 using EasySynthesis.Contracts.TextSynthesis;
@@ -12,7 +13,13 @@ public class TextSynthesisProfile : Profile
 {
 	public TextSynthesisProfile()
 	{
-		CreateMap<TextSynthesis, TextSynthesisDto>();
+		CreateMap<TextSynthesis, TextSynthesisDto>()
+			.ForMember(
+				destination => destination.Language, 
+				options => options.MapFrom(x => x.Language.Name))
+			.ForMember(
+				destination => destination.Voice, 
+				options => options.MapFrom(x => x.Voice.Name));
 		CreateMap<TextSynthesisRequest, TextSynthesisData>();
 	}
 }

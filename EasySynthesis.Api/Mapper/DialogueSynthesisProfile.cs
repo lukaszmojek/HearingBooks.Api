@@ -10,7 +10,16 @@ public class DialogueSynthesisProfile : Profile
 {
 	public DialogueSynthesisProfile()
 	{
-		CreateMap<DialogueSynthesis, DialogueSynthesisDto>();
+		CreateMap<DialogueSynthesis, DialogueSynthesisDto>()
+			.ForMember(
+				destination => destination.Language, 
+				options => options.MapFrom(x => x.Language.Name))
+			.ForMember(
+				destination => destination.FirstSpeakerVoice, 
+				options => options.MapFrom(x => x.FirstSpeakerVoice.Name))
+			.ForMember(
+				destination => destination.SecondSpeakerVoice, 
+				options => options.MapFrom(x => x.SecondSpeakerVoice.Name));
 		CreateMap<DialogueSyntehsisRequest, DialogueSynthesisData>();
 	}
 }
