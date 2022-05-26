@@ -23,11 +23,11 @@ public class TextSynthesisService
     {
         _speechService = speechService;
         _textSynthesisRepository = textSynthesisRepository;
-        _context = context;
         _synthesisPricingService = synthesisPricingService;
         _voiceRepository = voiceRepository;
         _languageRepository = languageRepository;
         _userRepository = userRepository;
+        _context = context;
     }
 
     public async Task<TextSynthesis> CreateRequest(TextSynthesisData data, Guid requestingUserId, Guid requestId)

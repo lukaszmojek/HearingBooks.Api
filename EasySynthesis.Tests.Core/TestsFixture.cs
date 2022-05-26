@@ -4,6 +4,8 @@ using EasySynthesis.Api.Storage;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;
+using EasySynthesis.Services;
+using EasySynthesis.Services.Speech;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,9 +47,7 @@ public static class TestsFixture
 		
 		builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 		
-		builder.Services.AddScoped<IDialogueSynthesisRepository, DialogueSynthesisRepository>();
-		builder.Services.AddScoped<IUserRepository, UserRepository>();
-		builder.Services.AddScoped<ISynthesisPricingRepository, SynthesisPricingRepository>();
+		builder.Services.RegisterRepositories();
 
 		_app = builder.Build();
 	}

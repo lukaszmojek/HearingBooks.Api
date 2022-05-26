@@ -1,9 +1,13 @@
 using System;
+using System.Linq;
 using EasySynthesis.Api.Seed;
 using EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
+using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;
+using EasySynthesis.Services;
+using EasySynthesis.Services.Speech;
 using Xunit;
 
 namespace EasySynthesis.Api.Tests.Syntheses;
@@ -32,7 +36,10 @@ public class DialogeSynthesisServiceTests
 			TestsFixture.GetService<ISpeechService>(),
 			TestsFixture.GetService<IDialogueSynthesisRepository>(),
 			TestsFixture.GetService<HearingBooksDbContext>(),
-			TestsFixture.GetService<ISynthesisPricingService>()
+			TestsFixture.GetService<ISynthesisPricingService>(),
+			TestsFixture.GetService<IUserRepository>(),
+			TestsFixture.GetService<ILanguageRepository>(),
+			TestsFixture.GetService<IVoiceRepository>()
 		);
 	}
 	
@@ -53,7 +60,7 @@ public class DialogeSynthesisServiceTests
 	[Fact]
 	public async void CreateRequest_Should_CreateDialogueSynthesis()
 	{
-		var dialogueSynthesisRequest = new DialogueSyntehsisRequest
+		var dialogueSynthesisRequest = new DialogueSynthesisData()
 		{
 			DialogueText = DialogueText(),
 			FirstSpeakerVoice = "pl-PL-AgnieszkaNeural",
@@ -62,10 +69,15 @@ public class DialogeSynthesisServiceTests
 			Title = "Test Dialogue Synthesis"
 		};
 
-		var requestingUser = await _userRepository.GetUserByIdAsync(SeedConfig.TestUserId);
+		var requestId = Guid.NewGuid();
 			
-		var requestId = await _dialogueSynthesisService.CreateRequest(dialogueSynthesisRequest, requestingUser);
+		var request = await _dialogueSynthesisService.CreateRequest(dialogueSynthesisRequest, SeedConfig.TestUserId, requestId);
 		
-		Assert.NotEqual(requestId, Guid.Empty);
+		Assert.Equal(requestId, request.Id);
+		Assert.Equal(dialogueSynthesisRequest.Title, request.Title);
+		Assert.Equal(dialogueSynthesisRequest.DialogueText, request.DialogueText);
+		Assert.Equal(dialogueSynthesisRequest.FirstSpeakerVoice, request.FirstSpeakerVoice.Name);
+		Assert.Equal(dialogueSynthesisRequest.SecondSpeakerVoice, request.SecondSpeakerVoice.Name);
+		Assert.Equal(dialogueSynthesisRequest.Language, request.Language.Symbol);
 	}
 }
