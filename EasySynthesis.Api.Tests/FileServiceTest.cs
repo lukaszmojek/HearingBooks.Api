@@ -30,6 +30,8 @@ public class FileServiceTest
         (var writer, _) = fileService.CreateTextFile(fileName);
         
         await fileService.WriteToTextFileAsync(writer, content);
+        writer.Close();
+        
         var fileContent = await File.ReadAllTextAsync(_filePath(fileName));
         
         Assert.Equal(content, fileContent);
