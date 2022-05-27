@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Storage;
+namespace EasySynthesis.Services.Core.Storage;
 
 public interface IFileService
 {

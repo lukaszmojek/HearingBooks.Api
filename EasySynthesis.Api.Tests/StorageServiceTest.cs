@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Api.Storage;
+using EasySynthesis.Services.Core.Storage;
 using EasySynthesis.Tests.Core;
 using Microsoft.Extensions.Configuration;
 using Xunit;
@@ -33,9 +33,7 @@ public class StorageServiceTest {
                  .AddJsonFile("appsettings.Development.json")
                  .Build();
     
-             var apiConfiguration = new ApiConfiguration(configuration);
-    
-             StorageService = new StorageService(apiConfiguration);
+             StorageService = new StorageService(configuration);
 
              await DeleteContainerIfExists();
          }

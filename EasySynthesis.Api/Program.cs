@@ -1,10 +1,10 @@
 using EasySynthesis.Api.Core.Auth;
 using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Api.Mapper;
-using EasySynthesis.Api.Storage;
+using EasySynthesis.Common.Mapper;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.MassTransit;
 using EasySynthesis.Persistance;
+using EasySynthesis.Services.Core.Storage;
 using FastEndpoints.Swagger;
 using Microsoft.EntityFrameworkCore;
 

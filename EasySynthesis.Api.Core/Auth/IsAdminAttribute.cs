@@ -15,7 +15,7 @@ public class IsAdminAttribute : Attribute, IAuthorizationFilter
     {
         var user = context.User();
 
-        if (user?.Type != UserType.HearingBooks)
+        if (user?.Type != UserType.EasySynthesis)
             context.Result = new JsonResult(new {message = "Forbidden"})
             {
                 StatusCode = StatusCodes.Status403Forbidden

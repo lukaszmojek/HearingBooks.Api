@@ -1,4 +1,5 @@
 using AutoMapper;
+using EasySynthesis.Contracts;
 using EasySynthesis.Contracts.TextSynthesis;
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Domain.ValueObjects.Syntheses;

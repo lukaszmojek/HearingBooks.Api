@@ -5,12 +5,12 @@ namespace EasySynthesis.Api.Tests.Helpers;
 
 public static class ConfigurationHelpers
 {
-    public static IApiConfiguration CreateConfiguration()
+    public static IConfiguration CreateConfiguration()
     {
         var configuration = new ConfigurationManager()
             .AddJsonFile("appsettings.Development.json")
             .Build();
 
-        return new ApiConfiguration(configuration);
+        return configuration;
     }
 }

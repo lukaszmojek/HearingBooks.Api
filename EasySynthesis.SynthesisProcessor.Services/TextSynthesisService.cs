@@ -87,7 +87,6 @@ public class TextSynthesisService
                 Id = requestId,
                 User = requestingUser,
                 Status = TextSynthesisStatus.Submitted,
-                // TextSynthesisData = textSynthesisData
                 Title = data.Title,
                 SynthesisText = data.TextToSynthesize,
                 BlobContainerName = containerName,
@@ -100,7 +99,7 @@ public class TextSynthesisService
 
             await _textSynthesisRepository.Insert(textSynthesis);
             await _context.SaveChangesAsync();
-            
+
             return textSynthesis;
         }
         catch (Exception e)

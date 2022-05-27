@@ -1,4 +1,5 @@
 using AutoMapper;
+using EasySynthesis.Contracts;
 using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Domain.Entities;
 using MassTransit;

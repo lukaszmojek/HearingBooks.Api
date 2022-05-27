@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Domain.Entities;
+using EasySynthesis.Domain.Exceptions;
 using EasySynthesis.Domain.ValueObjects.Syntheses;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
@@ -38,7 +39,7 @@ public class DialogueSynthesisService
 
         if (requestingUser.CanRequestDialogueSynthesis() is false)
         {
-            throw new Exception($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
+            throw new EasySynthesisUserCannotCreateSynthesisException($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
         }
 
         var synthesisCharacterCount = data.DialogueText.Length;
@@ -49,7 +50,7 @@ public class DialogueSynthesisService
 
         if (requestingUser.HasBalanceToCreateRequest(synthesisPrice) is false)
         {
-            throw new Exception($@"User with id {requestingUser.Id} and Balance of {requestingUser.Balance} 
+            throw new UserDoesNotHaveBalanceToCreateSynthesisException($@"User with id {requestingUser.Id} and Balance of {requestingUser.Balance} 
                 tried to request DialogueSynthesis worth {synthesisPrice}");
         }
 

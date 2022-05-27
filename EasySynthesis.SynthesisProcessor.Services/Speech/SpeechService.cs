@@ -1,5 +1,5 @@
-using EasySynthesis.Api;
-using EasySynthesis.Api.Storage;
+using EasySynthesis.Common;
+using EasySynthesis.Services.Core.Storage;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 using Microsoft.Extensions.Configuration;

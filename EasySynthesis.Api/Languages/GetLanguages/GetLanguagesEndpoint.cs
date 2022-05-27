@@ -1,4 +1,5 @@
 using AutoMapper;
+using EasySynthesis.Contracts;
 using EasySynthesis.Infrastructure.Repositories;
 
 namespace EasySynthesis.Api.Languages.GetLanguages;

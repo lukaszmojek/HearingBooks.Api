@@ -1,6 +1,6 @@
 using System.IO;
 using System.Threading.Tasks;
-using EasySynthesis.Api.Storage;
+using EasySynthesis.Services.Core.Storage;
 using Xunit;
 
 namespace EasySynthesis.Api.Tests;

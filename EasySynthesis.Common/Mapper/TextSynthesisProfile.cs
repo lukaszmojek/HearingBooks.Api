@@ -1,12 +1,11 @@
 using AutoMapper;
-using EasySynthesis.Api.Syntheses.TextSyntheses;
-using EasySynthesis.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
+using EasySynthesis.Contracts;
 using EasySynthesis.Contracts.TextSynthesis;
 using EasySynthesis.Domain.Entities;
 
 #pragma warning disable CS1591
 
-namespace EasySynthesis.Api.Mapper;
+namespace EasySynthesis.Common.Mapper;
 
 public class TextSynthesisProfile : Profile
 {

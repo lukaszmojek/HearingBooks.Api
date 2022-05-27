@@ -1,16 +1,14 @@
-using System;
-using System.Linq;
 using EasySynthesis.Api.Seed;
-using EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
 using EasySynthesis.Contracts.DialogueSynthesis;
+using EasySynthesis.Domain.Exceptions;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;
 using EasySynthesis.Services;
 using EasySynthesis.Services.Speech;
-using Xunit;
+using EasySynthesis.Tests.Core;
 
-namespace EasySynthesis.Api.Tests.Syntheses;
+namespace EasySynthesis.SynthesisProcessor.Tests;
 
 public class DialogeSynthesisServiceTests
 {
@@ -79,5 +77,39 @@ public class DialogeSynthesisServiceTests
 		Assert.Equal(dialogueSynthesisRequest.FirstSpeakerVoice, request.FirstSpeakerVoice.Name);
 		Assert.Equal(dialogueSynthesisRequest.SecondSpeakerVoice, request.SecondSpeakerVoice.Name);
 		Assert.Equal(dialogueSynthesisRequest.Language, request.Language.Symbol);
+	}
+	
+	[Fact]
+	public async void CreateRequest_Should_Throw_EasySynthesisUserCannotCreateSynthesisException_When_User_Is_Of_Type_EasySynthesis()
+	{
+		var dialogueSynthesisRequest = new DialogueSynthesisData()
+		{
+			DialogueText = DialogueText(),
+			FirstSpeakerVoice = "pl-PL-AgnieszkaNeural",
+			SecondSpeakerVoice = "pl-PL-MarekNeural",
+			Language = "pl-PL",
+			Title = "Test Dialogue Synthesis"
+		};
+
+		var requestId = Guid.NewGuid();
+			
+		await Assert.ThrowsAsync<EasySynthesisUserCannotCreateSynthesisException>(async () => await _dialogueSynthesisService.CreateRequest(dialogueSynthesisRequest, SeedConfig.TestEasySynthesisId, requestId));
+	}
+	
+	[Fact]
+	public async void CreateRequest_Should_Throw_UserDoesNotHaveBalanceToCreateSynthesisException_When_UserDoes_Not_Have_Balance_To_Create_Synthesis()
+	{
+		var dialogueSynthesisRequest = new DialogueSynthesisData()
+		{
+			DialogueText = new string('c', 1_000_000_000),
+			FirstSpeakerVoice = "pl-PL-AgnieszkaNeural",
+			SecondSpeakerVoice = "pl-PL-MarekNeural",
+			Language = "pl-PL",
+			Title = "Test Dialogue Synthesis"
+		};
+
+		var requestId = Guid.NewGuid();
+			
+		await Assert.ThrowsAsync<UserDoesNotHaveBalanceToCreateSynthesisException>(async () => await _dialogueSynthesisService.CreateRequest(dialogueSynthesisRequest, SeedConfig.TestUserId, requestId));
 	}
 }

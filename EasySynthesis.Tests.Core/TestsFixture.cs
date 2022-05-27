@@ -1,17 +1,16 @@
 using EasySynthesis.Api.Core.Auth;
 using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Api.Storage;
 using EasySynthesis.Infrastructure;
-using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;
 using EasySynthesis.Services;
+using EasySynthesis.Services.Core.Storage;
 using EasySynthesis.Services.Speech;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EasySynthesis.Api.Tests;
+namespace EasySynthesis.Tests.Core;
 
 public static class TestsFixture
 {

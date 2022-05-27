@@ -1,9 +1,10 @@
 using Azure;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using EasySynthesis.Common;
 using Microsoft.Extensions.Configuration;
 
-namespace EasySynthesis.Api.Storage;
+namespace EasySynthesis.Services.Core.Storage;
 
 public class StorageService : IStorageService
 {

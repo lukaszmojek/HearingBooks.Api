@@ -7,7 +7,7 @@ namespace EasySynthesis.Domain.Tests;
 public class UsersTests
 {
 	[Theory]
-	[InlineData(UserType.HearingBooks, false)]
+	[InlineData(UserType.EasySynthesis, false)]
 	[InlineData(UserType.PayAsYouGo, true)]
 	public void CanRequestTextSynthesis_Should_Return_Correct_Value_For_UserType(UserType userType, bool expectedResult)
 	{
@@ -19,7 +19,7 @@ public class UsersTests
 	}
 	
 	[Theory]
-	[InlineData(UserType.HearingBooks, false)]
+	[InlineData(UserType.EasySynthesis, false)]
 	[InlineData(UserType.PayAsYouGo, true)]
 	public void CanRequestDialogueSynthesis_Should_Return_Correct_Value_For_UserType(UserType userType, bool expectedResult)
 	{
@@ -31,7 +31,7 @@ public class UsersTests
 	}
 	
 	[Theory]
-	[InlineData(UserType.HearingBooks, false)]
+	[InlineData(UserType.EasySynthesis, false)]
 	[InlineData(UserType.PayAsYouGo, true)]
 	public void CanTopUpAccount_Should_Return_Correct_Value_For_UserType(UserType userType, bool expectedResult)
 	{
@@ -58,7 +58,13 @@ public class UsersTests
 	[Fact]
 	public void ShouldGetEmailNotification_Should_Return_True_When_User_Email_Specified_And_Has_EmailNotificationsEnabled_Set_To_True()
 	{
-		var user = new User { Email = "email", EmailNotificationsEnabled = true };
+		var user = new User { 
+			Email = "email", 
+			Preference = new Preference()
+			{
+				EmailNotificationsEnabled = true
+			} 
+		};
 
 		var result = user.ShouldGetEmailNotification();
 
@@ -68,7 +74,11 @@ public class UsersTests
 	[Fact]
 	public void ShouldGetEmailNotification_Should_Return_False_When_User_Does_Not_Have_Email_Specified_And_Has_EmailNotificationsEnabled_Set_To_True()
 	{
-		var user = new User { Email = "", EmailNotificationsEnabled = true };
+		var user = new User { Email = "", 
+			Preference = new Preference()
+			{
+				EmailNotificationsEnabled = true
+			}  };
 
 		var result = user.ShouldGetEmailNotification();
 
@@ -78,7 +88,11 @@ public class UsersTests
 	[Fact]
 	public void ShouldGetEmailNotification_Should_Return_False_When_User_Email_Specified_And_Has_EmailNotificationsEnabled_Set_To_False()
 	{
-		var user = new User { Email = "email", EmailNotificationsEnabled = false };
+		var user = new User { Email = "email",
+			Preference = new Preference()
+			{
+				EmailNotificationsEnabled = false
+			}  };
 
 		var result = user.ShouldGetEmailNotification();
 

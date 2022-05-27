@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api;
+namespace EasySynthesis.Common;
 
 public static class ConfigurationKeys
 {

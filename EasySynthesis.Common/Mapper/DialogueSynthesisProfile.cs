@@ -1,10 +1,9 @@
 using AutoMapper;
-using EasySynthesis.Api.Syntheses.DialogueSyntheses;
-using EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
+using EasySynthesis.Contracts;
 using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Domain.Entities;
 
-namespace EasySynthesis.Api.Mapper;
+namespace EasySynthesis.Common.Mapper;
 
 public class DialogueSynthesisProfile : Profile
 {

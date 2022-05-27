@@ -1,8 +1,8 @@
 using AutoMapper;
-using EasySynthesis.Api.Languages.GetLanguages;
+using EasySynthesis.Contracts;
 using EasySynthesis.Domain.Entities;
 
-namespace EasySynthesis.Api.Mapper;
+namespace EasySynthesis.Common.Mapper;
 
 public class VoiceProfile : Profile
 {

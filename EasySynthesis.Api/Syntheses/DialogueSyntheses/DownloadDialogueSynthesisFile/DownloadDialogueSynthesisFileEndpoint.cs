@@ -1,7 +1,7 @@
-using EasySynthesis.Api.Storage;
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Infrastructure.Repositories;
+using EasySynthesis.Services.Core.Storage;
 
 namespace EasySynthesis.Api.Syntheses.DialogueSyntheses.DownloadDialogueSynthesisFile;
 

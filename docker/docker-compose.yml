@@ -40,10 +40,10 @@ services:
     ports:
       - "25:25"
     environment:
-      RELAY_HOST: smtp-relay.sendinblue.com
-      RELAY_PORT: 587
-      RELAY_USERNAME: lukasz.mojek@gmail.com
-      RELAY_PASSWORD: 0ypCIQATcnENd8Vs
+      RELAY_HOST: smtp.sendgrid.net
+      RELAY_PORT: 465
+      RELAY_USERNAME: apikey
+      RELAY_PASSWORD: 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
 
 volumes:
   azurite:
