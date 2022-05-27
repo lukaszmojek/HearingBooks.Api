@@ -34,7 +34,9 @@ public class UserService : IUserService
                 new[]
                 {
                     new Claim("id", user.Id.ToString()),
-                    new Claim("name", user.FirstName),
+                    new Claim("firstName", user.FirstName),
+                    new Claim("lastName", user.LastName),
+                    new Claim("email", user.Email),
                     new Claim("role", user.Type.ToString())
                 }
             ),
