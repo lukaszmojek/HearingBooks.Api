@@ -27,7 +27,7 @@ public class SendMailConsumer :
 
 		var template = 
 			$"Hi {message.UserName},\n"
-			+ $"We are informing you, that your Synthesis of title {message.SynthesisTitle} was successfully processed.\n"
+			+ $"We are informing you, that your Synthesis of title '{message.SynthesisTitle}' was successfully processed.\n"
 			+ "Log in to the platform to access it.\n"
 			+ "\n"
 			+ "Cheers,\n"
@@ -35,7 +35,7 @@ public class SendMailConsumer :
 
 		var email = await _fluentEmail
 			.To(message.UserEmail)
-			.Subject($"Your TextSynthesis with title {message.SynthesisTitle} was processed!")
+			.Subject($"Your TextSynthesis with title '{message.SynthesisTitle}' was processed!")
 			.Tag("SynthesisNotification")
 			.Body(template)
 			.SendAsync();
