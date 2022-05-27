@@ -39,7 +39,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 			        Language = "pl"
 		        },
 		        IsActive = true,
-		        Type = UserType.HearingBooks,
+		        Type = UserType.EasySynthesis,
 		        Balance = 0
 		    },
 		    new()
@@ -76,6 +76,24 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 			    },
 			    IsActive = true,
 			    Type = UserType.PayAsYouGo,
+			    Balance = 50
+		    },
+		    new()
+		    {
+			    Id = SeedConfig.TestEasySynthesisId,
+			    FirstName = "Łukasz",
+			    LastName = "Mojek",
+			    UserName = "test user",
+			    Email = "test@email.com",
+			    Password = _password, 
+			    Preference = new Preference()
+			    {
+				    EmailNotificationsEnabled = true,
+				    AcrylicEnabled = true,
+				    Language = "pl"
+			    },
+			    IsActive = true,
+			    Type = UserType.EasySynthesis,
 			    Balance = 50
 		    }
 		};
