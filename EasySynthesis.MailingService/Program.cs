@@ -38,9 +38,10 @@ IHost host = Host.CreateDefaultBuilder(args)
         });
         
         services
-            .AddFluentEmail("no-reply@easy-synthesis.com")
-            .AddSmtpSender("localhost", 25);
-        
+            .AddFluentEmail("easy-synthesis@pm.me")
+            .AddSendGridSender("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")
+            .AddRazorRenderer(typeof(Program));
+
         services.AddHostedService<Worker>();
     })
     .Build();

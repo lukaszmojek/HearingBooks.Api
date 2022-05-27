@@ -1,5 +1,3 @@
-using EasySynthesis.Api.Syntheses.TextSyntheses;
-
 namespace EasySynthesis.Contracts.TextSynthesis;
 
 public class SendLiveNotificationAboutTextSynthesis

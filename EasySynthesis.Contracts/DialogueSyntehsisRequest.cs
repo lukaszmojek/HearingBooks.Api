@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
+namespace EasySynthesis.Contracts;
 
 public class DialogueSyntehsisRequest
 {

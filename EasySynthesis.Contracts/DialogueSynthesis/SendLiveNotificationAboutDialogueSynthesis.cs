@@ -1,6 +1,4 @@
-using EasySynthesis.Api.Syntheses.DialogueSyntheses;
-
-namespace EasySynthesis.Contracts.TextSynthesis;
+namespace EasySynthesis.Contracts.DialogueSynthesis;
 
 public class SendLiveNotificationAboutDialogueSynthesis
 {

@@ -1,17 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=de452b2b_002D5c05_002D4dc6_002Db9bd_002D0fa09ca129e7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Or&gt;&#xD;
-    &lt;Project Location="\home\shaggy\repos\HearingBooks" Presentation="&amp;lt;tests&amp;gt;" /&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;xUnit::0C366588-6CAA-4219-94EF-C6274BEE3C1A::net6.0::HearingBooks.Api.Tests.StorageServiceTest+When_CreateContainer_Is_Called_Should_Create_Container_In_AzureBlobStorage&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::0C366588-6CAA-4219-94EF-C6274BEE3C1A::net6.0::HearingBooks.Api.Tests.StorageServiceTest&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::0C366588-6CAA-4219-94EF-C6274BEE3C1A::net6.0::HearingBooks.Api.Tests.Syntheses.DialogeSynthesisServiceTests.SplitDialogueIntoLines_Should_PerformCorrectSplit&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::0C366588-6CAA-4219-94EF-C6274BEE3C1A::net6.0::HearingBooks.Api.Tests.Syntheses.DialogeSynthesisServiceTests.CreateRequest_Should_CreateDialogueSynthesis&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::0C366588-6CAA-4219-94EF-C6274BEE3C1A::net6.0::HearingBooks.Api.Tests.Syntheses.DialogeSynthesisServiceTests&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::DDBDDBBB-D0A0-4CCD-96A8-A611C312A11C::net6.0::HearingBooks.Domain.Tests.UsersTests.CanRequestTextSynthesis_Should_Return_Correct_Value_For_Type&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::DDBDDBBB-D0A0-4CCD-96A8-A611C312A11C::net6.0::HearingBooks.Domain.Tests.UsersTests&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::16DC8B79-18D9-4F9D-91B9-EA823E696D88::net6.0::HearingBooks.Infrastructure.Tests.SynthesisPricingServiceTests.GetPriceForSynthesis_Should_Return_1_Cent_When_SynthesisType_Is_TextSynthesis_And_Text_Is_Short&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;xUnit::16DC8B79-18D9-4F9D-91B9-EA823E696D88::net6.0::HearingBooks.Infrastructure.Tests.SynthesisPricingServiceTests&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
-  &lt;/Or&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

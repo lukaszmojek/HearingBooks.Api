@@ -1,6 +1,6 @@
 using EasySynthesis.Domain.ValueObjects.Syntheses;
 
-namespace EasySynthesis.Api.Syntheses.DialogueSyntheses;
+namespace EasySynthesis.Contracts;
 
 public class DialogueSynthesisDto
 {

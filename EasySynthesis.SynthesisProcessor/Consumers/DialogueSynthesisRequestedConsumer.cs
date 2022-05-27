@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using EasySynthesis.Api.Syntheses.DialogueSyntheses;
+using EasySynthesis.Contracts;
 using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.Contracts.TextSynthesis;
+using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Services;
 using MassTransit;
 
@@ -12,15 +13,17 @@ public class DialogueSynthesisRequestedConsumer :
 {
     readonly ILogger<DialogueSynthesisRequestedConsumer> _logger;
     readonly DialogueSynthesisService _dialogueSynthesisService;
+    readonly IUserRepository _userRepository;
     readonly IMapper _mapper;
     readonly IBus _bus;
 
-    public DialogueSynthesisRequestedConsumer(ILogger<DialogueSynthesisRequestedConsumer> logger, DialogueSynthesisService dialogueSynthesisService, IMapper mapper, IBus bus)
+    public DialogueSynthesisRequestedConsumer(ILogger<DialogueSynthesisRequestedConsumer> logger, DialogueSynthesisService dialogueSynthesisService, IMapper mapper, IBus bus, IUserRepository userRepository)
     {
         _logger = logger;
         _dialogueSynthesisService = dialogueSynthesisService;
         _mapper = mapper;
         _bus = bus;
+        _userRepository = userRepository;
     }
 
     public async Task Consume(ConsumeContext<DialogueSynthesisRequested> context)
@@ -35,6 +38,21 @@ public class DialogueSynthesisRequestedConsumer :
         var liveNotificationMessage = new SendLiveNotificationAboutDialogueSynthesis { UserId = message.UserId, DialogueSynthesis = dialogueSynthesisDto };
         await _bus.Publish(liveNotificationMessage);
         
-        _logger.LogInformation($"TextSynthesis with id: {message.RequestId} and title: {message.DialogueSynthesisData.Title} was successfully created!");
+        var requestingUser = await _userRepository.GetUserByIdAsync(message.UserId);
+        if (requestingUser.Preference.EmailNotificationsEnabled)
+        {
+            await _bus.Publish(
+                new SendMailNotificationAboutSynthesis
+                {
+                    UserId = requestingUser.Id,
+                    UserEmail = requestingUser.Email,
+                    UserName = requestingUser.FirstName,
+                    RequestId = dialogueSynthesis.Id,
+                    SynthesisTitle = dialogueSynthesis.Title,
+                }
+            );
+        }
+        
+        _logger.LogInformation($"DialogueSynthesis with id: {message.RequestId} and title: {message.DialogueSynthesisData.Title} was successfully processed!");
     }
 }

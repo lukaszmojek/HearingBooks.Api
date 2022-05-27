@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Syntheses.TextSyntheses.RequestTextSynthesis;
+namespace EasySynthesis.Contracts;
 
 public class TextSynthesisRequest
 {

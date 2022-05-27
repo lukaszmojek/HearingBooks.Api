@@ -62,6 +62,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySynthesis.LiveNotificat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySynthesis.SynthesisProcessor.Services.Tests", "EasySynthesis.SynthesisProcessor.Services.Tests\EasySynthesis.SynthesisProcessor.Services.Tests.csproj", "{4C3D1A41-692A-465F-925E-EB38E7E3A6D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySynthesis.Console", "EasySynthesis.Console\EasySynthesis.Console.csproj", "{741087E7-3734-4F1B-BB51-62A6A92A7E75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +197,12 @@ Global
 		{4C3D1A41-692A-465F-925E-EB38E7E3A6D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C3D1A41-692A-465F-925E-EB38E7E3A6D6}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C3D1A41-692A-465F-925E-EB38E7E3A6D6}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{741087E7-3734-4F1B-BB51-62A6A92A7E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741087E7-3734-4F1B-BB51-62A6A92A7E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741087E7-3734-4F1B-BB51-62A6A92A7E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741087E7-3734-4F1B-BB51-62A6A92A7E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{741087E7-3734-4F1B-BB51-62A6A92A7E75}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{741087E7-3734-4F1B-BB51-62A6A92A7E75}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5A962FAD-5775-486F-8440-706B65777FAB} = {639166BA-72EA-444E-9381-C7F71A72DD11}
@@ -226,5 +234,6 @@ Global
 		{57651342-1491-4F00-92A0-808FC49B60A5} = {23F90B3D-4774-4E46-B846-A35F87B9F4F0}
 		{4C3D1A41-692A-465F-925E-EB38E7E3A6D6} = {2B9A1DDE-DBEF-40B6-863A-3469CBF72AA7}
 		{846628A1-63E2-4262-BEED-C8B41B97C220} = {78F1F06D-4668-4B8A-A79A-4B90A59BE8F7}
+		{741087E7-3734-4F1B-BB51-62A6A92A7E75} = {639166BA-72EA-444E-9381-C7F71A72DD11}
 	EndGlobalSection
 EndGlobal

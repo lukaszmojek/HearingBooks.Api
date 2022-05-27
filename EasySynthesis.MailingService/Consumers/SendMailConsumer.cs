@@ -1,11 +1,13 @@
+using EasySynthesis.Contracts;
 using EasySynthesis.Contracts.TextSynthesis;
+using EasySynthesis.Domain.ValueObjects.Syntheses;
 using FluentEmail.Core;
 using MassTransit;
 
 namespace EasySynthesis.MailingService.Consumers;
 
 public class SendMailConsumer :
-	IConsumer<SendMailNotificationAboutTextSynthesis>
+	IConsumer<SendMailNotificationAboutSynthesis>
 {
 	readonly ILogger<SendMailConsumer> _logger;
 	readonly IFluentEmail _fluentEmail;
@@ -16,26 +18,35 @@ public class SendMailConsumer :
 		_fluentEmail = fluentEmail;
 	}
 
-	public async Task Consume(ConsumeContext<SendMailNotificationAboutTextSynthesis> context)
+	public async Task Consume(ConsumeContext<SendMailNotificationAboutSynthesis> context)
 	{
 		var message = context.Message;
-		
-		_logger.LogInformation($"Consumed {nameof(SendMailNotificationAboutTextSynthesis)} message for user with id: {message.UserId}");
+
+		_logger.LogInformation(
+			$"Consumed {nameof(SendMailNotificationAboutSynthesis)} message for user with id: {message.UserId}");
+
+		var template = 
+			$"Hi {message.UserName},\n"
+			+ $"We are informing you, that your Synthesis of title {message.SynthesisTitle} was successfully processed.\n"
+			+ "Log in to the platform to access it.\n"
+			+ "\n"
+			+ "Cheers,\n"
+			+ "EasySynthesis";
 
 		var email = await _fluentEmail
-			// .To(message.UserEmail)
-			.To("lukasz.mojek@gmail.com")
-			.Subject("Hej Darka Koparka!")
-			.Body("Testujemy!")
+			.To(message.UserEmail)
+			.Subject($"Your TextSynthesis with title {message.SynthesisTitle} was processed!")
+			.Tag("SynthesisNotification")
+			.Body(template)
 			.SendAsync();
 
 		var logMessage = "Email sent!";
 		
 		if (!email.Successful)
 		{
-			logMessage = "ERROR!";
+			logMessage = email.ErrorMessages.Aggregate((x, y) => $"{x}\n{y}");
 		}
-		
+
 		_logger.LogInformation(logMessage);
 	}
 }

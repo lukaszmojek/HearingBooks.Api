@@ -1,6 +1,6 @@
 using EasySynthesis.Domain.ValueObjects.Voice;
 
-namespace EasySynthesis.Api.Languages.GetLanguages;
+namespace EasySynthesis.Contracts;
 
 public record struct VoiceDto
 {

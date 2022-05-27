@@ -1,4 +1,4 @@
-using EasySynthesis.Contracts.TextSynthesis;
+using EasySynthesis.Contracts.DialogueSynthesis;
 using EasySynthesis.LiveNotifications.Hubs;
 using MassTransit;
 using Microsoft.AspNetCore.SignalR;

@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Core.Configuration;
+namespace EasySynthesis.SynthesisProcessor.Configuration;
 
 public interface ISynthesisProcessorConfiguration
 {

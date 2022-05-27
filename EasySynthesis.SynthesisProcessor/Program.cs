@@ -1,8 +1,8 @@
-using EasySynthesis.Api.Mapper;
-using EasySynthesis.Api.Storage;
+using EasySynthesis.Common.Mapper;
 using EasySynthesis.Infrastructure;
 using EasySynthesis.Persistance;
 using EasySynthesis.Services;
+using EasySynthesis.Services.Core.Storage;
 using EasySynthesis.Services.Speech;
 using EasySynthesis.SynthesisProcessor;
 using MassTransit;
