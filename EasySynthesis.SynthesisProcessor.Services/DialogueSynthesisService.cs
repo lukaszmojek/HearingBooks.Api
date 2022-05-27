@@ -111,6 +111,7 @@ public class DialogueSynthesisService
                 PriceInUsd = synthesisPrice
             };
             
+            requestingUser.Balance -= synthesisPrice;
             await _dialogueSynthesisRepository.Insert(dialogueSynthesis);
             await _context.SaveChangesAsync();
 
