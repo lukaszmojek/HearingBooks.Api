@@ -41,7 +41,7 @@ public class TextSynthesisService
 
         var synthesisCharacterCount = data.TextToSynthesize.Length;
         var synthesisPrice = await _synthesisPricingService.GetPriceForSynthesis(
-            SynthesisType.DialogueSynthesis,
+            SynthesisType.TextSynthesis,
             synthesisCharacterCount
         );
 
@@ -79,7 +79,7 @@ public class TextSynthesisService
             
             var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
             var durationInSeconds = isWindows
-                ? data.TextToSynthesize.Length / (16000 * 1 * 16 / 8)
+                ? data.TextToSynthesize.Split(' ').Length / 3
                 : await AudioFileHelper.TryGettingDuration(synthesisFileName);
             
             var textSynthesis = new TextSynthesis
@@ -94,6 +94,7 @@ public class TextSynthesisService
                 Voice = voice,
                 Language = language,
                 CharacterCount = data.TextToSynthesize.Length,
+                PriceInUsd = synthesisPrice,
                 DurationInSeconds = durationInSeconds
             };
 

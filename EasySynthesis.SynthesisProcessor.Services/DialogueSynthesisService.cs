@@ -91,7 +91,7 @@ public class DialogueSynthesisService
             
             var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
             var durationInSeconds = isWindows
-                ? data.DialogueText.Length / (16000 * 1 * 16 / 8)
+                ? data.DialogueText.Split(' ').Length / 3
                 : await AudioFileHelper.TryGettingDuration(synthesisFileName);
             
             var dialogueSynthesis = new DialogueSynthesis
