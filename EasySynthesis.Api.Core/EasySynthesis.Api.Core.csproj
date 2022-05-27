@@ -8,7 +8,6 @@
     <ItemGroup>
       <ProjectReference Include="..\EasySynthesis.Domain\EasySynthesis.Domain.csproj" />
       <ProjectReference Include="..\EasySynthesis.Infrastructure\EasySynthesis.Infrastructure.csproj" />
-      <ProjectReference Include="..\EasySynthesis.Logic\EasySynthesis.Logic.csproj" />
       <ProjectReference Include="..\EasySynthesis.MassTransit\EasySynthesis.MassTransit.csproj" />
       <ProjectReference Include="..\EasySynthesis.Persistance\EasySynthesis.Persistance.csproj" />
     </ItemGroup>
