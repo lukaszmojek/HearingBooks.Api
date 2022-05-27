@@ -17,7 +17,9 @@ public class UserRepository : IUserRepository
 
     public async Task<User> GetUserByIdAsync(Guid userId)
     {
-        var user = _dbSet.FirstOrDefault(x => x.Id == userId);
+        var user = _dbSet
+            .Include(x => x.Preference)
+            .FirstOrDefault(x => x.Id == userId);
 
         if (user == null)
         {
