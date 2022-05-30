@@ -21,7 +21,7 @@ public class RequestTextSynthesisEndpoint : Endpoint<TextSynthesisRequest>
 	public override void Configure()
 	{
 		Post("text-syntheses");
-		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(TextSynthesisRequest request, CancellationToken cancellationToken)

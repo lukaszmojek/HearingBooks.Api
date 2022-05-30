@@ -19,7 +19,7 @@ public class DownloadDialogueSynthesisFileEndpoint : Endpoint<DowloadDialogueSyn
 	public override void Configure()
 	{
 		Get("dialogue-syntheses/{SynthesisId}");
-		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(DowloadDialogueSynthesisFileRequest request, CancellationToken cancellationToken)

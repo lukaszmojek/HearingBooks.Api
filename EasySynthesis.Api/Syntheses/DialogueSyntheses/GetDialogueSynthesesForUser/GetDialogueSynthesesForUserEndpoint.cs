@@ -19,7 +19,7 @@ public class GetDialogueSynthesesForUserEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("dialogue-syntheses");
-		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)

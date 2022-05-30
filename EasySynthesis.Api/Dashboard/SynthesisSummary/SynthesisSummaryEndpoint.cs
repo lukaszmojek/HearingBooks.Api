@@ -15,7 +15,7 @@ public class SynthesisSummaryEndpoint : Endpoint<SynthesesSummaryRequest>
 	public override void Configure()
 	{
 		Get("syntheses-summary/{UserId}");
-		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(SynthesesSummaryRequest request, CancellationToken cancellationToken)

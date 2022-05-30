@@ -20,7 +20,7 @@ public class RequestDialogueSynthesisEndpoint : Endpoint<DialogueSyntehsisReques
 	public override void Configure()
 	{
 		Post("dialogue-syntheses");
-		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(DialogueSyntehsisRequest request, CancellationToken cancellationToken)

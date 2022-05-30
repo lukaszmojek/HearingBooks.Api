@@ -16,7 +16,7 @@ public class SeedSynthesisPricingsEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("seed/synthesis-pricings");
-		Roles("HearingBooks");
+		Roles("EasySynthesis");
 	}
 	
 	public override async Task HandleAsync(CancellationToken ct)

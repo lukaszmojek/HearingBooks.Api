@@ -19,7 +19,7 @@ public class DownloadTextSynthesisFileEndpoint : Endpoint<DownloadTextSynthesisF
 	public override void Configure()
 	{
 		Get("text-syntheses/{SynthesisId}");
-		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(DownloadTextSynthesisFileRequest request, CancellationToken cancellationToken)

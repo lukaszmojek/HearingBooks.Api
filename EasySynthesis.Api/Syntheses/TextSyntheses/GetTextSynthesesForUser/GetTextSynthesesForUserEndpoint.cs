@@ -22,7 +22,7 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("text-syntheses");
-		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)
