@@ -49,8 +49,8 @@ public class UserRepository : IUserRepository
     
     static string CalculateHash(string password)
     {
-        var passwordBytes = ASCIIEncoding.ASCII.GetBytes(password);
-        var passwordHash = ByteArrayToString(new MD5CryptoServiceProvider().ComputeHash(passwordBytes));
+        var passwordBytes = Encoding.ASCII.GetBytes(password);
+        var passwordHash = ByteArrayToString(SHA512.Create().ComputeHash(passwordBytes));
 
         return passwordHash;
     }
