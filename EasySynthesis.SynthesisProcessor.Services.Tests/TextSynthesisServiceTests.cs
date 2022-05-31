@@ -46,7 +46,8 @@ public class TextSynthesisServiceTests
 
 		var requestId = Guid.NewGuid();
 			
-		var request = await _textSynthesisService.CreateRequest(textSynthesisData, SeedConfig.TestUserId, requestId);
+		var request = await _textSynthesisService.CreateRequest
+			(textSynthesisData, SeedConfig.TestUserId, requestId);
 		
 		Assert.Equal(requestId, request.Id);
 		Assert.Equal(textSynthesisData.Title, request.Title);
@@ -76,7 +77,7 @@ public class TextSynthesisServiceTests
 	{
 		var textSynthesisData = new TextSynthesisData()
 		{
-			TextToSynthesize = new string('c', 1_000_000_000),
+			TextToSynthesize = new string('c', 10_000_000),
 			Voice = "pl-PL-MarekNeural",
 			Language = "pl-PL",
 			Title = "Test Text Synthesis"
