@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using EasySynthesis.Domain.DDD;
 using EasySynthesis.Domain.ValueObjects.User;
 
@@ -11,8 +12,9 @@ public class User : Entity<Guid>
     public bool IsActive { get; set; }
     public string UserName { get; set; }
     public string Email { get; set; }
-    //TODO: Change Password to password hash
+    [NotMapped]
     public string Password { get; set; }
+    public string PasswordHash { get; set; }
     public double Balance { get; set; }
     public virtual Preference Preference { get; set; }
 

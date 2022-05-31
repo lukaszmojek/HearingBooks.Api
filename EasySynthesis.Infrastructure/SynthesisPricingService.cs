@@ -17,7 +17,7 @@ public class SynthesisPricingService
 	{
 		var synthesisPricing = await _synthesisPricingRepository.GetPricingForType(synthesisType);
 
-		var price = synthesisCharacterCount * synthesisPricing.PriceInUsdPer1MCharacters;
+		long price = synthesisCharacterCount * synthesisPricing.PriceInUsdPer1MCharacters;
 
 		var priceByMilion = price / 1_000_000;
 		

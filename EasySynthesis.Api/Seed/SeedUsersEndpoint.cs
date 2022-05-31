@@ -1,5 +1,6 @@
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Domain.ValueObjects.User;
+using EasySynthesis.Infrastructure.Repositories;
 using EasySynthesis.Persistance;
 
 namespace EasySynthesis.Api.Seed;
@@ -7,11 +8,13 @@ namespace EasySynthesis.Api.Seed;
 public class SeedUsersEndpoint : EndpointWithoutRequest
 {
 	private readonly HearingBooksDbContext _context;
+	private readonly IUserRepository _userRepository;
 	private readonly string _password = "Resubmit-Gas-Dreamland-Sizable-Relapsing-Sprinkled7-Debatable";
 	
-	public SeedUsersEndpoint(HearingBooksDbContext context)
+	public SeedUsersEndpoint(HearingBooksDbContext context, IUserRepository userRepository)
 	{
 		_context = context;
+		_userRepository = userRepository;
 	}
 
 	public override void Configure()
@@ -48,7 +51,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		        FirstName = "Łukasz",
 		        LastName = "Mojek",
 		        UserName = "user",
-		        Email = "user@email.com",
+		        Email = "lukasz.mojek@gmail.com",
 		        Password = _password,
 		        Preference = new Preference()
 		        {
@@ -100,13 +103,17 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		
 		var usersToDelete = _context.Users
 		    .AsEnumerable()
-		    .Where(entity => users.Any(user => user.Email == entity.Email));
+		    .Where(entity => users.Any(user => user.Id == entity.Id));
 		
 		_context.Users.RemoveRange(usersToDelete);
 		await _context.SaveChangesAsync();
 		
-		await _context.Users.AddRangeAsync(users);
-		await _context.SaveChangesAsync();
+		// await _context.Users.AddRangeAsync(users);
+		foreach (var user in users)
+		{
+			await _userRepository.AddAsync(user);
+			await _context.SaveChangesAsync();
+		}
 
 		await SendOkAsync();
 	}

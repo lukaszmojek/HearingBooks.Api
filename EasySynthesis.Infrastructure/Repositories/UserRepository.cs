@@ -1,4 +1,6 @@
-﻿using EasySynthesis.Domain.Entities;
+﻿using System.Security.Cryptography;
+using System.Text;
+using EasySynthesis.Domain.Entities;
 using EasySynthesis.Persistance;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,12 @@ public class UserRepository : IUserRepository
     {
         _dbContext = dbContext;
         _dbSet = _dbContext.Set<User>();
+    }
+
+    public async Task AddAsync(User user)
+    {
+        user.PasswordHash = CalculateHash(user.Password);
+        await _dbSet.AddAsync(user);
     }
 
     public async Task<User> GetUserByIdAsync(Guid userId)
@@ -31,9 +39,41 @@ public class UserRepository : IUserRepository
 
     public async Task<User> GetUserByCredentialsAsync(string email, string password)
     {
+        var passwordHash = CalculateHash(password);
+        
         var user = await _dbSet.SingleOrDefaultAsync(x => 
-            x.Email == email && x.Password == password);
+            x.Email == email && x.PasswordHash == passwordHash);
 
         return user;
+    }
+    
+    static string CalculateHash(string password)
+    {
+        var passwordBytes = ASCIIEncoding.ASCII.GetBytes(password);
+        var passwordHash = ByteArrayToString(new MD5CryptoServiceProvider().ComputeHash(passwordBytes));
+
+        return passwordHash;
+    }
+    
+    static string ByteArrayToString(byte[] arrInput)
+    {
+        int i;
+        StringBuilder sOutput = new StringBuilder(arrInput.Length);
+        for (i=0;i < arrInput.Length; i++)
+        {
+            sOutput.Append(arrInput[i].ToString("X2"));
+        }
+        return sOutput.ToString();
+    }
+
+    public async Task TopUpAsync(Guid userId, int amount)
+    {
+        var user = _dbSet
+            .Include(x => x.Preference)
+            .FirstOrDefault(x => x.Id == userId);
+
+        user.Balance += amount;
+
+        await _dbContext.SaveChangesAsync();
     }
 }

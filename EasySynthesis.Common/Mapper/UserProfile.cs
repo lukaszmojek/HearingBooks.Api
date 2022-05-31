@@ -8,6 +8,9 @@ public class UserProfile : Profile
 {
     public UserProfile()
     {
-        CreateMap<User, UserDto>();
+        CreateMap<User, UserDto>()
+            .ForSourceMember(
+                x => x.PasswordHash, 
+                opt => opt.DoNotValidate());
     }
 }
