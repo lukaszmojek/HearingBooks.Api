@@ -4,14 +4,14 @@ using Xunit;
 
 namespace EasySynthesis.Domain.Tests;
 
-public class UsersTests
+public class UserTests
 {
 	[Theory]
 	[InlineData(UserType.EasySynthesis, false)]
 	[InlineData(UserType.PayAsYouGo, true)]
 	public void CanRequestTextSynthesis_Should_Return_Correct_Value_For_UserType(UserType userType, bool expectedResult)
 	{
-		var user = new User {Type = userType};
+		var user = new User { Type = userType };
 
 		var result = user.CanRequestTextSynthesis();
 
@@ -46,9 +46,10 @@ public class UsersTests
 	[InlineData(10, 4, true)]
 	[InlineData(10, 10, true)]
 	[InlineData(10, 20, false)]
-	public void HasBalanceToCreateRequest_Should_Return_True_When_User_Has_Balance_And_False_When_Synthesis_Is_More_Expensive(double balance, double synthesisCost, bool expectedResult)
+	public void HasBalanceToCreateRequest_Should_Return_True_When_User_Has_Balance_And_False_When_Synthesis_Is_More_Expensive(
+		double balance, double synthesisCost, bool expectedResult)
 	{
-		var user = new User {Balance = balance};
+		var user = new User { Balance = balance };
 
 		var result = user.HasBalanceToCreateRequest(synthesisCost);
 
@@ -59,7 +60,7 @@ public class UsersTests
 	public void ShouldGetEmailNotification_Should_Return_True_When_User_Email_Specified_And_Has_EmailNotificationsEnabled_Set_To_True()
 	{
 		var user = new User { 
-			Email = "email", 
+			Email = "email@test.com", 
 			Preference = new Preference()
 			{
 				EmailNotificationsEnabled = true
@@ -88,7 +89,7 @@ public class UsersTests
 	[Fact]
 	public void ShouldGetEmailNotification_Should_Return_False_When_User_Email_Specified_And_Has_EmailNotificationsEnabled_Set_To_False()
 	{
-		var user = new User { Email = "email",
+		var user = new User { Email = "email@test.com",
 			Preference = new Preference()
 			{
 				EmailNotificationsEnabled = false
