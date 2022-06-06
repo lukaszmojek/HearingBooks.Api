@@ -1,4 +1,4 @@
-﻿namespace EasySynthesis.Api.Languages.GetLanguages;
+﻿namespace EasySynthesis.Contracts;
 
 public class PreferenceDto
 {

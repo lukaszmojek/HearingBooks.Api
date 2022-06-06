@@ -1,7 +1,6 @@
-using EasySynthesis.Api.Core.Configuration;
 using Microsoft.Extensions.Configuration;
 
-namespace EasySynthesis.Api.Tests.Helpers;
+namespace EasySynthesis.Tests.Core.Helpers;
 
 public static class ConfigurationHelpers
 {

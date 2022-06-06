@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EasySynthesis.Api.Languages.GetLanguages;
+using EasySynthesis.Contracts;
 using EasySynthesis.Domain.Entities;
 
 namespace EasySynthesis.Common.Mapper;

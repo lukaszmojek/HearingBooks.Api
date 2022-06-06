@@ -1,10 +1,7 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
 using EasySynthesis.Services.Core.Storage;
 using Xunit;
 
-namespace EasySynthesis.Api.Tests;
+namespace EasySynthesis.Services.Core.Tests;
 
 public class FileServiceTest
 {

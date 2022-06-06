@@ -1,6 +1,6 @@
 ﻿using EasySynthesis.Domain.ValueObjects.User;
 
-namespace EasySynthesis.Api.Languages.GetLanguages;
+namespace EasySynthesis.Contracts;
 
 public class UserDto
 {

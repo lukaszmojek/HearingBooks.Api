@@ -1,7 +1,7 @@
 using EasySynthesis.Domain.Entities;
 using EasySynthesis.Infrastructure.Repositories;
 
-namespace EasySynthesis.Api.Languages.GetLanguages;
+namespace EasySynthesis.Api.Users.TopUp;
 
 public class TopUpEndpoint : Endpoint<TopUpRequest>
 {

@@ -1,13 +1,9 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using EasySynthesis.Api.Core.Configuration;
 using EasySynthesis.Services.Core.Storage;
 using EasySynthesis.Tests.Core;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
-namespace EasySynthesis.Api.Tests;
+namespace EasySynthesis.Services.Core.Tests;
 
 public class StorageServiceTest {
      public class StorageServiceTestBase : TestBase

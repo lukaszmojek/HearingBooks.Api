@@ -1,4 +1,5 @@
 using EasySynthesis.Services.Core.Storage;
+using EasySynthesis.Tests.Core.Helpers;
 
 namespace EasySynthesis.Api.Tests.Helpers;
 

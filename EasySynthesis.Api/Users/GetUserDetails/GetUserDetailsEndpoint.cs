@@ -1,9 +1,8 @@
 using AutoMapper;
 using EasySynthesis.Contracts;
 using EasySynthesis.Domain.Entities;
-using EasySynthesis.Infrastructure.Repositories;
 
-namespace EasySynthesis.Api.Languages.GetLanguages;
+namespace EasySynthesis.Api.Users.GetUserDetails;
 
 public class GetUserDetailsEndpoint : EndpointWithoutRequest
 {
