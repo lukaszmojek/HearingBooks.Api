@@ -15,38 +15,49 @@ public class DashboardRepository : IDashboardRepository
 		var dialogueSyntheses = await _dialogueSynthesisRepository.GetAllForUser(userId);
 		var textSyntheses = await _textSynthesisRepository.GetAllForUser(userId);
 
-		var dialogueSynthesesCharacterCount = dialogueSyntheses
-			.Select(x => x.CharacterCount)
-			.Aggregate((current, next) => current + next);
+		var characterCount = 0;
+		double textSynthesesPriceInUsd = 0;
+		double dialogueSynthesesPriceInUsd = 0;
+		var durationInSeconds = 0;
 		
-		var textSynthesesCharacterCount = textSyntheses
-			.Select(x => x.CharacterCount)
-			.Aggregate((current, next) => current + next);
+		if (textSyntheses.Any())
+		{
+			characterCount += textSyntheses
+				.Select(x => x.CharacterCount)
+				.Aggregate((current, next) => current + next);
+			
+			durationInSeconds += textSyntheses
+				.Select(x => x.DurationInSeconds)
+				.Aggregate((current, next) => current + next);
+					
+			textSynthesesPriceInUsd = textSyntheses
+				.Select(x => x.PriceInUsd)
+				.Aggregate((current, next) => current + next);
+		}
 		
-		var dialogueSynthesesDurationInSeconds = dialogueSyntheses
-			.Select(x => x.DurationInSeconds)
-			.Aggregate((current, next) => current + next);
-		
-		var textSynthesesDurationInSeconds = textSyntheses
-			.Select(x => x.DurationInSeconds)
-			.Aggregate((current, next) => current + next);
-		
-		var dialgueSynthesesPriceInUsd = dialogueSyntheses
-			.Select(x => x.PriceInUsd)
-			.Aggregate((current, next) => current + next);
-		
-		var textSynthesesPriceInUsd = textSyntheses
-			.Select(x => x.PriceInUsd)
-			.Aggregate((current, next) => current + next);
-		
+		if (dialogueSyntheses.Any())
+		{
+			characterCount += dialogueSyntheses
+				.Select(x => x.CharacterCount)
+				.Aggregate((current, next) => current + next);
+			
+			durationInSeconds += dialogueSyntheses
+				.Select(x => x.DurationInSeconds)
+				.Aggregate((current, next) => current + next);
+					
+			dialogueSynthesesPriceInUsd = dialogueSyntheses
+				.Select(x => x.PriceInUsd)
+				.Aggregate((current, next) => current + next);
+		}
+
 		var synthesesSummary = new SynthesesSummary()
 		{
 			DialogueSynthesesCount = dialogueSyntheses.Count(),
 			TextSynthesesCount = textSyntheses.Count(),
-			DialogueSynthesesPriceInUsd = dialgueSynthesesPriceInUsd,
+			DialogueSynthesesPriceInUsd = dialogueSynthesesPriceInUsd,
 			TextSynthesesPriceInUsd = textSynthesesPriceInUsd,
-			SynthesesCharactersCount = dialogueSynthesesCharacterCount + textSynthesesCharacterCount,
-			SynthesesDurationInSeconds = dialogueSynthesesDurationInSeconds + textSynthesesDurationInSeconds
+			SynthesesCharactersCount = characterCount,
+			SynthesesDurationInSeconds = durationInSeconds
 		};
 
 		return synthesesSummary;
