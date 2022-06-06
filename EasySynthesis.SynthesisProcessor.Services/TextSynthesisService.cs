@@ -99,7 +99,7 @@ public class TextSynthesisService
                 DurationInSeconds = durationInSeconds
             };
 
-            requestingUser.Balance -= synthesisPrice;
+            requestingUser.Balance = Math.Round(requestingUser.Balance - synthesisPrice, 2);
             await _textSynthesisRepository.Insert(textSynthesis);
             await _context.SaveChangesAsync();
 
