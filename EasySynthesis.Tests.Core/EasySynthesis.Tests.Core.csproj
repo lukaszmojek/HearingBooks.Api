@@ -31,4 +31,11 @@
       <ProjectReference Include="..\EasySynthesis.SynthesisProcessor.Services\EasySynthesis.SynthesisProcessor.Services.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="..\EasySynthesis.Api\appsettings.Development.json">
+        <Link>appsettings.Development.json</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
