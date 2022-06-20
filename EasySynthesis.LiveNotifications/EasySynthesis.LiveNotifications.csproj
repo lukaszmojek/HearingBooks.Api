@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.SignalR" Version="1.17.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EasySynthesis.Common\EasySynthesis.Common.csproj" />
+      <ProjectReference Include="..\EasySynthesis.Contracts\EasySynthesis.Contracts.csproj" />
+      <ProjectReference Include="..\EasySynthesis.MassTransit\EasySynthesis.MassTransit.csproj" />
+    </ItemGroup>
+
+</Project>

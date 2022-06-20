@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a6ef1b50_002D5249_002D4ff2_002Da519_002D74f988a46f69/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateRequest_Should_Throw_UserDoesNotHaveBalanceToCreateSynthesisException_When_UserDoes_Not_Have_Balance_To_Create_Synthesis" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::4C3D1A41-692A-465F-925E-EB38E7E3A6D6::net6.0::EasySynthesis.SynthesisProcessor.Tests.TextSynthesisServiceTests.CreateRequest_Should_Throw_UserDoesNotHaveBalanceToCreateSynthesisException_When_UserDoes_Not_Have_Balance_To_Create_Synthesis&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cee7bcc3_002D609e_002D4406_002Da646_002D17f3cca006bd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
