@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>EasySynthesis.LiveNotifications</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.SignalR" Version="1.17.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HearingBooks.Common\HearingBooks.Common.csproj" />
+      <ProjectReference Include="..\HearingBooks.Contracts\HearingBooks.Contracts.csproj" />
+      <ProjectReference Include="..\HearingBooks.MassTransit\HearingBooks.MassTransit.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>EasySynthesis.Api.Core</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
+      <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
+      <ProjectReference Include="..\HearingBooks.MassTransit\HearingBooks.MassTransit.csproj" />
+      <ProjectReference Include="..\HearingBooks.Persistance\HearingBooks.Persistance.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FastEndpoints" Version="4.2.0" />
+      <PackageReference Include="FastEndpoints.Security" Version="4.2.0" />
+    </ItemGroup>
+
+</Project>
