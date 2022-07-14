@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>EasySynthesis.Services</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HearingBooks.Contracts\HearingBooks.Contracts.csproj" />
+      <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
+      <ProjectReference Include="..\HearingBooks.Persistance\HearingBooks.Persistance.csproj" />
+      <ProjectReference Include="..\HearingBooks.Services.Core\HearingBooks.Services.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.20.0" />
+    </ItemGroup>
+
+</Project>
