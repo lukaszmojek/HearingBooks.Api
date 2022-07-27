@@ -37,9 +37,10 @@ IHost host = Host.CreateDefaultBuilder(args)
                 });
         });
         
+        // TODO: Move mail and sendgrid sender to appsettings
         services
             .AddFluentEmail("easy-synthesis@pm.me")
-            .AddSendGridSender("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")
+            .AddSendGridSender("")
             .AddRazorRenderer(typeof(Program));
 
         services.AddHostedService<Worker>();
