@@ -1,0 +1,9 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ALL" type="CompoundRunConfigurationType">
+    <toRun name="HearingBooks.Api" type="LaunchSettings" />
+    <toRun name="HearingBooks.LiveNotifications" type="LaunchSettings" />
+    <toRun name="HearingBooks.MailingService" type="LaunchSettings" />
+    <toRun name="HearingBooks.SynthesisProcessor" type="LaunchSettings" />
+    <method v="2" />
+  </configuration>
+</component>
