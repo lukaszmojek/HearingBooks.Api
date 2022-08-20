@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "EasySynthesis.LiveNotifications": {
+    "HearingBooks.LiveNotifications": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,

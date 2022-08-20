@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "EasySynthesis.SynthesisProcessor": {
+    "HearingBooks.SynthesisProcessor": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "environmentVariables": {
