@@ -63,6 +63,25 @@ containerView.Add(sendgrid);
 containerView.Add(cognitiveServices);
 
 // Component - C3
+Component textSyntheses = api.AddComponent("TextSyntheses", "Endpoints for getting, requesting and downloading text syntheses files", "FastEndpoints Endpoint");
+Component dialogueSyntheses = api.AddComponent("DialogueSyntheses", "Endpoints for getting, requesting and downloading dialogue syntheses", "FastEndpoints Endpoint");
+Component users = api.AddComponent("Users", "Users", "FastEndpoints Endpoint");
+Component topUp = api.AddComponent("TopUp", "TopUp service for adding cash for users", "TopUp Service");
+Component dashboard = api.AddComponent("Dashboard", "Allows getting a summaries about platform usage", "FastEndpoints Endpoint");
+Component languages = api.AddComponent("Languages", "Allows getting available languages along with voices", "FastEndpoints Endpoint");
+
+ComponentView componentView = viewSet.CreateComponentView(api, "Api", "Component diagram for API");
+
+textSyntheses.Uses(database, "Reads", "EF Core");
+dialogueSyntheses.Uses(database, "Reads", "EF Core");
+users.Uses(database, "Reads", "EF Core");
+users.Uses(topUp, "Uses", "");
+topUp.Uses(database, "Writes", "EF Core");
+dashboard.Uses(database, "Reads", "EF Core");
+languages.Uses(database, "Reads", "EF Core");
+
+componentView.Add(database);
+componentView.AddAllComponents();
 
 
 // Styling for every abstraction level
