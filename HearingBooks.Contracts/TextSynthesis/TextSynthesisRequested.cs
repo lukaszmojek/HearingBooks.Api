@@ -1,4 +1,4 @@
-namespace EasySynthesis.Contracts.TextSynthesis;
+namespace HearingBooks.Contracts.TextSynthesis;
 
 public class TextSynthesisRequested
 {

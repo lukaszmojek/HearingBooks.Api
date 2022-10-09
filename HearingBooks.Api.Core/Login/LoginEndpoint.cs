@@ -1,13 +1,13 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using EasySynthesis.Api.Core.Auth;
-using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Api.Core.Responses;
-using EasySynthesis.Infrastructure.Repositories;
 using FastEndpoints;
+using HearingBooks.Api.Core.Auth;
+using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Api.Core.Responses;
+using HearingBooks.Infrastructure.Repositories;
 
-namespace EasySynthesis.Api.Core.Login;
+namespace HearingBooks.Api.Core.Login;
 
 public class LoginEndpoint : Endpoint<LoginUserRequest>
 {

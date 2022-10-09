@@ -10,7 +10,7 @@
 
         <Platforms>AnyCPU</Platforms>
 
-        <RootNamespace>EasySynthesis.Epub.Tests</RootNamespace>
+        <RootNamespace>HearingBooks.Epub.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

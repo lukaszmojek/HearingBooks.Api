@@ -1,7 +1,7 @@
 ﻿using System;
 
 #pragma warning disable CS1591
-namespace EasySynthesis.Api.Core.Auth;
+namespace HearingBooks.Api.Core.Auth;
 
 public partial class JwtMiddleware
 {

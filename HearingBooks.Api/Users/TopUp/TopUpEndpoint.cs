@@ -1,7 +1,7 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure.Repositories;
 
-namespace EasySynthesis.Api.Users.TopUp;
+namespace HearingBooks.Api.Users.TopUp;
 
 public class TopUpEndpoint : Endpoint<TopUpRequest>
 {

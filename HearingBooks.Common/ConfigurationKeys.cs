@@ -1,4 +1,4 @@
-namespace EasySynthesis.Common;
+namespace HearingBooks.Common;
 
 public static class ConfigurationKeys
 {

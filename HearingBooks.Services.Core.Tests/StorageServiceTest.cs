@@ -1,9 +1,9 @@
-using EasySynthesis.Services.Core.Storage;
-using EasySynthesis.Tests.Core;
+using HearingBooks.Services.Core.Storage;
+using HearingBooks.Tests.Core;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
-namespace EasySynthesis.Services.Core.Tests;
+namespace HearingBooks.Services.Core.Tests;
 
 public class StorageServiceTest {
      public class StorageServiceTestBase : TestBase

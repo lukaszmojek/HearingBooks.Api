@@ -4,8 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>dotnet-EasySynthesis.SynthesisProcessor-2A21C248-DFBE-4BE2-B103-02454591BB0A</UserSecretsId>
-        <RootNamespace>EasySynthesis.SynthesisProcessor</RootNamespace>
+        <UserSecretsId>dotnet-HearingBooks.SynthesisProcessor-2A21C248-DFBE-4BE2-B103-02454591BB0A</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

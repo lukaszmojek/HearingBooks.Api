@@ -2,11 +2,11 @@ using System;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EasySynthesis.MassTransit;
+namespace HearingBooks.MassTransit;
 
 public static class IServiceCollectionExtensions
 {
-	public static void AddEasySynthesisMassTransit(this IServiceCollection services)
+	public static void AddHearingBooksMassTransit(this IServiceCollection services)
 	{
 		services.AddMassTransit(x =>
 		{

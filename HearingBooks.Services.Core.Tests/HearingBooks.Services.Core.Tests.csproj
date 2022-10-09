@@ -7,7 +7,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>EasySynthesis.Services.Core.Tests</RootNamespace>
+        <RootNamespace>HearingBooks.Services.Core.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

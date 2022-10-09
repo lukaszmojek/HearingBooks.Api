@@ -1,11 +1,11 @@
 using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Contracts.TextSynthesis;
-using EasySynthesis.Domain.Entities;
+using HearingBooks.Contracts;
+using HearingBooks.Contracts.TextSynthesis;
+using HearingBooks.Domain.Entities;
 
 #pragma warning disable CS1591
 
-namespace EasySynthesis.Common.Mapper;
+namespace HearingBooks.Common.Mapper;
 
 public class TextSynthesisProfile : Profile
 {

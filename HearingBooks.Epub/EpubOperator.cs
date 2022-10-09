@@ -1,6 +1,6 @@
 using VersOne.Epub;
 
-namespace EasySynthesis.Epub;
+namespace HearingBooks.Epub;
 
 public class EpubOperator
 {

@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using EasySynthesis.Domain.DDD;
-using EasySynthesis.Domain.ValueObjects.User;
+using HearingBooks.Domain.DDD;
+using HearingBooks.Domain.ValueObjects.User;
 
-namespace EasySynthesis.Domain.Entities;
+namespace HearingBooks.Domain.Entities;
 
 public class User : Entity<Guid>
 {

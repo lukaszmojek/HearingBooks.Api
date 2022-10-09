@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Core.Login;
+namespace HearingBooks.Api.Core.Login;
 
 public class LoginUserRequest
 {

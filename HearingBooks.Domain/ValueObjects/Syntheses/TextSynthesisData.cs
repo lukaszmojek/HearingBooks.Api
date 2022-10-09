@@ -1,4 +1,4 @@
-namespace EasySynthesis.Domain.ValueObjects.Syntheses;
+namespace HearingBooks.Domain.ValueObjects.Syntheses;
 
 // [Owned]
 // [ComplexType]

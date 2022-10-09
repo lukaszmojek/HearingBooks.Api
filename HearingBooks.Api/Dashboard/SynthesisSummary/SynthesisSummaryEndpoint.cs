@@ -1,7 +1,7 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure.Repositories;
 
-namespace EasySynthesis.Api.Dashboard.SynthesisSummary;
+namespace HearingBooks.Api.Dashboard.SynthesisSummary;
 
 public class SynthesisSummaryEndpoint : Endpoint<SynthesesSummaryRequest>
 {
@@ -15,7 +15,7 @@ public class SynthesisSummaryEndpoint : Endpoint<SynthesesSummaryRequest>
 	public override void Configure()
 	{
 		Get("syntheses-summary/{UserId}");
-		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(SynthesesSummaryRequest request, CancellationToken cancellationToken)

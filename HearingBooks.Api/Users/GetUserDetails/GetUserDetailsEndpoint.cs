@@ -1,8 +1,8 @@
 using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Domain.Entities;
+using HearingBooks.Contracts;
+using HearingBooks.Domain.Entities;
 
-namespace EasySynthesis.Api.Users.GetUserDetails;
+namespace HearingBooks.Api.Users.GetUserDetails;
 
 public class GetUserDetailsEndpoint : EndpointWithoutRequest
 {
@@ -16,7 +16,7 @@ public class GetUserDetailsEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("user-details");
-		Roles("EasySynthesis", "PayAsYouGo");
+		Roles("HearingBooks", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken cancellationToken)

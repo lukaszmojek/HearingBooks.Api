@@ -1,6 +1,6 @@
-﻿using EasySynthesis.Domain.Entities;
+﻿using HearingBooks.Domain.Entities;
 
-namespace EasySynthesis.Api.Core.Auth;
+namespace HearingBooks.Api.Core.Auth;
 
 public interface IUserService
 {

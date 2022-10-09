@@ -1,6 +1,6 @@
-using EasySynthesis.Domain.DDD;
+using HearingBooks.Domain.DDD;
 
-namespace EasySynthesis.Domain.Entities;
+namespace HearingBooks.Domain.Entities;
 
 public class Language : Entity<Guid>
 {

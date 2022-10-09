@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Dashboard.SynthesisSummary;
+namespace HearingBooks.Api.Dashboard.SynthesisSummary;
 
 public class SynthesesSummaryRequest
 {

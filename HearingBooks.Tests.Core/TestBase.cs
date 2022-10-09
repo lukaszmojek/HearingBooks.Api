@@ -1,4 +1,4 @@
-namespace EasySynthesis.Tests.Core;
+namespace HearingBooks.Tests.Core;
 
 public class TestBase
 {

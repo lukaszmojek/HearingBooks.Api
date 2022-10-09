@@ -4,7 +4,6 @@
 #nullable disable
 
 using System;
-using EasySynthesis.Persistance;
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;

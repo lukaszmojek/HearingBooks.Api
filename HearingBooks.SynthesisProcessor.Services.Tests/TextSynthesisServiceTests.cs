@@ -1,15 +1,14 @@
-using EasySynthesis.Api.Seed;
-using EasySynthesis.Contracts.DialogueSynthesis;
-using EasySynthesis.Contracts.TextSynthesis;
-using EasySynthesis.Domain.Exceptions;
-using EasySynthesis.Infrastructure;
-using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.Persistance;
-using EasySynthesis.Services;
-using EasySynthesis.Services.Speech;
-using EasySynthesis.Tests.Core;
+using HearingBooks.Api.Seed;
+using HearingBooks.Contracts.TextSynthesis;
+using HearingBooks.Domain.Exceptions;
+using HearingBooks.Infrastructure;
+using HearingBooks.Infrastructure.Repositories;
+using HearingBooks.Persistance;
+using HearingBooks.SynthesisProcessor.Services;
+using HearingBooks.SynthesisProcessor.Services.Speech;
+using HearingBooks.Tests.Core;
 
-namespace EasySynthesis.SynthesisProcessor.Tests;
+namespace HearingBooks.SynthesisProcessor.Tests;
 
 public class TextSynthesisServiceTests
 {
@@ -57,7 +56,7 @@ public class TextSynthesisServiceTests
 	}
 	
 	[Fact]
-	public async void CreateRequest_Should_Throw_EasySynthesisUserCannotCreateSynthesisException_When_User_Is_Of_Type_EasySynthesis()
+	public async void CreateRequest_Should_Throw_HearingBooksUserCannotCreateSynthesisException_When_User_Is_Of_Type_HearingBooks()
 	{
 		var textSynthesisData = new TextSynthesisData()
 		{
@@ -69,7 +68,7 @@ public class TextSynthesisServiceTests
 
 		var requestId = Guid.NewGuid();
 			
-		await Assert.ThrowsAsync<EasySynthesisUserCannotCreateSynthesisException>(async () => await _textSynthesisService.CreateRequest(textSynthesisData, SeedConfig.TestEasySynthesisId, requestId));
+		await Assert.ThrowsAsync<HearingBooksUserCannotCreateSynthesisException>(async () => await _textSynthesisService.CreateRequest(textSynthesisData, SeedConfig.TestHearingBooksId, requestId));
 	}
 	
 	[Fact]

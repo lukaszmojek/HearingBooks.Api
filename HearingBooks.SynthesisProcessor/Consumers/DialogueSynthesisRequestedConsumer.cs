@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Contracts.DialogueSynthesis;
-using EasySynthesis.Contracts.TextSynthesis;
-using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.Services;
+using HearingBooks.Contracts;
+using HearingBooks.Contracts.DialogueSynthesis;
+using HearingBooks.Contracts.TextSynthesis;
+using HearingBooks.Infrastructure.Repositories;
+using HearingBooks.SynthesisProcessor.Services;
 using MassTransit;
 
-namespace EasySynthesis.SynthesisProcessor.Consumers;
+namespace HearingBooks.SynthesisProcessor.Consumers;
 
 public class DialogueSynthesisRequestedConsumer :
     IConsumer<DialogueSynthesisRequested>

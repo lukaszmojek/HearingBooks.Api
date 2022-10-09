@@ -1,8 +1,8 @@
 using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Contracts;
+using HearingBooks.Infrastructure.Repositories;
 
-namespace EasySynthesis.Api.Languages.GetLanguages;
+namespace HearingBooks.Api.Languages.GetLanguages;
 
 public class GetLanguagesEndpoint : EndpointWithoutRequest
 {
@@ -18,7 +18,7 @@ public class GetLanguagesEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("languages");
-		Roles("EasySynthesis", "PayAsYouGo");
+		Roles("HearingBooks", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken cancellationToken)

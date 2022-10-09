@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.Syntheses;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.Syntheses;
+using HearingBooks.Infrastructure.Repositories;
 using Moq;
 using Xunit;
 
-namespace EasySynthesis.Infrastructure.Tests;
+namespace HearingBooks.Infrastructure.Tests;
 
 public class SynthesisPricingServiceTests
 {

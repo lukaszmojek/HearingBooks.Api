@@ -3,14 +3,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 
 #pragma warning disable CS1591
 
-namespace EasySynthesis.Api.Core.Auth;
+namespace HearingBooks.Api.Core.Auth;
 
 public partial class JwtMiddleware
 {

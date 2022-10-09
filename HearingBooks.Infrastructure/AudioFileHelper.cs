@@ -1,5 +1,6 @@
 using System.Diagnostics;
-namespace EasySynthesis.Infrastructure;
+
+namespace HearingBooks.Infrastructure;
 
 public static class AudioFileHelper
 {

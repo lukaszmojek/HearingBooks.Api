@@ -6,7 +6,6 @@
         <Nullable>enable</Nullable>
         <Configurations>Debug;Release;Test</Configurations>
         <Platforms>AnyCPU</Platforms>
-        <RootNamespace>EasySynthesis.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

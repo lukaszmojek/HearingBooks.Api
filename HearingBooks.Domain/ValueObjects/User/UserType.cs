@@ -1,9 +1,9 @@
-namespace EasySynthesis.Domain.ValueObjects.User;
+namespace HearingBooks.Domain.ValueObjects.User;
 
 public enum UserType
 {
 	PayAsYouGo = 0,
 	Subscriber = 1,
 	Writer = 2,
-	EasySynthesis = 3,
+	HearingBooks = 3,
 }

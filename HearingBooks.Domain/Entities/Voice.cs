@@ -1,7 +1,7 @@
-using EasySynthesis.Domain.DDD;
-using EasySynthesis.Domain.ValueObjects.Voice;
+using HearingBooks.Domain.DDD;
+using HearingBooks.Domain.ValueObjects.Voice;
 
-namespace EasySynthesis.Domain.Entities;
+namespace HearingBooks.Domain.Entities;
 
 public class Voice : Entity<Guid>
 {

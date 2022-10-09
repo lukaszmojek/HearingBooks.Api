@@ -9,8 +9,6 @@
         <Configurations>Debug;Release;Test</Configurations>
 
         <Platforms>AnyCPU</Platforms>
-
-        <RootNamespace>EasySynthesis.Api.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

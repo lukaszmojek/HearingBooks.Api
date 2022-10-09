@@ -1,4 +1,4 @@
-﻿namespace EasySynthesis.Domain.Exceptions;
+﻿namespace HearingBooks.Domain.Exceptions;
 
 public class UserDoesNotHaveBalanceToCreateSynthesisException : Exception
 {

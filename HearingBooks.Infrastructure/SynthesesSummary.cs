@@ -1,4 +1,4 @@
-namespace EasySynthesis.Infrastructure;
+namespace HearingBooks.Infrastructure;
 
 public class SynthesesSummary
 {

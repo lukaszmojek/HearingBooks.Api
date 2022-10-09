@@ -7,7 +7,6 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Configurations>Debug;Release;Test</Configurations>
         <Platforms>AnyCPU</Platforms>
-        <RootNamespace>EasySynthesis.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

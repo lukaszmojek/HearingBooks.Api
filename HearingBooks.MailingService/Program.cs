@@ -1,4 +1,4 @@
-using EasySynthesis.MailingService;
+using HearingBooks.MailingService;
 using MassTransit;
 
 IHost host = Host.CreateDefaultBuilder(args)

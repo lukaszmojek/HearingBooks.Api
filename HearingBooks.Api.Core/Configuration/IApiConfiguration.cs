@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Core.Configuration;
+namespace HearingBooks.Api.Core.Configuration;
 
 public interface IApiConfiguration
 {

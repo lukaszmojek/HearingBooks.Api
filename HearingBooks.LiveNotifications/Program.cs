@@ -1,5 +1,5 @@
-using EasySynthesis.LiveNotifications;
-using EasySynthesis.LiveNotifications.Hubs;
+using HearingBooks.LiveNotifications;
+using HearingBooks.LiveNotifications.Hubs;
 using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,4 +1,4 @@
-namespace EasySynthesis.Domain.ValueObjects.Voice;
+namespace HearingBooks.Domain.ValueObjects.Voice;
 
 public enum VoiceType
 {

@@ -1,7 +1,7 @@
-using EasySynthesis.Domain.DDD;
-using EasySynthesis.Domain.ValueObjects.Syntheses;
+using HearingBooks.Domain.DDD;
+using HearingBooks.Domain.ValueObjects.Syntheses;
 
-namespace EasySynthesis.Domain.Entities;
+namespace HearingBooks.Domain.Entities;
 
 public class DialogueSynthesis : Entity<Guid>
 {

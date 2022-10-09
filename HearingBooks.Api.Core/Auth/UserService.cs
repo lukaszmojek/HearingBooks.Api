@@ -2,11 +2,11 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Domain.Entities;
+using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 
-namespace EasySynthesis.Api.Core.Auth;
+namespace HearingBooks.Api.Core.Auth;
 
 public class UserService : IUserService
 {

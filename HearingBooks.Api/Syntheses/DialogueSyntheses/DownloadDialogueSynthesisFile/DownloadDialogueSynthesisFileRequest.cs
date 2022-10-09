@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Syntheses.DialogueSyntheses.DownloadDialogueSynthesisFile;
+namespace HearingBooks.Api.Syntheses.DialogueSyntheses.DownloadDialogueSynthesisFile;
 
 public class DowloadDialogueSynthesisFileRequest
 {

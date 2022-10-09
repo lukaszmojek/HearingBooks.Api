@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace EasySynthesis.Tests.Core.Helpers;
+namespace HearingBooks.Tests.Core.Helpers;
 
 public static class ConfigurationHelpers
 {

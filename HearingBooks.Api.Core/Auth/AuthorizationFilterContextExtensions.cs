@@ -1,7 +1,7 @@
-using EasySynthesis.Domain.Entities;
+using HearingBooks.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace EasySynthesis.Api.Core.Auth;
+namespace HearingBooks.Api.Core.Auth;
 
 public static class AuthorizationFilterContextExtensions
 {

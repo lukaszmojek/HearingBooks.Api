@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using EasySynthesis.Tests.Core;
+using HearingBooks.Tests.Core;
 using Xunit;
 
-namespace EasySynthesis.Epub.Tests;
+namespace HearingBooks.Epub.Tests;
 
 public class EpubOperatorTests : TestBase
 {

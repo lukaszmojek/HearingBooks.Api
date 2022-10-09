@@ -1,9 +1,9 @@
 using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Contracts;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure.Repositories;
 
-namespace EasySynthesis.Api.Syntheses.DialogueSyntheses.GetDialogueSynthesesForUser;
+namespace HearingBooks.Api.Syntheses.DialogueSyntheses.GetDialogueSynthesesForUser;
 
 public class GetDialogueSynthesesForUserEndpoint : EndpointWithoutRequest
 {
@@ -19,7 +19,7 @@ public class GetDialogueSynthesesForUserEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("dialogue-syntheses");
-		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)

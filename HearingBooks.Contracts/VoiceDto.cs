@@ -1,6 +1,6 @@
-using EasySynthesis.Domain.ValueObjects.Voice;
+using HearingBooks.Domain.ValueObjects.Voice;
 
-namespace EasySynthesis.Contracts;
+namespace HearingBooks.Contracts;
 
 public record struct VoiceDto
 {

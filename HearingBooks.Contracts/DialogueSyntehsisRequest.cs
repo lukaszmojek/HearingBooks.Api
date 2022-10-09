@@ -1,4 +1,4 @@
-namespace EasySynthesis.Contracts;
+namespace HearingBooks.Contracts;
 
 public class DialogueSyntehsisRequest
 {

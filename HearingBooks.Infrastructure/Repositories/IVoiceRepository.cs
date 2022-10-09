@@ -1,6 +1,6 @@
-using EasySynthesis.Domain.Entities;
+using HearingBooks.Domain.Entities;
 
-namespace EasySynthesis.Infrastructure.Repositories;
+namespace HearingBooks.Infrastructure.Repositories;
 
 public interface IVoiceRepository
 {

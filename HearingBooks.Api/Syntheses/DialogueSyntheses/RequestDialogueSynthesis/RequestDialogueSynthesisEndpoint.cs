@@ -1,10 +1,10 @@
 using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Contracts.DialogueSynthesis;
-using EasySynthesis.Domain.Entities;
+using HearingBooks.Contracts;
+using HearingBooks.Contracts.DialogueSynthesis;
+using HearingBooks.Domain.Entities;
 using MassTransit;
 
-namespace EasySynthesis.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
+namespace HearingBooks.Api.Syntheses.DialogueSyntheses.RequestDialogueSynthesis;
 
 public class RequestDialogueSynthesisEndpoint : Endpoint<DialogueSyntehsisRequest>
 {
@@ -20,7 +20,7 @@ public class RequestDialogueSynthesisEndpoint : Endpoint<DialogueSyntehsisReques
 	public override void Configure()
 	{
 		Post("dialogue-syntheses");
-		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(DialogueSyntehsisRequest request, CancellationToken cancellationToken)

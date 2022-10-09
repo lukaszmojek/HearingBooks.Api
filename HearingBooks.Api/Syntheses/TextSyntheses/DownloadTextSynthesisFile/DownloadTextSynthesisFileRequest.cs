@@ -1,4 +1,4 @@
-namespace EasySynthesis.Api.Syntheses.TextSyntheses.DownloadTextSynthesisFile;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.DownloadTextSynthesisFile;
 
 public class DownloadTextSynthesisFileRequest
 {

@@ -1,9 +1,9 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.User;
-using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.Persistance;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.User;
+using HearingBooks.Infrastructure.Repositories;
+using HearingBooks.Persistance;
 
-namespace EasySynthesis.Api.Seed;
+namespace HearingBooks.Api.Seed;
 
 public class SeedUsersEndpoint : EndpointWithoutRequest
 {
@@ -20,7 +20,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("seed/users");
-		Roles("EasySynthesis");
+		Roles("HearingBooks");
 	}
 	
 	public override async Task HandleAsync(CancellationToken ct)
@@ -42,7 +42,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 			        Language = "pl"
 		        },
 		        IsActive = true,
-		        Type = UserType.EasySynthesis,
+		        Type = UserType.HearingBooks,
 		        Balance = 0
 		    },
 		    new()
@@ -83,7 +83,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 		    },
 		    new()
 		    {
-			    Id = SeedConfig.TestEasySynthesisId,
+			    Id = SeedConfig.TestHearingBooksId,
 			    FirstName = "Łukasz",
 			    LastName = "Mojek",
 			    UserName = "test user",
@@ -96,7 +96,7 @@ public class SeedUsersEndpoint : EndpointWithoutRequest
 				    Language = "pl"
 			    },
 			    IsActive = true,
-			    Type = UserType.EasySynthesis,
+			    Type = UserType.HearingBooks,
 			    Balance = 50
 		    }
 		};

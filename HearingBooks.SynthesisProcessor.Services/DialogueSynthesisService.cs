@@ -1,14 +1,14 @@
 using System.Runtime.InteropServices;
-using EasySynthesis.Contracts.DialogueSynthesis;
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.Exceptions;
-using EasySynthesis.Domain.ValueObjects.Syntheses;
-using EasySynthesis.Infrastructure;
-using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.Persistance;
-using EasySynthesis.Services.Speech;
+using HearingBooks.Contracts.DialogueSynthesis;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.Exceptions;
+using HearingBooks.Domain.ValueObjects.Syntheses;
+using HearingBooks.Infrastructure;
+using HearingBooks.Infrastructure.Repositories;
+using HearingBooks.Persistance;
+using HearingBooks.SynthesisProcessor.Services.Speech;
 
-namespace EasySynthesis.Services;
+namespace HearingBooks.SynthesisProcessor.Services;
 
 public class DialogueSynthesisService
 {
@@ -39,7 +39,7 @@ public class DialogueSynthesisService
 
         if (requestingUser.CanRequestDialogueSynthesis() is false)
         {
-            throw new EasySynthesisUserCannotCreateSynthesisException($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
+            throw new HearingBooksUserCannotCreateSynthesisException($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
         }
 
         var synthesisCharacterCount = data.DialogueText.Length;

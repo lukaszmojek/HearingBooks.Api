@@ -1,10 +1,10 @@
 using AutoMapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Contracts;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure.Repositories;
 using MassTransit;
 
-namespace EasySynthesis.Api.Syntheses.TextSyntheses.GetTextSynthesesForUser;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.GetTextSynthesesForUser;
 
 public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 {
@@ -22,7 +22,7 @@ public class GetTextSynthesesForUserEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("text-syntheses");
-		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)

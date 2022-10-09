@@ -1,4 +1,4 @@
-namespace EasySynthesis.Domain.DDD;
+namespace HearingBooks.Domain.DDD;
 
 public abstract class ValueObject<T> where T : ValueObject<T>
 {

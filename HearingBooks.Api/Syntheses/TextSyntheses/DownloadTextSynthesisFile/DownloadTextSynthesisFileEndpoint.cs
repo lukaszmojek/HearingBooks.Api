@@ -1,9 +1,9 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Infrastructure;
-using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.Services.Core.Storage;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure;
+using HearingBooks.Infrastructure.Repositories;
+using HearingBooks.Services.Core.Storage;
 
-namespace EasySynthesis.Api.Syntheses.TextSyntheses.DownloadTextSynthesisFile;
+namespace HearingBooks.Api.Syntheses.TextSyntheses.DownloadTextSynthesisFile;
 
 public class DownloadTextSynthesisFileEndpoint : Endpoint<DownloadTextSynthesisFileRequest>
 {
@@ -19,7 +19,7 @@ public class DownloadTextSynthesisFileEndpoint : Endpoint<DownloadTextSynthesisF
 	public override void Configure()
 	{
 		Get("text-syntheses/{SynthesisId}");
-		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(DownloadTextSynthesisFileRequest request, CancellationToken cancellationToken)

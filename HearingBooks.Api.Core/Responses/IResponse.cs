@@ -1,4 +1,4 @@
-﻿namespace EasySynthesis.Api.Core.Responses
+﻿namespace HearingBooks.Api.Core.Responses
 {
     public interface IResponse
     {

@@ -1,4 +1,4 @@
-namespace EasySynthesis.MailingService;
+namespace HearingBooks.MailingService;
 
 public class Worker : BackgroundService
 {

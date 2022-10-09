@@ -1,11 +1,11 @@
-using EasySynthesis.Services.Core.Storage;
-using EasySynthesis.Tests.Core.Helpers;
+using HearingBooks.Services.Core.Storage;
+using HearingBooks.Tests.Core.Helpers;
 
-namespace EasySynthesis.Api.Tests.Helpers;
+namespace HearingBooks.Api.Tests.Helpers;
 
 public static class StorageHelpers
 {
-    public static IStorageService CresteStorageService()
+    public static IStorageService CreateStorageService()
     {
         var apiConfiguration = ConfigurationHelpers.CreateConfiguration();
 

@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace EasySynthesis.Api.Core.Configuration;
+namespace HearingBooks.Api.Core.Configuration;
 
 public class ApiConfiguration : IApiConfiguration
 {

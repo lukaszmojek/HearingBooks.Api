@@ -10,7 +10,7 @@
 
         <Platforms>AnyCPU</Platforms>
 
-        <RootNamespace>EasySynthesis.Tests.Core</RootNamespace>
+        <RootNamespace>HearingBooks.Tests.Core</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

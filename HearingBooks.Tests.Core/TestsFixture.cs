@@ -1,16 +1,16 @@
-using EasySynthesis.Api.Core.Auth;
-using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Infrastructure;
-using EasySynthesis.Persistance;
-using EasySynthesis.Services;
-using EasySynthesis.Services.Core.Storage;
-using EasySynthesis.Services.Speech;
+using HearingBooks.Api.Core.Auth;
+using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Infrastructure;
+using HearingBooks.Persistance;
+using HearingBooks.Services.Core.Storage;
+using HearingBooks.SynthesisProcessor.Services;
+using HearingBooks.SynthesisProcessor.Services.Speech;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EasySynthesis.Tests.Core;
+namespace HearingBooks.Tests.Core;
 
 public static class TestsFixture
 {

@@ -1,4 +1,4 @@
-namespace EasySynthesis.Domain.ValueObjects.User;
+namespace HearingBooks.Domain.ValueObjects.User;
 
 public class UserId : BaseId<UserId>
 {

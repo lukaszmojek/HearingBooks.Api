@@ -1,4 +1,4 @@
-namespace EasySynthesis.LiveNotifications;
+namespace HearingBooks.LiveNotifications;
 
 public class Worker : BackgroundService
 {

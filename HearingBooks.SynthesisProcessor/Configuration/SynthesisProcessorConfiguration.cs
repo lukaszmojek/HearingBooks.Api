@@ -1,4 +1,4 @@
-namespace EasySynthesis.SynthesisProcessor.Configuration;
+namespace HearingBooks.SynthesisProcessor.Configuration;
 
 public class SynthesisProcessorConfiguration : ISynthesisProcessorConfiguration
 {

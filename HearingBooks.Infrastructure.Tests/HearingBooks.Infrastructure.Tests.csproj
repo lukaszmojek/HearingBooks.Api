@@ -6,7 +6,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>EasySynthesis.Infrastructure.Tests</RootNamespace>
+        <RootNamespace>HearingBooks.Infrastructure.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

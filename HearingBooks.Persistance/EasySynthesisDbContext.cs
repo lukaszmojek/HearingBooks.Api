@@ -1,7 +1,7 @@
-using EasySynthesis.Domain.Entities;
+using HearingBooks.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EasySynthesis.Persistance;
+namespace HearingBooks.Persistance;
 
 public class HearingBooksDbContext : DbContext
 {

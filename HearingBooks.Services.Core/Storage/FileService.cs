@@ -1,4 +1,4 @@
-namespace EasySynthesis.Services.Core.Storage;
+namespace HearingBooks.Services.Core.Storage;
 
 public class FileService : IFileService
 {

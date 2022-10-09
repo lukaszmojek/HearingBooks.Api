@@ -1,7 +1,7 @@
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EasySynthesis.Infrastructure;
+namespace HearingBooks.Infrastructure;
 
 public static class IServiceCollectionExtensions
 {

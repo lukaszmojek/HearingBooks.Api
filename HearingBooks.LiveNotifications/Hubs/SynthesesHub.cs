@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 
-namespace EasySynthesis.LiveNotifications.Hubs;
+namespace HearingBooks.LiveNotifications.Hubs;
 
 public class SynthesesHub : Hub
 {

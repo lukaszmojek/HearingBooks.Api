@@ -1,7 +1,7 @@
-using EasySynthesis.Services.Core.Storage;
+using HearingBooks.Services.Core.Storage;
 using Xunit;
 
-namespace EasySynthesis.Services.Core.Tests;
+namespace HearingBooks.Services.Core.Tests;
 
 public class FileServiceTest
 {

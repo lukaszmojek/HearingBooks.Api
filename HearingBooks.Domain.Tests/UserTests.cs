@@ -1,13 +1,13 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.User;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.User;
 using Xunit;
 
-namespace EasySynthesis.Domain.Tests;
+namespace HearingBooks.Domain.Tests;
 
 public class UserTests
 {
 	[Theory]
-	[InlineData(UserType.EasySynthesis, false)]
+	[InlineData(UserType.HearingBooks, false)]
 	[InlineData(UserType.PayAsYouGo, true)]
 	public void CanRequestTextSynthesis_Should_Return_Correct_Value_For_UserType(UserType userType, bool expectedResult)
 	{
@@ -19,7 +19,7 @@ public class UserTests
 	}
 	
 	[Theory]
-	[InlineData(UserType.EasySynthesis, false)]
+	[InlineData(UserType.HearingBooks, false)]
 	[InlineData(UserType.PayAsYouGo, true)]
 	public void CanRequestDialogueSynthesis_Should_Return_Correct_Value_For_UserType(UserType userType, bool expectedResult)
 	{
@@ -31,7 +31,7 @@ public class UserTests
 	}
 	
 	[Theory]
-	[InlineData(UserType.EasySynthesis, false)]
+	[InlineData(UserType.HearingBooks, false)]
 	[InlineData(UserType.PayAsYouGo, true)]
 	public void CanTopUpAccount_Should_Return_Correct_Value_For_UserType(UserType userType, bool expectedResult)
 	{

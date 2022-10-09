@@ -4,8 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>dotnet-EasySynthesis.MailingService-FCB665B1-5F06-4012-BFEF-3D73D5990910</UserSecretsId>
-        <RootNamespace>EasySynthesis.MailingService</RootNamespace>
+        <UserSecretsId>dotnet-HearingBooks.MailingService-FCB665B1-5F06-4012-BFEF-3D73D5990910</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

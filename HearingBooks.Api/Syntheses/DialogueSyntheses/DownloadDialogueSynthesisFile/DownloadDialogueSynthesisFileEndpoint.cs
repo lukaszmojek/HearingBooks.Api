@@ -1,9 +1,9 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Infrastructure;
-using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.Services.Core.Storage;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure;
+using HearingBooks.Infrastructure.Repositories;
+using HearingBooks.Services.Core.Storage;
 
-namespace EasySynthesis.Api.Syntheses.DialogueSyntheses.DownloadDialogueSynthesisFile;
+namespace HearingBooks.Api.Syntheses.DialogueSyntheses.DownloadDialogueSynthesisFile;
 
 public class DownloadDialogueSynthesisFileEndpoint : Endpoint<DowloadDialogueSynthesisFileRequest>
 {
@@ -19,7 +19,7 @@ public class DownloadDialogueSynthesisFileEndpoint : Endpoint<DowloadDialogueSyn
 	public override void Configure()
 	{
 		Get("dialogue-syntheses/{SynthesisId}");
-		Roles("EasySynthesis", "Writer", "Subscriber", "PayAsYouGo");
+		Roles("HearingBooks", "Writer", "Subscriber", "PayAsYouGo");
 	}
 
 	public override async Task HandleAsync(DowloadDialogueSynthesisFileRequest request, CancellationToken cancellationToken)

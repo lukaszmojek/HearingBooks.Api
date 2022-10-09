@@ -1,4 +1,4 @@
-namespace EasySynthesis.Domain.ValueObjects;
+namespace HearingBooks.Domain.ValueObjects;
 
 // public class AggregateKey : ValueObject<AggregateKey>
 // {

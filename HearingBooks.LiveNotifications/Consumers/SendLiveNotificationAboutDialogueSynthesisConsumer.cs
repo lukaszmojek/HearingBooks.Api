@@ -1,9 +1,9 @@
-using EasySynthesis.Contracts.DialogueSynthesis;
-using EasySynthesis.LiveNotifications.Hubs;
+using HearingBooks.Contracts.DialogueSynthesis;
+using HearingBooks.LiveNotifications.Hubs;
 using MassTransit;
 using Microsoft.AspNetCore.SignalR;
 
-namespace EasySynthesis.LiveNotifications.Consumers;
+namespace HearingBooks.LiveNotifications.Consumers;
 
 public class SendLiveNotificationAboutDialogueSynthesisConsumer :
 	IConsumer<SendLiveNotificationAboutDialogueSynthesis>

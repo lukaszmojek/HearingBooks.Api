@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EasySynthesis.Api.Core.Auth;
+namespace HearingBooks.Api.Core.Auth;
 
 public class AuthorizationException : Exception
 {

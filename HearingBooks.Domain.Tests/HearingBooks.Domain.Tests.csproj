@@ -6,7 +6,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>EasySynthesis.Domain.Tests</RootNamespace>
+        <RootNamespace>HearingBooks.Domain.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

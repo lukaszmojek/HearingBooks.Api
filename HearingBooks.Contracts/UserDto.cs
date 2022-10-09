@@ -1,6 +1,6 @@
-﻿using EasySynthesis.Domain.ValueObjects.User;
+﻿using HearingBooks.Domain.ValueObjects.User;
 
-namespace EasySynthesis.Contracts;
+namespace HearingBooks.Contracts;
 
 public class UserDto
 {

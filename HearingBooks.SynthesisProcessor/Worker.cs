@@ -1,4 +1,4 @@
-namespace EasySynthesis.SynthesisProcessor;
+namespace HearingBooks.SynthesisProcessor;
 
 public class Worker : BackgroundService
 {

@@ -1,10 +1,10 @@
 using AutoMapper;
-using EasySynthesis.Common.Mapper;
-using EasySynthesis.Contracts;
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.Syntheses;
+using HearingBooks.Common.Mapper;
+using HearingBooks.Contracts;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.Syntheses;
 
-namespace EasySynthesis.Common.Tests;
+namespace HearingBooks.Common.Tests;
 
 public class TextSynthesisProfileTests
 {

@@ -1,4 +1,4 @@
-﻿namespace EasySynthesis.Api.Core.Responses
+﻿namespace HearingBooks.Api.Core.Responses
 {
     public class Response<T> where T: IResponse
     {

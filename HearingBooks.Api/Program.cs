@@ -1,11 +1,11 @@
-using EasySynthesis.Api.Core.Auth;
-using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Common.Mapper;
-using EasySynthesis.Infrastructure;
-using EasySynthesis.MassTransit;
-using EasySynthesis.Persistance;
-using EasySynthesis.Services.Core.Storage;
 using FastEndpoints.Swagger;
+using HearingBooks.Api.Core.Auth;
+using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Common.Mapper;
+using HearingBooks.Infrastructure;
+using HearingBooks.MassTransit;
+using HearingBooks.Persistance;
+using HearingBooks.Services.Core.Storage;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +26,7 @@ builder.Services.AddSwaggerDoc(settings =>
     settings.Version = "v1";
 });
 
-builder.Services.AddEasySynthesisMassTransit();
+builder.Services.AddHearingBooksMassTransit();
 
 builder.Services.AddDbContext<HearingBooksDbContext>(
     options =>

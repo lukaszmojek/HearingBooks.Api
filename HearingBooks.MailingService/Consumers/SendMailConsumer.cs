@@ -1,10 +1,8 @@
-using EasySynthesis.Contracts;
-using EasySynthesis.Contracts.TextSynthesis;
-using EasySynthesis.Domain.ValueObjects.Syntheses;
 using FluentEmail.Core;
+using HearingBooks.Contracts;
 using MassTransit;
 
-namespace EasySynthesis.MailingService.Consumers;
+namespace HearingBooks.MailingService.Consumers;
 
 public class SendMailConsumer :
 	IConsumer<SendMailNotificationAboutSynthesis>
@@ -31,7 +29,7 @@ public class SendMailConsumer :
 			+ "Log in to the platform to access it.\n"
 			+ "\n"
 			+ "Cheers,\n"
-			+ "EasySynthesis";
+			+ "HearingBooks";
 
 		var email = await _fluentEmail
 			.To(message.UserEmail)

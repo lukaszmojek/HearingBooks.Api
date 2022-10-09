@@ -1,10 +1,10 @@
-using EasySynthesis.Common;
-using EasySynthesis.Services.Core.Storage;
+using HearingBooks.Common;
+using HearingBooks.Services.Core.Storage;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 using Microsoft.Extensions.Configuration;
 
-namespace EasySynthesis.Services.Speech;
+namespace HearingBooks.SynthesisProcessor.Services.Speech;
 
 public class SpeechService : ISpeechService
 {

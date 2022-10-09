@@ -1,11 +1,11 @@
-using EasySynthesis.Api.Core.Auth;
-using EasySynthesis.Api.Core.Configuration;
-using EasySynthesis.Infrastructure.Repositories;
-using EasySynthesis.Tests.Core.Helpers;
+using HearingBooks.Api.Core.Auth;
+using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Infrastructure.Repositories;
+using HearingBooks.Tests.Core.Helpers;
 using Microsoft.AspNetCore.Http;
 using Moq;
 
-namespace EasySynthesis.Api.Core.Tests;
+namespace HearingBooks.Api.Core.Tests;
 
 public class JwtMiddlewareTests
 {

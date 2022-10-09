@@ -1,10 +1,10 @@
-using EasySynthesis.Common.Mapper;
-using EasySynthesis.Infrastructure;
-using EasySynthesis.Persistance;
-using EasySynthesis.Services;
-using EasySynthesis.Services.Core.Storage;
-using EasySynthesis.Services.Speech;
-using EasySynthesis.SynthesisProcessor;
+using HearingBooks.Common.Mapper;
+using HearingBooks.Infrastructure;
+using HearingBooks.Persistance;
+using HearingBooks.Services.Core.Storage;
+using HearingBooks.SynthesisProcessor;
+using HearingBooks.SynthesisProcessor.Services;
+using HearingBooks.SynthesisProcessor.Services.Speech;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,8 +1,8 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.Voice;
-using EasySynthesis.Persistance;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.Voice;
+using HearingBooks.Persistance;
 
-namespace EasySynthesis.Api.Seed;
+namespace HearingBooks.Api.Seed;
 
 public class SeedLanguagesAndVoicesEndpoint : EndpointWithoutRequest
 {
@@ -16,7 +16,7 @@ public class SeedLanguagesAndVoicesEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("seed/languages-and-voices");
-		Roles("EasySynthesis");
+		Roles("HearingBooks");
 	}
 
 	public override async Task HandleAsync(CancellationToken ct)

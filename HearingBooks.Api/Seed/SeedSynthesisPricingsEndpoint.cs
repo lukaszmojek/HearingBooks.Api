@@ -1,8 +1,8 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.Syntheses;
-using EasySynthesis.Persistance;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.Syntheses;
+using HearingBooks.Persistance;
 
-namespace EasySynthesis.Api.Seed;
+namespace HearingBooks.Api.Seed;
 
 public class SeedSynthesisPricingsEndpoint : EndpointWithoutRequest
 {
@@ -16,7 +16,7 @@ public class SeedSynthesisPricingsEndpoint : EndpointWithoutRequest
 	public override void Configure()
 	{
 		Get("seed/synthesis-pricings");
-		Roles("EasySynthesis");
+		Roles("HearingBooks");
 	}
 	
 	public override async Task HandleAsync(CancellationToken ct)

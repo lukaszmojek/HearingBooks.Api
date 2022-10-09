@@ -1,7 +1,7 @@
-using EasySynthesis.Domain.ValueObjects.Syntheses;
-using EasySynthesis.Infrastructure.Repositories;
+using HearingBooks.Domain.ValueObjects.Syntheses;
+using HearingBooks.Infrastructure.Repositories;
 
-namespace EasySynthesis.Infrastructure;
+namespace HearingBooks.Infrastructure;
 
 public class SynthesisPricingService
 	: ISynthesisPricingService

@@ -1,10 +1,10 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Persistance;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
 
-namespace EasySynthesis.Infrastructure.Repositories;
+namespace HearingBooks.Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {

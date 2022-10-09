@@ -1,6 +1,6 @@
-﻿using EasySynthesis.Api.Core.Responses;
+﻿using HearingBooks.Api.Core.Responses;
 
-namespace EasySynthesis.Api.Core.Login
+namespace HearingBooks.Api.Core.Login
 {
     public class LoginUserResponse : IResponse
     {

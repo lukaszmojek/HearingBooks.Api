@@ -1,9 +1,9 @@
-using EasySynthesis.Domain.Entities;
-using EasySynthesis.Domain.ValueObjects.Syntheses;
-using EasySynthesis.Persistance;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.Syntheses;
+using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
 
-namespace EasySynthesis.Infrastructure.Repositories;
+namespace HearingBooks.Infrastructure.Repositories;
 
 public class SynthesisPricingRepository
 	: ISynthesisPricingRepository

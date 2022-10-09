@@ -1,5 +1,5 @@
 
-namespace EasySynthesis.Services.Speech;
+namespace HearingBooks.SynthesisProcessor.Services.Speech;
 
 public interface ISpeechService
 {

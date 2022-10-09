@@ -1,4 +1,4 @@
-namespace EasySynthesis.Infrastructure.Repositories;
+namespace HearingBooks.Infrastructure.Repositories;
 
 public interface IDashboardRepository
 {
