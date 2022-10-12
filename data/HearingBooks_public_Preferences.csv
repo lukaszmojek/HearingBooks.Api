@@ -1,3 +1,5 @@
-3c8d224b-6333-4a47-82cf-6dd3b7539b68,true,pl,true
-96cf4b3c-8a1f-4adc-b2be-680847787abd,true,en,true
-a1aff0af-baa4-48a8-8c12-98c5774bd54b,true,pl,false
+Id,AcrylicEnabled,Language,EmailNotificationsEnabled
+5703aeb8-156e-4583-8f02-d4183ff3e0d9,true,pl,false
+a93c53df-58c9-4006-8bc5-aadc78f3a1b8,true,en,true
+12ccb5c7-4bfe-4610-8fa6-8913b9e25560,true,pl,true
+5fe14c9f-2382-4942-898c-45ce5bda50de,true,pl,true
