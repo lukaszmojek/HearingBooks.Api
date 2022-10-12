@@ -45,24 +45,8 @@ public class LoginEndpoint : Endpoint<LoginUserRequest>
 				var errorMessage = "User with provided credentials do not exist!";
 				throw new ArgumentException(errorMessage);
 			}
-
-			// user = new User
-			// {
-			// 	Id = Guid.NewGuid(),
-			// 	FirstName = "luki",
-			// 	Type = UserType.HearingBooks
-			// };
-			var token = _userService.Authenticate(user);
 			
-			// var jwtToken = JWTBearer.CreateToken(
-			// 	signingKey: _apiConfiguration.JwtSecret(),
-			// 	expireAt: DateTime.UtcNow.AddDays(1),
-			// 	claims: new[]
-			// 	{
-			// 		(ClaimNames.Email, user.Email), 
-			// 		(ClaimNames.UserId, user.Id.ToString())
-			// 	},
-			// 	roles: new[] { user.Type.ToString() });
+			var token = _userService.Authenticate(user);
 
 			await SendAsync(new
 			{
