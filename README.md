@@ -20,7 +20,8 @@
 
 ## Setting up environment:
 
-Go to the `docker` folder and execute the command `docker-compose up`
+1. Go to the `docker` directory and execute the command `docker-compose up`
+2. In `data` directory you can find initial data, that needs to be imported to the database in order to log in to the platform
 
 ---
 
