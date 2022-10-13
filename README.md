@@ -1,6 +1,7 @@
 # HearingBooks
 
-[Trello board of the project](https://trello.com/b/mLnc89Du/hearingbooks)
+- [Trello board of the project](https://trello.com/b/mLnc89Du/hearingbooks)
+- [Structurizr with C4 diagrams](https://structurizr.com/workspace/76919/diagram-editor#HearingBooks%20context)
 
 ---
 
