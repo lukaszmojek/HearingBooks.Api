@@ -1,3 +1,5 @@
-b8a1afdc-fd52-4d87-9886-6e4fd9a5fdaa,0,Łukasz,Mojek,true,user,user@email.com,Resubmit-Gas-Dreamland-Sizable-Relapsing-Sprinkled7-Debatable,100,96cf4b3c-8a1f-4adc-b2be-680847787abd
-eee19159-c1cd-4eff-9ef5-3815586975bd,3,Łukasz,Mojek,true,shaggy,lukasz@hb.com,Resubmit-Gas-Dreamland-Sizable-Relapsing-Sprinkled7-Debatable,0,a1aff0af-baa4-48a8-8c12-98c5774bd54b
-ffffffff-ffff-ffff-ffff-ffffffffffff,0,Łukasz,Mojek,true,test user,test@email.com,Resubmit-Gas-Dreamland-Sizable-Relapsing-Sprinkled7-Debatable,50,3c8d224b-6333-4a47-82cf-6dd3b7539b68
+Id,Type,FirstName,LastName,IsActive,UserName,Email,PasswordHash,Balance,PreferenceId
+eee19159-c1cd-4eff-9ef5-3815586975bd,3,Łukasz,Mojek,true,shaggy,lukasz@hb.com,C2CC1207A3D265C329E708CE166D93CC16187381DF388D95B7FBCD3CAC2EB4BAA3572A7698F8D59B1FE26A1044ECD8F542B5753B2BBBC1F65FFC1B3A831D4DD0,0,5703aeb8-156e-4583-8f02-d4183ff3e0d9
+b8a1afdc-fd52-4d87-9886-6e4fd9a5fdaa,0,Łukasz,Mojek,true,user,lukasz.mojek@gmail.com,C2CC1207A3D265C329E708CE166D93CC16187381DF388D95B7FBCD3CAC2EB4BAA3572A7698F8D59B1FE26A1044ECD8F542B5753B2BBBC1F65FFC1B3A831D4DD0,100,a93c53df-58c9-4006-8bc5-aadc78f3a1b8
+eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee,0,Łukasz,Mojek,true,test user,test@email.com,C2CC1207A3D265C329E708CE166D93CC16187381DF388D95B7FBCD3CAC2EB4BAA3572A7698F8D59B1FE26A1044ECD8F542B5753B2BBBC1F65FFC1B3A831D4DD0,50,12ccb5c7-4bfe-4610-8fa6-8913b9e25560
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa,3,Łukasz,Mojek,true,test user,test@email.com,C2CC1207A3D265C329E708CE166D93CC16187381DF388D95B7FBCD3CAC2EB4BAA3572A7698F8D59B1FE26A1044ECD8F542B5753B2BBBC1F65FFC1B3A831D4DD0,50,5fe14c9f-2382-4942-898c-45ce5bda50de

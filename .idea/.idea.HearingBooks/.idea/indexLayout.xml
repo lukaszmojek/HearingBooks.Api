@@ -3,6 +3,7 @@
   <component name="UserContentModel">
     <attachedFolders>
       <Path>.tye</Path>
+      <Path>data</Path>
       <Path>docker</Path>
     </attachedFolders>
     <explicitIncludes />
