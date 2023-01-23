@@ -1,6 +1,6 @@
-using AutoMapper;
 using HearingBooks.Contracts;
 using HearingBooks.Domain.Entities;
+using IMapper = AutoMapper.IMapper;
 
 namespace HearingBooks.Api.Users.GetUserDetails;
 

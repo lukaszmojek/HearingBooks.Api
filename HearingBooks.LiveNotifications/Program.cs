@@ -40,8 +40,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services
-    .AddSignalR()
-    .AddAzureSignalR();
+    .AddSignalR();
 
 builder.Services.AddHostedService<Worker>();
 

@@ -1,6 +1,6 @@
-using AutoMapper;
 using HearingBooks.Contracts;
 using HearingBooks.Infrastructure.Repositories;
+using IMapper = AutoMapper.IMapper;
 
 namespace HearingBooks.Api.Languages.GetLanguages;
 
