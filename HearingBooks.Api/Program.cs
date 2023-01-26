@@ -6,7 +6,9 @@ using HearingBooks.Infrastructure;
 using HearingBooks.MassTransit;
 using HearingBooks.Persistance;
 using HearingBooks.Services.Core.Storage;
+using Marten;
 using Microsoft.EntityFrameworkCore;
+using Weasel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,9 +31,30 @@ builder.Services.AddHearingBooksMassTransit();
 builder.Services.AddDbContext<HearingBooksDbContext>(
     options =>
     {
-        options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseUrl"))
-            .EnableSensitiveDataLogging();
+        var databaseUrl = builder.Configuration.GetConnectionString("DatabaseUrl");
+        options.UseNpgsql(databaseUrl);
+
+        if (builder.Environment.IsDevelopment())
+        {
+            options.EnableSensitiveDataLogging();
+        }
     });
+
+// This is the absolute, simplest way to integrate Marten into your
+// .Net Core application with Marten's default configuration
+builder.Services.AddMarten(options =>
+{
+    // Establish the connection string to your Marten database
+    var martenUrl = builder.Configuration.GetConnectionString("MartenUrl");
+    options.Connection(martenUrl);
+
+    // If we're running in development mode, let Marten just take care
+    // of all necessary schema building and patching behind the scenes
+    if (builder.Environment.IsDevelopment())
+    {
+        options.AutoCreateSchemaObjects = AutoCreate.All;
+    }
+});
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
