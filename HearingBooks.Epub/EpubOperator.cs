@@ -13,7 +13,7 @@ public class EpubOperator
     
     public string Title() => _book.Title;
     public string Author() => _book.Author;
-    public IList<string> AuthorList() => _book.AuthorList;
-    public IList<EpubNavigationItem> Navigation() => _book.Navigation;
-    public IList<EpubTextContentFile> ReadingOrder() => _book.ReadingOrder;
+    public ICollection<string> AuthorList() => _book.AuthorList;
+    public ICollection<EpubNavigationItem> Navigation() => _book.Navigation;
+    public ICollection<EpubTextContentFile> ReadingOrder() => _book.ReadingOrder;
 }

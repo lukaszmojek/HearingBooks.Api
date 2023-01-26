@@ -5,8 +5,5 @@ namespace HearingBooks.Api.Core.Auth;
 
 public static class AuthorizationFilterContextExtensions
 {
-    public static User User(this AuthorizationFilterContext context)
-    {
-        return (User) context.HttpContext.Items["User"];
-    }
+    public static User User(this AuthorizationFilterContext context) => (User) context.HttpContext.Items["User"];
 }

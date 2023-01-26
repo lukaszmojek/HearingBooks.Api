@@ -6,6 +6,8 @@ namespace HearingBooks.Infrastructure;
 public class SynthesisPricingService
 	: ISynthesisPricingService
 {
+	private readonly int _priceDivider = 1_000_000;
+	private readonly double _minimalPrice = 0.01;
 	private ISynthesisPricingRepository _synthesisPricingRepository { get; }
 	
 	public SynthesisPricingService(ISynthesisPricingRepository synthesisPricingRepository)
@@ -19,10 +21,10 @@ public class SynthesisPricingService
 
 		long price = synthesisCharacterCount * synthesisPricing.PriceInUsdPer1MCharacters;
 
-		var priceByMilion = price / 1_000_000;
+		var priceByMilion = price / _priceDivider;
 		
-		return priceByMilion < 0.01
-			? 0.01
+		return priceByMilion < _minimalPrice
+			? _minimalPrice
 			: priceByMilion;
 	}
 }

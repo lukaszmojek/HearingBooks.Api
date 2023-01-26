@@ -19,7 +19,7 @@ public class TextSynthesisServiceTests
 	
 	public TextSynthesisServiceTests()
 	{
-		_userRepository = TestsFixture.GetService<IUserRepository>();
+		_userRepository = TestsFixture.GetService<IUserRepository>(); //TODO: Refactor tests and move that to either docker or IWebFixture or sth like that
 		_textSynthesisService = new TextSynthesisService(
 			TestsFixture.GetService<ISpeechService>(),
 			TestsFixture.GetService<ITextSynthesisRepository>(),
