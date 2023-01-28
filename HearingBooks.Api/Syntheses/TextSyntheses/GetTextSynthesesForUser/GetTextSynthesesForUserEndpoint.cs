@@ -1,8 +1,8 @@
-using AutoMapper;
 using HearingBooks.Contracts;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Infrastructure.Repositories;
 using MassTransit;
+using IMapper = AutoMapper.IMapper;
 
 namespace HearingBooks.Api.Syntheses.TextSyntheses.GetTextSynthesesForUser;
 
