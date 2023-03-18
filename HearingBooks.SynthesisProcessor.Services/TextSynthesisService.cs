@@ -46,7 +46,7 @@ public class TextSynthesisService
             synthesisCharacterCount
         );
 
-        if (requestingUser.HasBalanceToCreateRequest(synthesisPrice) is false)
+        if (requestingUser.HasBalanceToCreateRequest((double) synthesisPrice) is false)
         {
             throw new UserDoesNotHaveBalanceToCreateSynthesisException($@"User with id {requestingUser.Id} and Balance of {requestingUser.Balance} 
                 tried to request TextSynthesis worth {synthesisPrice}");
@@ -95,11 +95,11 @@ public class TextSynthesisService
                 Voice = voice,
                 Language = language,
                 CharacterCount = data.TextToSynthesize.Length,
-                PriceInUsd = synthesisPrice,
+                PriceInUsd = (double) synthesisPrice,
                 DurationInSeconds = durationInSeconds
             };
 
-            requestingUser.Balance = Math.Round(requestingUser.Balance - synthesisPrice, 2);
+            requestingUser.Balance = Math.Round(requestingUser.Balance - (double) synthesisPrice, 2);
             await _textSynthesisRepository.Insert(textSynthesis);
             await _context.SaveChangesAsync();
 

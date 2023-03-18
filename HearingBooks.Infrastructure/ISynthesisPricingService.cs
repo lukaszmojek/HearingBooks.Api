@@ -4,5 +4,5 @@ namespace HearingBooks.Infrastructure;
 
 public interface ISynthesisPricingService
 {
-	Task<double> GetPriceForSynthesis(SynthesisType synthesisType, int synthesisCharacterCount);
+	Task<decimal> GetPriceForSynthesis(SynthesisType synthesisType, int synthesisCharacterCount);
 }

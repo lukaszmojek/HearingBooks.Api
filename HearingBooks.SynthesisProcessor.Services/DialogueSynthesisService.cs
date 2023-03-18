@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using HearingBooks.Contracts.DialogueSynthesis;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.Exceptions;
@@ -32,15 +32,11 @@ public class DialogueSynthesisService
         _languageRepository = languageRepository;
         _voiceRepository = voiceRepository;
     }
-
+    
     public async Task<DialogueSynthesis> CreateRequest(DialogueSynthesisData data, Guid requestingUserId, Guid requestId)
     {
         var requestingUser = await _userRepository.GetUserByIdAsync(requestingUserId);
-
-        if (requestingUser.CanRequestDialogueSynthesis() is false)
-        {
-            throw new HearingBooksUserCannotCreateSynthesisException($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
-        }
+        ValidateUser(requestingUser);
 
         var synthesisCharacterCount = data.DialogueText.Length;
         var synthesisPrice = await _synthesisPricingService.GetPriceForSynthesis(
@@ -48,72 +44,18 @@ public class DialogueSynthesisService
             synthesisCharacterCount
         );
 
-        if (requestingUser.HasBalanceToCreateRequest(synthesisPrice) is false)
-        {
-            throw new UserDoesNotHaveBalanceToCreateSynthesisException($@"User with id {requestingUser.Id} and Balance of {requestingUser.Balance} 
-                tried to request DialogueSynthesis worth {synthesisPrice}");
-        }
-
+        ValidateUserBalance(requestingUser, (double) synthesisPrice);
         var containerName = requestingUser.Id.ToString();
-
         var synthesisFilePath = "";
-        
+
         try
         {
-            var openingTags =
-                $"<speak xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xmlns:emo=\"http://www.w3.org/2009/10/emotionml\" version=\"1.0\" xml:lang=\"{data.Language}\">";
-            var closingTags = "</speak>";
+            var dialogueText = DialogueProcessor.BuildDialogueText(data, LineSeparator);
+            var synthesisRequest = BuildSynthesisRequest(data, dialogueText);
+            (synthesisFilePath, var synthesisFileName) = await _speechService.SynthesizeSsmlAsync(containerName, Guid.NewGuid().ToString(), synthesisRequest);
 
-            var linesWithTags = SplitDialogueIntoLines(data.DialogueText)
-                .Select(line => $"{LineOpeningTagsForSpeaker(data, line.Item2)}{line.Item1}{LineClosingTagsForSpeaker()}")
-                .Aggregate((current, next) => $"{current}{next}");
-
-            var dialogueText = $"{openingTags}{linesWithTags}{closingTags}";
-
-            //TODO: Move to mapper?
-            var synthesisRequest = new SyntehsisRequest
-            {
-                Title = data.Title,
-                Voice = data.SecondSpeakerVoice,
-                Language = data.Language,
-                TextToSynthesize = dialogueText
-            };
-            
-            (synthesisFilePath, var synthesisFileName) = await _speechService.SynthesizeSsmlAsync(
-                containerName,
-                Guid.NewGuid().ToString(),
-                synthesisRequest
-            );
-
-            var language = await _languageRepository.GetBySymbol(data.Language);
-            var firstSpeakerVoice = await _voiceRepository.GetVoiceByName(data.FirstSpeakerVoice);
-            var secondSpeakerVoice = await _voiceRepository.GetVoiceByName(data.SecondSpeakerVoice);
-            
-            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            var durationInSeconds = isWindows
-                ? data.DialogueText.Split(' ').Length / 3
-                : await AudioFileHelper.TryGettingDuration(synthesisFileName);
-            
-            var dialogueSynthesis = new DialogueSynthesis
-            {
-                Id = requestId,
-                User = requestingUser,
-                Status = DialogueSynthesisStatus.Submitted,
-                Title = data.Title,
-                DialogueText = data.DialogueText,
-                BlobContainerName = containerName,
-                BlobName = synthesisFileName,
-                FirstSpeakerVoice = firstSpeakerVoice,
-                SecondSpeakerVoice = secondSpeakerVoice,
-                Language = language,
-                CharacterCount = synthesisCharacterCount,
-                DurationInSeconds = durationInSeconds,
-                PriceInUsd = synthesisPrice
-            };
-            
-            requestingUser.Balance = Math.Round(requestingUser.Balance - synthesisPrice, 2);
-            await _dialogueSynthesisRepository.Insert(dialogueSynthesis);
-            await _context.SaveChangesAsync();
+            var dialogueSynthesis = await CreateDialogueSynthesis(requestingUser, data, synthesisPrice, synthesisCharacterCount, synthesisFileName, containerName, requestId);
+            await SaveDialogueSynthesis(requestingUser, dialogueSynthesis, synthesisPrice);
 
             return dialogueSynthesis;
         }
@@ -131,23 +73,71 @@ public class DialogueSynthesisService
         }
     }
 
-    public IEnumerable<(string, int)> SplitDialogueIntoLines(string dialogueText) =>
-        dialogueText
-            .Split(LineSeparator)
-            .Select((line, index) => (line.Trim(), index));
-
-
-    private string LineOpeningTagsForSpeaker(DialogueSynthesisData data, int index)
+    private void ValidateUser(User requestingUser)
     {
-        var speaker = FirstSpeaker(index) ? data.FirstSpeakerVoice : data.SecondSpeakerVoice;
+        if (!requestingUser.CanRequestDialogueSynthesis())
+        {
+            throw new HearingBooksUserCannotCreateSynthesisException($"Users of type {requestingUser.Type} cannot create DialogueSyntheses!");
+        }
+    }
 
-        return $"<voice name=\"{speaker}\"><prosody rate=\"0%\" pitch=\"0%\">";
-    }
-    
-    private string LineClosingTagsForSpeaker()
+    private void ValidateUserBalance(User requestingUser, double synthesisPrice)
     {
-        return "</prosody></voice>";
+        if (!requestingUser.HasBalanceToCreateRequest(synthesisPrice))
+        {
+            throw new UserDoesNotHaveBalanceToCreateSynthesisException($@"User with id {requestingUser.Id} and Balance of {requestingUser.Balance} 
+                tried to request DialogueSynthesis worth {synthesisPrice}");
+        }
     }
-    
-    private bool FirstSpeaker(int index) => index % 2 == 0;
+
+    private SyntehsisRequest BuildSynthesisRequest(DialogueSynthesisData data, string dialogueText)
+    {
+        return new SyntehsisRequest
+        {
+            Title = data.Title,
+            Voice = data.SecondSpeakerVoice,
+            Language = data.Language,
+            TextToSynthesize = dialogueText
+        };
+    }
+
+    private async Task<DialogueSynthesis> CreateDialogueSynthesis(User requestingUser, DialogueSynthesisData data, decimal synthesisPrice, int synthesisCharacterCount, string synthesisFileName, string containerName, Guid requestId)
+    {
+        var language = await _languageRepository.GetBySymbol(data.Language);
+        var firstSpeakerVoice = await _voiceRepository.GetVoiceByName(data.FirstSpeakerVoice);
+        var secondSpeakerVoice = await _voiceRepository.GetVoiceByName(data.SecondSpeakerVoice);
+        var durationInSeconds = await CalculateDuration(data.DialogueText, synthesisFileName);
+
+        return new DialogueSynthesis
+        {
+            Id = requestId,
+            User = requestingUser,
+            Status = DialogueSynthesisStatus.Submitted,
+            Title = data.Title,
+            DialogueText = data.DialogueText,
+            BlobContainerName = containerName,
+            BlobName = synthesisFileName,
+            FirstSpeakerVoice = firstSpeakerVoice,
+            SecondSpeakerVoice = secondSpeakerVoice,
+            Language = language,
+            CharacterCount = synthesisCharacterCount,
+            DurationInSeconds = durationInSeconds,
+            PriceInUsd = (double) synthesisPrice
+        };
+    }
+
+    private async Task<int> CalculateDuration(string dialogueText, string synthesisFileName)
+    {
+        var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        return isWindows
+            ? dialogueText.Split(' ').Length / 3
+            : await AudioFileHelper.TryGettingDuration(synthesisFileName);
+    }
+
+    private async Task SaveDialogueSynthesis(User requestingUser, DialogueSynthesis dialogueSynthesis, decimal synthesisPrice)
+    {
+        requestingUser.Balance = Math.Round(requestingUser.Balance - (double) synthesisPrice, 2);
+        await _dialogueSynthesisRepository.Insert(dialogueSynthesis);
+        await _context.SaveChangesAsync();
+    }
 }

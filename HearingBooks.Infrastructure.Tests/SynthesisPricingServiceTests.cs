@@ -29,7 +29,7 @@ public class SynthesisPricingServiceTests
 	{
 		var price = await _service.GetPriceForSynthesis(SynthesisType.TextSynthesis, 10);
 		
-		Assert.Equal(0.01, price);
+		Assert.Equal((decimal)0.01, price);
 	}
 	
 	[Fact]
@@ -37,7 +37,7 @@ public class SynthesisPricingServiceTests
 	{
 		var price = await _service.GetPriceForSynthesis(SynthesisType.DialogueSynthesis, 10);
 		
-		Assert.Equal(0.01, price);
+		Assert.Equal((decimal)0.01, price);
 	}
 	
 	[Fact]

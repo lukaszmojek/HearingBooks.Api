@@ -15,7 +15,7 @@ public class SynthesisPricingService
 		_synthesisPricingRepository = synthesisPricingRepository;
 	}
 	
-	public async Task<double> GetPriceForSynthesis(SynthesisType synthesisType, int synthesisCharacterCount)
+	public async Task<decimal> GetPriceForSynthesis(SynthesisType synthesisType, int synthesisCharacterCount)
 	{
 		var synthesisPricing = await _synthesisPricingRepository.GetPricingForType(synthesisType);
 
@@ -24,7 +24,7 @@ public class SynthesisPricingService
 		var priceByMilion = price / _priceDivider;
 		
 		return priceByMilion < _minimalPrice
-			? _minimalPrice
+			? (decimal) _minimalPrice
 			: priceByMilion;
 	}
 }

@@ -44,7 +44,7 @@ public class DialogeSynthesisServiceTests
 	[Fact]
 	public void SplitDialogueIntoLines_Should_PerformCorrectSplit()
 	{
-		var lines = _dialogueSynthesisService.SplitDialogueIntoLines(DialogueText());
+		var lines = DialogueProcessor.SplitDialogueIntoLines(DialogueText(), DialogueSynthesisService.LineSeparator);
 		
 		Assert.Equal(3, lines.Count());
 		Assert.Equal(_person1Line1, lines.ElementAt(0).Item1);
