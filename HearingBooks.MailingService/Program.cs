@@ -1,3 +1,4 @@
+using HearingBooks.Api.Core.TimeProvider;
 using HearingBooks.MailingService;
 using MassTransit;
 
@@ -19,7 +20,8 @@ IHost host = Host.CreateDefaultBuilder(args)
             });
 			
             x.AddConsumers(typeof(Worker).Assembly);
-			
+            services.AddScoped<ITimeProvider, TimeProvider>();
+
             // OPTIONAL, but can be used to configure the bus options
             services.AddOptions<MassTransitHostOptions>()
                 .Configure(options =>

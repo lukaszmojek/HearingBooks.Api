@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\HearingBooks.Common\HearingBooks.Common.csproj" />
         <ProjectReference Include="..\HearingBooks.Contracts\HearingBooks.Contracts.csproj" />
         <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
     </ItemGroup>

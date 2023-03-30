@@ -1,6 +1,7 @@
 using FastEndpoints.Swagger;
 using HearingBooks.Api.Core.Auth;
 using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Api.Core.TimeProvider;
 using HearingBooks.Common.Mapper;
 using HearingBooks.Infrastructure;
 using HearingBooks.MassTransit;
@@ -41,6 +42,7 @@ builder.Services.AddScoped<ISynthesisPricingService, SynthesisPricingService>();
 builder.Services.RegisterRepositories();
 
 builder.Services.AddAutoMapper(typeof(TextSynthesisProfile));
+builder.Services.AddScoped<ITimeProvider, TimeProvider>();
 
 var app = builder.Build();
 

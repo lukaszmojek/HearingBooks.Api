@@ -1,3 +1,4 @@
+using HearingBooks.Api.Core.TimeProvider;
 using HearingBooks.Common.Mapper;
 using HearingBooks.Infrastructure;
 using HearingBooks.Persistance;
@@ -29,6 +30,7 @@ IHost host = builder
 			services.RegisterRepositories();
 			
 			services.AddAutoMapper(typeof(TextSynthesisProfile));
+			services.AddScoped<ITimeProvider, TimeProvider>();
 
 			services.AddScoped<ISpeechService, SpeechService>();
 			services.AddScoped<IStorageService, StorageService>();

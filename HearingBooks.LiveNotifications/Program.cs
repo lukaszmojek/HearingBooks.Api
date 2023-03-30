@@ -1,3 +1,4 @@
+using HearingBooks.Api.Core.TimeProvider;
 using HearingBooks.LiveNotifications;
 using HearingBooks.LiveNotifications.Hubs;
 using MassTransit;
@@ -28,6 +29,8 @@ builder.Services.AddMassTransit(x =>
 			
     x.AddConsumers(typeof(Worker).Assembly);
 });
+
+builder.Services.AddScoped<ITimeProvider, TimeProvider>();
 
 builder.Services.AddCors(options =>
 {

@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\HearingBooks.Common\HearingBooks.Common.csproj" />
       <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
       <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
       <ProjectReference Include="..\HearingBooks.MassTransit\HearingBooks.MassTransit.csproj" />

@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using HearingBooks.Api.Core.Configuration;
+using HearingBooks.Api.Core.TimeProvider;
 using HearingBooks.Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 
@@ -11,10 +12,12 @@ namespace HearingBooks.Api.Core.Auth;
 public class UserService : IUserService
 {
     private readonly IApiConfiguration _configuration;
+    private readonly ITimeProvider _timeProvider;
 
-    public UserService(IApiConfiguration configuration)
+    public UserService(IApiConfiguration configuration, ITimeProvider timeProvider)
     {
         _configuration = configuration;
+        _timeProvider = timeProvider;
     }
 
     public string Authenticate(User user)
@@ -42,7 +45,7 @@ public class UserService : IUserService
             ),
 
             //TODO: Change that back to 1 hour
-            Expires = DateTime.UtcNow.AddMonths(1),
+            Expires = _timeProvider.UtcNow().UtcDateTime.AddMonths(1),
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256Signature
