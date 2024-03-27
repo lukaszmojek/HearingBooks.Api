@@ -7,7 +7,7 @@
 
 ## Requirements for running this (awesowe) project locally:
 
-- .NET 6.0.x SDK
+- .NET 7 SDK
 - IDE, I can recommend latest version of Rider (since Visual Studio is shitty) for Backend
 - [NodeJS installed](https://nodejs.org/en/)
 - [VS Code for Frontend](https://code.visualstudio.com/)
